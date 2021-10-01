@@ -9,6 +9,7 @@
     "yarn": "1.22.5"
   },
   "scripts": {
+    "commit": "cz",
     "dev": "clear && ts-node-dev -r tsconfig-paths/register --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "start": "node ./dist/server.js"
@@ -74,6 +75,7 @@
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.1",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
@@ -85,5 +87,10 @@
     "ts-node": "^8.10.2",
     "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
