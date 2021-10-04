@@ -38,6 +38,18 @@ class TokensRepository implements ITokensRepository {
   public async save(data: ISave): Promise<void> {
     await this.ormRepository.update(data.id, data);
   }
+
+  public async is_revogedAll(id: string): Promise<void> {
+    await this.ormRepository
+      .createQueryBuilder('token')
+      .update()
+      .set({ is_revoked: 1 })
+      .where(`user_id = :userID AND type = :refresh_token`, {
+        userID: id,
+        refresh_token: 'refresh_token',
+      })
+      .execute();
+  }
 }
 
 export default TokensRepository;

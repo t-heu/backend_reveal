@@ -20,7 +20,11 @@ class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {
 
   public async execute(data: RequestDTO): Promise<ResponseDTO> {
     if (data.grant_type !== 'refresh_token') {
-      throw new AppError('grant_type is not refresh_token');
+      throw new AppError('Type is not refresh token');
+    }
+
+    if (!data.refresh_token) {
+      throw new AppError('Refresh token invalid');
     }
 
     const userToken = await this.tokensRepository.findByToken(
@@ -31,11 +35,10 @@ class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {
       throw new AppError('Token already used.');
     }
 
-    const tokenCreatedAt = userToken.createdAt;
-    const compareDate = addDays(tokenCreatedAt, 7);
+    const RefreshtokenCreatedAt = userToken.createdAt;
     const dateAge = new Date();
 
-    if (isAfter(dateAge, compareDate)) {
+    if (isAfter(dateAge, addDays(RefreshtokenCreatedAt, 31))) {
       throw new AppError('Token expired.');
     }
 
@@ -45,17 +48,16 @@ class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {
       userId: user.id.toValue().toString(),
     });
 
-    const addSixDate = addDays(tokenCreatedAt, 6);
-    if (isAfter(dateAge, addSixDate)) {
+    /* if (isAfter(dateAge, addDays(RefreshtokenCreatedAt, 6))) {
       const refresh_token_age = Jwt.generateRefreshToken();
       user.setAcessToken(access_token, refresh_token_age);
-    }
+    } */
 
     user.setAcessToken(access_token, data.refresh_token);
 
     return {
       access_token,
-      refresh_token: user.refreshToken,
+      // refresh_token: user.refreshToken,
       token_type: 'bearer',
       expires: 300,
     };

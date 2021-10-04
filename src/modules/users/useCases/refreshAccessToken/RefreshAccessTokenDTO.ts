@@ -7,7 +7,7 @@ export interface RequestDTO {
 
 export interface ResponseDTO {
   access_token: JWTToken;
-  refresh_token: RefreshToken;
+  // refresh_token: RefreshToken;
   token_type: string;
   expires: number;
 }

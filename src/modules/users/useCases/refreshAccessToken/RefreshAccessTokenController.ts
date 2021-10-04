@@ -23,7 +23,7 @@ export class RefreshAccessTokenController extends BaseController {
 
     return this.ok(res, {
       access_token: result.access_token,
-      refresh_token: result.refresh_token,
+      // refresh_token: result.refresh_token,
       token_type: result.token_type,
       expires: result.expires,
     });

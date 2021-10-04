@@ -63,8 +63,10 @@ class AuthenticateUserUseCase
       userId: user.id.toValue().toString(),
     });
 
+    await this.tokensRepository.is_revogedAll(user.id.toString());
+
     await this.tokensRepository.create({
-      user_id: String(user.id.toValue()),
+      user_id: user.id.toString(),
       token: refresh_token,
       type: 'refresh_token',
     });
