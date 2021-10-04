@@ -2,4 +2,8 @@ import { PushNotificationExpo } from './impl/pushNotificationExpo';
 
 const sendNotificationDevice = new PushNotificationExpo();
 
-export { sendNotificationDevice };
+interface SendNotificationDevice {
+  execute(data: any): Promise<void>;
+}
+
+export { sendNotificationDevice, SendNotificationDevice };

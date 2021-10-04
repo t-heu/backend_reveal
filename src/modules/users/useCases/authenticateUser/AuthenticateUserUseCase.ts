@@ -37,27 +37,6 @@ class AuthenticateUserUseCase
       throw new AppError('invalid password');
     }
 
-    if (data.notification_key || data.locale) {
-      await this.userRepository.save({
-        id: user.id.toValue().toString(),
-        data: (() => {
-          if (data.notification_key) {
-            return {
-              notification_key: data.notification_key,
-            };
-          }
-
-          if (data.locale) {
-            return {
-              locale: data.locale,
-            };
-          }
-
-          return data;
-        })(),
-      });
-    }
-
     const refresh_token: RefreshToken = Jwt.generateRefreshToken();
     const access_token: JWTToken = Jwt.generateAccessToken({
       userId: user.id.toValue().toString(),

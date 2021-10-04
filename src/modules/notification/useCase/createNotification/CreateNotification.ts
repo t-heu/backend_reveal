@@ -51,7 +51,7 @@ class CreateNotification implements IUseCase<Request, string> {
       });
     }
 
-    return user.notification_key;
+    return user.notification_keys.map((k: any) => k.key);
   }
 }
 

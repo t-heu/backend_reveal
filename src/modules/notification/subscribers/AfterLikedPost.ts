@@ -1,7 +1,7 @@
 import { DomainEvents } from '../../../shared/domain/events/DomainEvents';
 import { IHandle } from '../../../shared/domain/events/IHandle';
 import { PostLiked } from '../../feed/domain/events/postLiked';
-import { SendNotificationDevice } from '../services/sendNotificationDevice/SendNotificationDevice';
+import { SendNotificationDevice } from '../services/sendNotificationDevice';
 
 export class AfterLikedPost implements IHandle {
   private sendNotification: SendNotificationDevice;
@@ -34,6 +34,7 @@ export class AfterLikedPost implements IHandle {
       data: {},
       type: 'notification_liked_post',
       link: event.like.postId.id.toString(),
+      user_id: event.like.userId.id.toString(),
     });
   }
 }

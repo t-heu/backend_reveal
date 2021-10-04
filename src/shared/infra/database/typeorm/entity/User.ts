@@ -18,6 +18,7 @@ import Like from './Like';
 import Token from './Token';
 import ExternalAuth from './ExternalAuth';
 import Notification from './Notification';
+import NotificationKey from './NotificationKey';
 
 @Entity()
 export default class User {
@@ -41,9 +42,6 @@ export default class User {
 
   @Column({ default: '' })
   locale: string;
-
-  @Column({ default: '' })
-  notification_key: string;
 
   @CreateDateColumn()
   createdAt: Date;
@@ -71,6 +69,9 @@ export default class User {
 
   @OneToMany(() => ExternalAuth, profile => profile.user)
   external_auths: ExternalAuth[];
+
+  @OneToMany(() => NotificationKey, key => key.user)
+  notification_keys: NotificationKey[];
 
   @AfterInsert()
   dispatchAggregateEvents(): void {

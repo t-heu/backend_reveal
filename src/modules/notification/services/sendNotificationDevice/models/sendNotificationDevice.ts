@@ -4,4 +4,5 @@ export interface Request {
   data: any;
   link: string;
   type: string;
+  user_id: string;
 }

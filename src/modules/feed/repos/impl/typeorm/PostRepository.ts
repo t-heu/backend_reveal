@@ -52,7 +52,6 @@ class PostRepository implements IPostRepository {
         .loadRelationCountAndMap('post.viewer_count_likes', 'post.likes')
         .leftJoin('post.comments', 'comments')
         .loadRelationCountAndMap('post.viewer_count_comments', 'post.comments')
-        .leftJoinAndSelect('post.user', 'users')
         // .leftJoinAndSelect('comments.user', 'user')
         .where({ id })
         .getOne();
@@ -72,17 +71,19 @@ class PostRepository implements IPostRepository {
 
       return PostMap.toDomain(result);
     }
-    const result = <IPost>await this.ormRepository
-      .createQueryBuilder('post')
-      .leftJoin('post.hide_posts', 'hide_posts')
-      .leftJoin('post.likes', 'likes')
-      .loadRelationCountAndMap('post.viewer_count_likes', 'post.likes')
-      .leftJoin('post.comments', 'comments')
-      .loadRelationCountAndMap('post.viewer_count_comments', 'post.comments')
-      .leftJoinAndSelect('post.user', 'users')
-      // .leftJoinAndSelect('comments.user', 'user')
-      .where({ id })
-      .getOne();
+    const result = <IPost>(
+      await this.ormRepository
+        .createQueryBuilder('post')
+        .leftJoin('post.hide_posts', 'hide_posts')
+        .leftJoin('post.likes', 'likes')
+        .loadRelationCountAndMap('post.viewer_count_likes', 'post.likes')
+        .leftJoin('post.comments', 'comments')
+        .loadRelationCountAndMap('post.viewer_count_comments', 'post.comments')
+        .leftJoinAndSelect('post.user', 'users')
+        .leftJoinAndSelect('users.notification_keys', 'notification_keys')
+        .where({ id })
+        .getOne()
+    );
 
     if (!result) throw new AppError('Post not found');
 

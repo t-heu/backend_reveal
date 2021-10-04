@@ -2,7 +2,7 @@ import { DomainEvents } from '../../../shared/domain/events/DomainEvents';
 import { IHandle } from '../../../shared/domain/events/IHandle';
 import { PostCommented } from '../../feed/domain/events/postCommented';
 import { CommentText } from '../../feed/domain/commentText';
-import { SendNotificationDevice } from '../services/sendNotificationDevice/SendNotificationDevice';
+import { SendNotificationDevice } from '../services/sendNotificationDevice';
 
 export class AfterCommentedPost implements IHandle {
   private sendNotification: SendNotificationDevice;
@@ -35,6 +35,7 @@ export class AfterCommentedPost implements IHandle {
       data: {},
       type: 'notification_commented_post',
       link: event.comment.postId.id.toString(),
+      user_id: event.comment.userId.id.toString(),
     });
   }
 }

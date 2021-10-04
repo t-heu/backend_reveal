@@ -27,6 +27,9 @@ import providersTemplates from './providers/MailTemplateProvider';
 import NotificationRepository from '../../modules/notification/repos/impl/typeorm/NotificationRepo';
 import { INotificationRepository } from '../../modules/notification/repos/INotification';
 
+import NotificationKeyRepository from '../../modules/notification/repos/impl/typeorm/NotificationKeysRepo';
+import { INotificationKeyRepository } from '../../modules/notification/repos/INotificationKeys';
+
 // Repositors
 container.registerSingleton<ILikeRepository>('LikeRepository', LikeRepository);
 
@@ -56,6 +59,11 @@ container.registerSingleton<IHidePostRepository>(
 container.registerSingleton<INotificationRepository>(
   'NotificationRepository',
   NotificationRepository,
+);
+
+container.registerSingleton<INotificationKeyRepository>(
+  'NotificationKeyRepository',
+  NotificationKeyRepository,
 );
 
 // Providers

@@ -11,14 +11,12 @@ export class AuthenticateUserController extends BaseController {
   }
 
   public async executeImpl(req: Request, res: Response): Promise<any> {
-    const { email, password, locale, notification_key } = req.body;
+    const { email, password } = req.body;
 
     const user = container.resolve(AuthenticateUserUseCase);
     const result = await user.execute({
       email,
       password,
-      locale,
-      notification_key,
     });
 
     return this.ok(res, {

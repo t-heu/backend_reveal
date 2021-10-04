@@ -15,6 +15,7 @@ import User from './entity/User';
 import ExternalAuth from './entity/ExternalAuth';
 import Token from './entity/Token';
 import Notification from './entity/Notification';
+import NotificationKey from './entity/NotificationKey';
 
 config({
   path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
@@ -29,6 +30,7 @@ const entities = [
   ExternalAuth,
   Token,
   Notification,
+  NotificationKey,
 ];
 
 const optionsSqlite: ConnectionOptions = {

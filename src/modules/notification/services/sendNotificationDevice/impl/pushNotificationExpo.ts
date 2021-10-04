@@ -3,6 +3,7 @@ import { Expo, ExpoPushMessage } from 'expo-server-sdk';
 
 import { Request } from '../models/sendNotificationDevice';
 import { createNotification } from '../../../useCase/createNotification';
+import { deleteNotificationKeysUseCase } from '../../../useCase/deleteNotificationKeys';
 
 const expo = new Expo();
 
@@ -13,6 +14,7 @@ class PushNotificationExpo {
     data,
     link,
     type,
+    user_id,
   }: Request): Promise<void> {
     const messages: ExpoPushMessage[] = [];
     const somePushTokens: string[] = [];
@@ -27,12 +29,13 @@ class PushNotificationExpo {
     });
 
     if (token) {
-      somePushTokens.push(token);
+      somePushTokens.push(...token);
     }
 
     for (const pushToken of somePushTokens) {
       if (!Expo.isExpoPushToken(pushToken)) {
         console.error(`Push token ${pushToken} is not a valid Expo push token`);
+        deleteNotificationKeysUseCase.execute({ user_id, key: pushToken });
         continue;
       }
 
@@ -52,8 +55,16 @@ class PushNotificationExpo {
         try {
           const ticketChunk = await expo.sendPushNotificationsAsync(chunk);
           tickets.push(...ticketChunk);
+
+          if (ticketChunk[1].status === 'error') {
+            // console.log(ticketChunk[1].message.split('"')[1]);
+            deleteNotificationKeysUseCase.execute({
+              user_id,
+              key: ticketChunk[1].message.split('"')[1],
+            });
+          }
         } catch (error) {
-          console.error(error);
+          console.log(error);
         }
       }
     })();
@@ -72,7 +83,7 @@ class PushNotificationExpo {
           const receipts = await expo.getPushNotificationReceiptsAsync(chunk);
           console.log(receipts, ' -ok');
         } catch (error) {
-          console.error(error, ' - e2');
+          console.log(error, ' - e2');
         }
       }
     })();
