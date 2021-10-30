@@ -15,7 +15,7 @@ Reveal is a type of social network where users are anonymous, they can share ide
 - Postgress
 - Redis
 - Express
-- EJS
+- Handlebars
 - Firebase
 
 ## Functionalities
@@ -25,7 +25,6 @@ Reveal is a type of social network where users are anonymous, they can share ide
   <li>rate limiter</li>
   <li>multiple logins (local, social)</li>
   <li>deep linking</li>
-  <li>handlebars</li>
   <li>upload photo</li>
   <li>push notification</li>
   <li>send email</li>
