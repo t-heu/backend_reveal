@@ -10,7 +10,7 @@ import { UserEmail } from '../../domain/userEmail';
 import { UserPhoto } from '../../domain/userPhoto';
 import { UserPassword } from '../../domain/userPassword';
 
-import { UploadStorage } from '../../../../config/uploadStorage';
+import { UploadStorage } from '../../../../config/upload';
 
 @injectable()
 class CreateUserUseCase implements IUseCase<CreateUserDTO, void> {

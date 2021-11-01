@@ -29,6 +29,7 @@ Reveal is a type of social network where users are anonymous, they can share ide
   <li>push notification</li>
   <li>send email</li>
   <li>system liked</li>
+  <li>dynamic link</li>
 </ul>
 
 ## Versioning

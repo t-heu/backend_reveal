@@ -1,5 +1,3 @@
-// import crypto from 'crypto';
-
 import { ValueObject } from '../../../shared/domain/ValueObject';
 import UploadConfig from '../../../config/upload';
 
@@ -38,24 +36,15 @@ export class UserPhoto extends ValueObject<UserPhotoProps> {
   }
 
   public static create(photo?: string): UserPhoto {
-    if (!photo) {
-      const newPhoto = 'no_photo.jpg';
-      // `${crypto
-      //   .randomBytes(16)
-      //   .toString('hex')}-${Date.now()}.jpg`;
-      return new UserPhoto({
-        value: newPhoto,
-        getUrl: newPhoto,
-      });
-    }
+    const newPhoto = photo || 'no_photo.jpg';
 
-    if (this.isPhotoUrl(photo)) {
-      return new UserPhoto({ value: photo });
+    if (this.isPhotoUrl(newPhoto)) {
+      return new UserPhoto({ value: newPhoto });
     }
 
     return new UserPhoto({
-      value: photo,
-      getUrl: this.formatUrl(photo),
+      value: newPhoto,
+      getUrl: this.formatUrl(newPhoto),
     });
   }
 }

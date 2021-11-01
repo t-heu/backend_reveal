@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
-import morgan from 'morgan';
+import morganBody from 'morgan-body';
 import path from 'path';
 import 'express-async-errors';
 import { isCelebrate } from 'celebrate';
@@ -11,7 +11,8 @@ import { Server } from 'http';
 import Socket from './ws';
 import v1Router from './http/api/v1';
 import rateLimiter from './http/middlewares/rateLimiter';
-import * as AppError from '../core/AppError';
+import { AppError } from '../core/AppError';
+import { log } from './logger';
 
 dotenv.config();
 
@@ -35,7 +36,11 @@ app.use((req, res, next) => {
 app.use(helmet());
 app.use(express.json());
 app.use(rateLimiter);
-app.use(morgan('combined')); // combined, dev
+morganBody(app, {
+  noColors: true,
+  stream: log,
+  // maxBodyLength: 15,
+});
 app.use(
   '/files',
   express.static(path.resolve(__dirname, '..', '..', '..', 'tmp', 'uploads')),
@@ -61,7 +66,7 @@ app.use(
       });
     }
 
-    if (err instanceof AppError.AppError) {
+    if (err instanceof AppError) {
       return response.status(err.statusCode).json({
         status: 'error',
         message: err.message,

@@ -7,13 +7,7 @@ import likeRouter from '../../../../modules/feed/infra/http/routes/likes';
 import commentRouter from '../../../../modules/feed/infra/http/routes/comments';
 import notificationRouter from '../../../../modules/notification/infra/http/routes';
 
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
-
 const v1Router = express.Router();
-
-v1Router.get('/status', ensureAuthenticated, (req, res) => {
-  return res.json({ status: 'ok' });
-});
 
 v1Router.use('/user', userRouter);
 v1Router.use('/feed/post', postRouter);
