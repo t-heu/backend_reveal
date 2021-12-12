@@ -4,7 +4,7 @@
 
 ## Schema database (ERD)
 <p align="center">
-  <img alt="schema_database" src="./docs/ERD do APP Conf - 2v.png" width="650" />
+  <img alt="schema_database" src="./.github/ERD do APP Conf - 2v.png" width="650" />
 </p>
 
 ### About
@@ -17,6 +17,7 @@ Reveal is a type of social network where users are anonymous, they can share ide
 - Express
 - Handlebars
 - Firebase
+- Socket.io
 
 ## Functionalities
 <ul>
