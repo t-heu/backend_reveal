@@ -2,22 +2,21 @@
 [![Linkedin Badge](https://img.shields.io/badge/-matheusgbatista-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheusgbatista-3392bb153/)](https://www.linkedin.com/in/matheusgbatista/) 
 [![MyWeb Badge](https://img.shields.io/badge/-t--heu.github.io-333?style=flat-square&link=https://t-heu.github.io/)](https://t-heu.github.io) 
 
-## Schema database (ERD)
+## 📄 About
+Reveal is a type of social network where users are anonymous, they can share ideas, secrets and what they are thinking at that very moment. Using: Postgress, Redis
+
+### Schema database (ERD)
 <p align="center">
   <img alt="schema_database" src="./.github/ERD do APP Conf - 2v.png" width="650" />
 </p>
 
-### About
-Reveal is a type of social network where users are anonymous, they can share ideas, secrets and what they are thinking at that very moment.
-
-###  Technologies used
-- TypeScript
-- Postgress
-- Redis
-- Express
-- Handlebars
-- Firebase
-- Socket.io
+## ⚡ Tech Stack
+- [ExpressJS](https://expressjs.com/)
+- [Handlebars](https://handlebarsjs.com/)
+- [Firebase](https://firebase.google.com/)
+- [Socket.io](https://socket.io/)
+- [Nodemailer](https://nodemailer.com/)
+- [TypeORM](https://typeorm.io/)
 
 ## Functionalities
 <ul>
