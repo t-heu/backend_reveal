@@ -1,26 +1,26 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '../../../../shared/domain/UseCase';
-import { AppError } from '../../../../shared/core/AppError';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ChangePasswordDTO } from './ChangePasswordDTO';
 import { UserPassword } from '../../domain/userPassword';
-// import { UserId } from '../../domain/userId';
 
 @injectable()
-class ChangePasswordUseCase implements IUseCase<ChangePasswordDTO, void> {
+class ChangePasswordUseCase implements IUseCase<ChangePasswordDTO, string | void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
   ) {}
 
-  public async execute(data: ChangePasswordDTO): Promise<void> {
+  public async execute(data: ChangePasswordDTO): Promise<string | void> {
     const existUser = await this.userRepository.findById(data.id);
 
+    if (typeof existUser === 'string') {
+      return existUser;
+    }
+
     if (data.newPassword && !data.oldPassword) {
-      throw new AppError(
-        'You need to inform the old password to set a new password.',
-      );
+      return 'You need to inform the old password to set a new password.';
     }
 
     if (data.newPassword && data.oldPassword) {
@@ -33,12 +33,20 @@ class ChangePasswordUseCase implements IUseCase<ChangePasswordDTO, void> {
         hashed: true,
       });
 
+      if (typeof oldPassword === 'string') {
+        return oldPassword;
+      }
+  
+      if (typeof currentPassword === 'string') {
+        return currentPassword;
+      }
+
       if (!(await oldPassword.comparePassword(existUser.password.value))) {
-        throw new AppError('Old password does not match.');
+        return 'Old password does not match.';
       }
 
       if (await currentPassword.comparePassword(existUser.password.value)) {
-        throw new AppError('Equal passwords.');
+        return 'Equal passwords.';
       }
 
       await this.userRepository.save({

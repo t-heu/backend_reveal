@@ -3,7 +3,6 @@ import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IUseCase } from '../../../../shared/domain/UseCase';
-// import * as AppError from '../../../../shared/core/AppError';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { IMailProvider } from '../../../../shared/infra/providers/MailProvider/dtos/IMailProviderDTO';
@@ -13,7 +12,7 @@ import { firebaseGenerateLink } from '../../services/generateLink';
 
 @injectable()
 class SendForgotPasswordEmailUseCase
-  implements IUseCase<SendForgotPasswordEmailDTO, void> {
+  implements IUseCase<SendForgotPasswordEmailDTO, string | void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -25,9 +24,18 @@ class SendForgotPasswordEmailUseCase
     private mailProvider: IMailProvider,
   ) {}
 
-  public async execute(data: SendForgotPasswordEmailDTO): Promise<void> {
+  public async execute(data: SendForgotPasswordEmailDTO): Promise<string | void> {
     const email = UserEmail.create(data.email);
+
+    if (typeof email === 'string') {
+      return email;
+    }
+
     const user = await this.userRepository.findUserByEmail(email);
+
+    if (typeof user === 'string') {
+      return user;
+    }
 
     const forgotPasswordTemplate = path.resolve(
       __dirname,

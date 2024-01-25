@@ -14,13 +14,15 @@ export class UpdateUserAvatarController extends BaseController {
       const userID = req.user.id;
 
       const user = container.resolve(UpdateUserAvatarUseCase);
-      await user.execute({
-        id: userID,
-        photo: req.file.filename,
-      });
+      if (req.file) {
+        await user.execute({
+          id: userID,
+          photo: req.file.filename,
+        });
+      }
 
       return this.created(res);
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
       return this.fail(res, err);
     }

@@ -17,8 +17,8 @@ export interface IEditDTO {
 
 export interface IUserRepository {
   create(data: User): Promise<void>;
-  findById(id: string): Promise<User>;
+  findById(id: string): Promise<string | User>;
   save(data: IEditDTO): Promise<void>;
-  findUserByEmail(data: UserEmail): Promise<User>;
+  findUserByEmail(data: UserEmail): Promise<string | User>;
   exists(data: UserEmail): Promise<boolean>;
 }

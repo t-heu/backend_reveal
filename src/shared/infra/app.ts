@@ -11,7 +11,6 @@ import { Server } from 'http';
 import Socket from './ws';
 import v1Router from './http/api/v1';
 import rateLimiter from './http/middlewares/rateLimiter';
-import { AppError } from '../core/AppError';
 import { log } from './logger';
 
 dotenv.config();
@@ -66,13 +65,6 @@ app.use(
       });
     }
 
-    if (err instanceof AppError) {
-      return response.status(err.statusCode).json({
-        status: 'error',
-        message: err.message,
-      });
-    }
-
     if (err instanceof multer.MulterError) {
       return response.status(400).json({
         status: 'error',
@@ -80,7 +72,7 @@ app.use(
       });
     }
 
-    console.log('[AppError]: Internal server error');
+    console.log('[App Error]: Internal server error');
     console.error(err);
 
     return response.status(500).json({

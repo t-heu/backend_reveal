@@ -16,7 +16,7 @@ interface IRequestDTO {
 }
 
 @injectable()
-class SendEmailVerifyUseCase implements IUseCase<IRequestDTO, void> {
+class SendEmailVerifyUseCase implements IUseCase<IRequestDTO, string | void> {
   constructor(
     // @ts-ignore
     @inject(delay(() => 'UserRepository'))
@@ -29,9 +29,18 @@ class SendEmailVerifyUseCase implements IUseCase<IRequestDTO, void> {
     private mailProvider: IMailProvider,
   ) {}
 
-  public async execute(data: IRequestDTO): Promise<void> {
+  public async execute(data: IRequestDTO): Promise<string | void> {
     const email = UserEmail.create(data.email);
+
+    if (typeof email === 'string') {
+      return email;
+    }
+
     const user = await this.userRepository.findUserByEmail(email);
+
+    if (typeof user === 'string') {
+      return user;
+    }
 
     const verifiedEmailTemplate = path.resolve(
       __dirname,

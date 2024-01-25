@@ -1,5 +1,4 @@
 import { ValueObject } from '../../../shared/domain/ValueObject';
-import { AppError } from '../../../shared/core/AppError';
 
 interface UserNameProps {
   name: string;
@@ -18,21 +17,17 @@ export class UserName extends ValueObject<UserNameProps> {
     super(props);
   }
 
-  public static create(props: UserNameProps): UserName {
+  public static create(props: UserNameProps): string | UserName {
     if (!props.name) {
-      throw new AppError('Must provide a name for the user');
+      return 'Must provide a name for the user';
     }
 
     if (props.name.length >= this.maxLength) {
-      throw new AppError(
-        'User must be greater than 2 chars and less than 100.',
-      );
+      return 'User must be greater than 2 chars and less than 100.';
     }
 
     if (props.name.length <= this.minLength) {
-      throw new AppError(
-        'User must be greater than 2 chars and less than 100.',
-      );
+      return 'User must be greater than 2 chars and less than 100.';
     }
 
     return new UserName(props);

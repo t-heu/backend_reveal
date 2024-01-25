@@ -1,7 +1,6 @@
 import bcrypt from 'bcryptjs';
 
 import { ValueObject } from '../../../shared/domain/ValueObject';
-import { AppError } from '../../../shared/core/AppError';
 
 export interface IUserPasswordProps {
   value: string;
@@ -62,7 +61,7 @@ export class UserPassword extends ValueObject<IUserPasswordProps> {
     return this.hashPassword(this.props.value);
   }
 
-  public static create(props: IUserPasswordProps): UserPassword {
+  public static create(props: IUserPasswordProps): string | UserPassword {
     if (props.provider_social) {
       return new UserPassword({
         value: props.value,
@@ -71,12 +70,12 @@ export class UserPassword extends ValueObject<IUserPasswordProps> {
     }
 
     if (!props.value) {
-      throw new AppError('Must provide a password for the user');
+      return 'Must provide a password for the user';
     }
 
     if (!props.hashed) {
       if (!this.isAppropriateLength(props.value)) {
-        throw new AppError('Password doesnt meet criteria [6 chars min].');
+        return 'Password doesnt meet criteria [6 chars min].';
       }
     }
 

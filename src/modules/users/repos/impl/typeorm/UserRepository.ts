@@ -1,6 +1,5 @@
 import { Repository, getRepository } from 'typeorm';
 
-import { AppError } from '../../../../../shared/core/AppError';
 import { User } from '../../../domain/user';
 import { UserEmail } from '../../../domain/userEmail';
 import UserMap from '../../../mappers/userMap';
@@ -15,24 +14,24 @@ class UserRepository implements IUserRepository {
     this.ormRepository = getRepository(UserTypeorm);
   }
 
-  public async findById(id: string): Promise<User> {
+  public async findById(id: string): Promise<string | User> {
     const response = await this.ormRepository.findOne({
       where: { id },
       relations: ['external_auths', 'tokens'],
     });
 
-    if (!response) throw new AppError('User not found');
+    if (!response) return 'User not found';
 
     return UserMap.toDomain(response);
   }
 
-  public async findUserByEmail(userEmail: UserEmail): Promise<User> {
+  public async findUserByEmail(userEmail: UserEmail): Promise<string | User> {
     const response = await this.ormRepository.findOne({
       where: { email: userEmail.value },
       relations: ['external_auths', 'tokens'],
     });
 
-    if (!response) throw new AppError('User not found');
+    if (!response) return 'User not found';
 
     return UserMap.toDomain(response);
   }

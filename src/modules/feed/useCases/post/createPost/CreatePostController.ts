@@ -14,7 +14,9 @@ export class CreatePostController extends BaseController {
     const userID = req.user.id;
 
     const post = container.resolve(CreatePostUseCase);
-    await post.execute({ description, userID });
+    const status_erro = await post.execute({ description, userID });
+
+    if (status_erro) return this.conflict(res, status_erro);
 
     return this.created(res);
   }

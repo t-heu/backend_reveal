@@ -19,13 +19,13 @@ export abstract class BaseController {
     }
   }
 
-  /* public static jsonResponse(
+  public static jsonResponse(
     res: express.Response,
     code: number,
     message: string,
   ) {
     return res.status(code).json({ message });
-  } */
+  }
 
   public ok<T>(res: express.Response, dto?: T): express.Response {
     if (dto) {
@@ -39,7 +39,7 @@ export abstract class BaseController {
     return res.sendStatus(201);
   }
 
-  /* public clientError(res: express.Response, message?: string) {
+  public clientError(res: express.Response, message?: string) {
     return BaseController.jsonResponse(res, 400, message || 'Unauthorized');
   }
 
@@ -73,7 +73,7 @@ export abstract class BaseController {
 
   public todo(res: express.Response) {
     return BaseController.jsonResponse(res, 400, 'TODO');
-  } */
+  }
 
   public fail(res: express.Response, error: Error | string): express.Response {
     console.log(error);

@@ -1,7 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '../../../../shared/domain/UseCase';
-import { AppError } from '../../../../shared/core/AppError';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { IExternalAuthRepository } from '../../repos/IExternalAuthRepo';
 import { RegisterWithGoogleDTO, ResponseDTO } from './RegisterWithGoogleDTO';
@@ -15,7 +14,7 @@ import { RefreshToken, Jwt, JWTToken } from '../../domain/jwt';
 
 @injectable()
 class RegisterWithGoogleUseCase
-  implements IUseCase<RegisterWithGoogleDTO, ResponseDTO> {
+  implements IUseCase<RegisterWithGoogleDTO, string | ResponseDTO> {
   constructor(
     @inject('ExternalAuthRepository')
     private externalAuthRepository: IExternalAuthRepository,
@@ -24,17 +23,22 @@ class RegisterWithGoogleUseCase
     private userRepository: IUserRepository,
   ) {}
 
-  public async execute(data: RegisterWithGoogleDTO): Promise<ResponseDTO> {
+  public async execute(data: RegisterWithGoogleDTO): Promise<string | ResponseDTO> {
     const user: ResponseDTO = {} as ResponseDTO;
 
     // faz verificação do Auth token
     if (!(await googleService.checkValidAuthToken(data.accessTokenGoogle))) {
-      throw new AppError('Google token invalid');
+      return 'Google token invalid';
     }
 
     const googleProfileInfo = await googleService.getProfileInfo();
 
     const userEmail = UserEmail.create(googleProfileInfo.userEmail);
+
+    if (typeof userEmail === 'string') {
+      return userEmail;
+    }
+
     const alreadyCreatedUser = await this.userRepository.exists(userEmail);
 
     // se não exitir nenhuma conta Social ou Local ele cria uma conta via login Social
@@ -44,6 +48,14 @@ class RegisterWithGoogleUseCase
         value: '',
         provider_social: true,
       });
+
+      if (typeof name === 'string') {
+        return name;
+      }
+  
+      if (typeof password === 'string') {
+        return password;
+      }
 
       const userResponse = User.create({
         name,
@@ -70,6 +82,9 @@ class RegisterWithGoogleUseCase
     } else {
       // se existir uma conta local e não social.
       const alreadyUser = await this.userRepository.findUserByEmail(userEmail);
+      if (typeof alreadyUser === 'string') {
+        return alreadyUser;
+      }
       user.user = alreadyUser;
 
       await this.externalAuthRepository.findLoginSocialOrCreate({

@@ -15,7 +15,9 @@ export class CreateCommentController extends BaseController {
     const userID = req.user.id;
 
     const response = container.resolve(CreateCommentUseCase);
-    await response.execute({ answer, userID, idPost });
+    const status_erro = await response.execute({ answer, userID, idPost });
+
+    if (status_erro) return this.conflict(res, status_erro);
 
     return this.created(res);
   }

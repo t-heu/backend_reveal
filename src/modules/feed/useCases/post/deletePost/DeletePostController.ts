@@ -13,7 +13,9 @@ export class DeletePostController extends BaseController {
     const { id } = req.params;
 
     const post = container.resolve(DeletePostUseCase);
-    await post.execute({ idPost: id });
+    const status_erro = await post.execute({ idPost: id });
+
+    if (status_erro) return this.conflict(res, status_erro);
 
     return this.created(res);
   }

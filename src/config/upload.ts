@@ -9,8 +9,6 @@ import { Storage } from '@google-cloud/storage';
 import Jimp from 'jimp';
 import fs from 'fs';
 
-import { AppError } from '../shared/core/AppError';
-
 dotenv.config();
 
 export const tmpFolder = path.join(__dirname, '..', '..', 'tmp', 'uploads');
@@ -134,7 +132,7 @@ export default {
       if (alowedMimes.includes(file.mimetype)) {
         cb(null, true);
       } else {
-        cb(new AppError('incorrect image format'));
+        cb('incorrect image format');
       }
     },
   },

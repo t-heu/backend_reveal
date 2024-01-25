@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db_one:
+    image: redis
+    container_name: redis
+    ports:
+      - "6379:6379"
+  db_two:
+    image: postgres
+    restart: always
+    container_name: postgres
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"

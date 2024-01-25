@@ -1,5 +1,4 @@
 import { ValueObject } from '../../../shared/domain/ValueObject';
-import { AppError } from '../../../shared/core/AppError';
 
 interface CommentTextProps {
   value: string;
@@ -18,21 +17,17 @@ export class CommentText extends ValueObject<CommentTextProps> {
     super(props);
   }
 
-  public static create(props: CommentTextProps): CommentText {
+  public static create(props: CommentTextProps): string | CommentText {
     if (!props.value) {
-      throw new AppError('Must provide a Comment for the user');
+      return 'Must provide a Comment for the user';
     }
 
     if (props.value.length >= this.maxLength) {
-      throw new AppError(
-        `Comment must be greater than ${this.maxLength} chars and less than 100.`,
-      );
+      return `Comment must be greater than ${this.maxLength} chars and less than 100.`;
     }
 
     if (props.value.length <= this.minLength) {
-      throw new AppError(
-        `Comment must be greater than ${this.minLength} chars and less than 100.`,
-      );
+      return `Comment must be greater than ${this.minLength} chars and less than 100.`;
     }
 
     return new CommentText(props);

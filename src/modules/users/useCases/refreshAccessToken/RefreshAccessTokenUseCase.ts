@@ -6,10 +6,9 @@ import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { RequestDTO, ResponseDTO } from './RefreshAccessTokenDTO';
 import { Jwt, JWTToken } from '../../domain/jwt';
-import { AppError } from '../../../../shared/core/AppError';
 
 @injectable()
-class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {
+class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, string | ResponseDTO> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -18,31 +17,39 @@ class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {
     private tokensRepository: ITokensRepository,
   ) {}
 
-  public async execute(data: RequestDTO): Promise<ResponseDTO> {
+  public async execute(data: RequestDTO): Promise<string | ResponseDTO> {
     if (data.grant_type !== 'refresh_token') {
-      throw new AppError('Type is not refresh token');
+      return 'Type is not refresh token';
     }
 
     if (!data.refresh_token) {
-      throw new AppError('Refresh token invalid');
+      return 'Refresh token invalid';
     }
 
     const userToken = await this.tokensRepository.findByToken(
       data.refresh_token,
     );
 
+    if (typeof userToken === 'string') {
+      return userToken;
+    }
+
     if (userToken.is_revoked) {
-      throw new AppError('Token already used.');
+      return 'Token already used.';
     }
 
     const RefreshtokenCreatedAt = userToken.createdAt;
     const dateAge = new Date();
 
     if (isAfter(dateAge, addDays(RefreshtokenCreatedAt, 31))) {
-      throw new AppError('Token expired.');
+      return 'Token expired.';
     }
 
     const user = await this.userRepository.findById(userToken.user_id);
+
+    if (typeof user === 'string') {
+      return user;
+    }
 
     const access_token: JWTToken = Jwt.generateAccessToken({
       userId: user.id.toValue().toString(),

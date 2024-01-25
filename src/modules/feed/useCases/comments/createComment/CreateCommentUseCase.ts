@@ -11,7 +11,7 @@ import { UserId } from '../../../../users/domain/userId';
 import { UniqueEntityID } from '../../../../../shared/domain/UniqueEntityID';
 
 @injectable()
-class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
+class CreateCommentUseCase implements IUseCase<AddCommentDTO, string | void> {
   constructor(
     @inject('CommentRepository')
     private commentRepository: ICommentRepository,
@@ -23,10 +23,14 @@ class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
     idPost,
     userID,
     answer,
-  }: AddCommentDTO): Promise<void> {
+  }: AddCommentDTO): Promise<string | void> {
     const text = CommentText.create({ value: answer });
 
     const post = await this.postRepository.getPostById(idPost);
+
+    if (typeof text === 'string') {
+      return text;
+    }
 
     const comment = Comment.create({
       owner_post: UserId.create(new UniqueEntityID(post.user_id)),

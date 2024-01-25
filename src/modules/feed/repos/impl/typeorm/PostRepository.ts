@@ -1,6 +1,5 @@
 import { Repository, getRepository } from 'typeorm';
 
-import { AppError } from '../../../../../shared/core/AppError';
 import PostTypeorm from '../../../../../shared/infra/database/typeorm/entity/Post';
 import {
   IPostRepository,
@@ -43,7 +42,7 @@ class PostRepository implements IPostRepository {
     });
   }
 
-  public async getPostById(id: string, userID?: string): Promise<Post | IPost> {
+  public async getPostById(id: string, userID?: string): Promise<string | Post | IPost> {
     if (id && userID) {
       const result = <IPost>await this.ormRepository
         .createQueryBuilder('post')
@@ -56,7 +55,7 @@ class PostRepository implements IPostRepository {
         .where({ id })
         .getOne();
 
-      if (!result) throw new AppError('Post not found');
+      if (!result) return 'Post not found';
 
       const liked = await this.ormRepository
         .createQueryBuilder('post')
@@ -85,7 +84,7 @@ class PostRepository implements IPostRepository {
         .getOne()
     );
 
-    if (!result) throw new AppError('Post not found');
+    if (!result) return 'Post not found';
 
     return result;
   }

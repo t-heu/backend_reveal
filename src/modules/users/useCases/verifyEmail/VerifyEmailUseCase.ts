@@ -2,13 +2,12 @@ import { inject, injectable } from 'tsyringe';
 import { isAfter, addHours } from 'date-fns';
 
 import { IUseCase } from '../../../../shared/domain/UseCase';
-import { AppError } from '../../../../shared/core/AppError';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { VerifyEmailDTO } from './VerifyEmailDTO';
 
 @injectable()
-class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, void> {
+class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, string | void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -16,23 +15,32 @@ class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, void> {
     private tokensRepository: ITokensRepository,
   ) {}
 
-  public async execute(data: VerifyEmailDTO): Promise<void> {
+  public async execute(data: VerifyEmailDTO): Promise<string | void> {
     const userToken = await this.tokensRepository.findByToken(data.token);
+    
+    if (typeof userToken === 'string') {
+      return userToken;
+    }
+
     const user = await this.userRepository.findById(userToken.user_id);
 
+    if (typeof user === 'string') {
+      return user;
+    }
+
     if (user.isEmailVerified) {
-      throw new AppError('Email already Verified.');
+      return 'Email already Verified.';
     }
 
     if (userToken.is_revoked) {
-      throw new AppError('Token already used.');
+      return 'Token already used.';
     }
 
     const tokenCreatedAt = userToken.createdAt;
     const compareDate = addHours(tokenCreatedAt, 1);
 
     if (isAfter(Date.now(), compareDate)) {
-      throw new AppError('Token expired.');
+      return 'Token expired.';
     }
 
     await this.userRepository.save({

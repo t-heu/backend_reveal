@@ -13,7 +13,9 @@ export class CreateUserController extends BaseController {
     const { email, password, name } = req.body;
 
     const response = container.resolve(CreateUserUseCase);
-    await response.execute({ email, password, name });
+    const status_erro = await response.execute({ email, password, name });
+    
+    if (status_erro) return this.conflict(res, status_erro)
 
     return this.created(res);
   }

@@ -9,15 +9,19 @@ import { Post } from '../../../domain/post';
 import { PostText } from '../../../domain/postText';
 
 @injectable()
-class CreatePostUseCase implements IUseCase<CreatePostDTO, void> {
+class CreatePostUseCase implements IUseCase<CreatePostDTO, string | void> {
   constructor(
     @inject('PostRepository')
     private postRepository: IPostRepository,
   ) {}
 
-  public async execute({ description, userID }: CreatePostDTO): Promise<void> {
+  public async execute({ description, userID }: CreatePostDTO): Promise<string | void> {
     const text = PostText.create({ value: description });
     const user_id = UserId.create(new UniqueEntityID(userID));
+
+    if (typeof text === 'string') {
+      return text;
+    }
 
     const post = Post.create({ text, userId: user_id });
 

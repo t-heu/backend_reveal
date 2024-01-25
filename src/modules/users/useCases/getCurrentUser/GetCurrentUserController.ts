@@ -16,6 +16,8 @@ export class GetCurrentUserUserController extends BaseController {
     const user = container.resolve(GetCurrentUserUserUseCase);
     const result = await user.execute({ id: userID });
 
+    if (typeof result === 'string') return this.conflict(res, result);
+
     return this.ok(res, {
       user: UserMap.toDTO(result),
     });

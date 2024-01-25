@@ -33,12 +33,6 @@ const entities = [
   NotificationKey,
 ];
 
-const optionsSqlite: ConnectionOptions = {
-  type: 'sqlite',
-  entities,
-  database: './data/line.sqlite',
-};
-
 const optionsPostgress: ConnectionOptions = {
   type: 'postgres',
   entities,
@@ -49,8 +43,7 @@ const optionsPostgress: ConnectionOptions = {
   password: process.env.DB_PASSWORD,
 };
 
-const options =
-  process.env.NODE_ENV === 'development' ? optionsSqlite : optionsPostgress;
+const options = optionsPostgress;
 
 export default async (): Promise<Connection> => {
   try {

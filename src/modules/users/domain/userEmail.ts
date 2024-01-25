@@ -1,5 +1,4 @@
 import { ValueObject } from '../../../shared/domain/ValueObject';
-import { AppError } from '../../../shared/core/AppError';
 
 export interface UserEmailProps {
   value: string;
@@ -23,13 +22,13 @@ export class UserEmail extends ValueObject<UserEmailProps> {
     return email.trim().toLowerCase();
   }
 
-  public static create(email: string): UserEmail {
+  public static create(email: string): string | UserEmail {
     if (!email) {
-      throw new AppError('Email address not empty');
+      return 'Email address not empty';
     }
 
     if (!this.isValidEmail(email)) {
-      throw new AppError('Email address not valid');
+      return 'Email address not valid';
     }
 
     return new UserEmail({ value: this.format(email) });

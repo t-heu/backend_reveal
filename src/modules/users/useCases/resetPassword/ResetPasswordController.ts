@@ -3,6 +3,7 @@ import { container } from 'tsyringe';
 
 import ResetPasswordUseCase from './ResetPasswordUseCase';
 import { BaseController } from '../../../../shared/infra/BaseController';
+import User from '@/shared/infra/database/typeorm/entity/User';
 
 export class ResetPasswordController extends BaseController {
   constructor() {
