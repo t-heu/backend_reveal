@@ -9,11 +9,11 @@ import notificationRouter from '../../../../modules/notification/infra/http/rout
 
 const v1Router = express.Router();
 
-v1Router.use('/user', userRouter);
-v1Router.use('/feed/post', postRouter);
-v1Router.use('/comment', commentRouter);
-v1Router.use('/feed/post/like', likeRouter);
-v1Router.use('/feed/post/hide', hidePostRouter);
-v1Router.use('/notification', notificationRouter);
+v1Router.use('/users', userRouter);
+v1Router.use('/posts', postRouter);
+v1Router.use('/posts/likes', likeRouter);
+v1Router.use('/posts/hides', hidePostRouter);
+v1Router.use('/comments', commentRouter);
+v1Router.use('/notifications', notificationRouter);
 
 export default v1Router;

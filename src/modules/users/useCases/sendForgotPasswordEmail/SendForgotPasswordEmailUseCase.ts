@@ -68,7 +68,7 @@ class SendForgotPasswordEmailUseCase
         variables: {
           name: user.name.value,
           link: await firebaseGenerateLink.generateDynamicLink(
-            `${process.env.APP_URL}/api/v1/user/password/reset?token=${generateToken}`,
+            `${process.env.APP_URL}/api/v1/users/reset/password?token=${generateToken}`,
           ),
         },
       },

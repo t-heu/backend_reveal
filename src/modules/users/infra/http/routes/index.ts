@@ -89,6 +89,20 @@ userRouter.post(
   (req, res) => RegisterWithGoogleController.executeImpl(req, res),
 );
 
+userRouter.patch(
+  '/name',
+  celebrate({
+    [Segments.HEADERS]: Joi.object({
+      authorization: Joi.string().required(),
+    }).unknown(),
+    [Segments.BODY]: Joi.object().keys({
+      name: Joi.string().min(3).required(),
+    }),
+  }),
+  ensureAuthenticated,
+  (req, res) => UpdateUserNameController.executeImpl(req, res),
+);
+
 userRouter.post(
   '/password/forgot',
   celebrate({
@@ -112,22 +126,8 @@ userRouter.post(
   (req, res) => ResetPasswordController.executeImpl(req, res),
 );
 
-userRouter.patch(
-  '/name',
-  celebrate({
-    [Segments.HEADERS]: Joi.object({
-      authorization: Joi.string().required(),
-    }).unknown(),
-    [Segments.BODY]: Joi.object().keys({
-      name: Joi.string().min(3).required(),
-    }),
-  }),
-  ensureAuthenticated,
-  (req, res) => UpdateUserNameController.executeImpl(req, res),
-);
-
 userRouter.put(
-  '/password',
+  '/password/change',
   celebrate({
     [Segments.HEADERS]: Joi.object({
       authorization: Joi.string().required(),

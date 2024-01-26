@@ -12,11 +12,11 @@ export default function ensureAuthenticated(
   request: Request,
   response: Response,
   next: NextFunction,
-): string | void {
+): void {
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    return 'JWT token is missing'; // 401
+    throw new Error('JWT token is missing'); // 401
   }
 
   const [, token] = authHeader.split(' ');
@@ -32,6 +32,6 @@ export default function ensureAuthenticated(
     return next();
   } catch (err: any) {
     // console.log(err);
-    return err.messagew || 'Invalid JWT token'; // 401
+    throw new Error(err.messagew || 'Invalid JWT token'); // 401
   }
 }

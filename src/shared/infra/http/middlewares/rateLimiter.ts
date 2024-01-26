@@ -19,15 +19,14 @@ export default async function rateLimiter(
   request: Request,
   response: Response,
   next: NextFunction,
-): Promise<string | void> {
+): Promise<void> {
   try {
     if (request.ip === 'string') {
       await limiter.consume(request.ip);
     }
-    //await limiter.consume(request.ip);
 
     return next();
   } catch (err) {
-    return 'Too many requests';//429
+    throw new Error('Too many requests');//429
   }
 }
