@@ -10,16 +10,20 @@ export class ChangePasswordController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const userID = req.user.id;
-    const { newPassword, oldPassword } = req.body;
-
-    const user = container.resolve(ChangePasswordUseCase);
-    await user.execute({
-      id: userID,
-      newPassword,
-      oldPassword,
-    });
-
-    return this.created(res);
+    try {
+      const userID = req.user.id;
+      const { newPassword, oldPassword } = req.body;
+  
+      const user = container.resolve(ChangePasswordUseCase);
+      await user.execute({
+        id: userID,
+        newPassword,
+        oldPassword,
+      });
+  
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.messsage)
+    }
   }
 }

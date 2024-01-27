@@ -16,17 +16,17 @@ export class PostText extends ValueObject<PostTextProps> {
     super(props);
   }
 
-  public static create(props: PostTextProps): string | PostText {
+  public static create(props: PostTextProps): PostText {
     if (!props.value) {
-      return 'Must provide a Description for the post';
+      throw new Error('Must provide a Description for the post');
     }
 
     if (props.value.length >= this.maxLength) {
-      return 'Description must be greater than 2 chars and less than 100.';
+      throw new Error('Description must be greater than 2 chars and less than 100.');
     }
 
     if (props.value.length <= this.minLength) {
-      return 'Description must be greater than 2 chars and less than 100.';
+      throw new Error('Description must be greater than 2 chars and less than 100.');
     }
 
     return new PostText(props);

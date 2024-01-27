@@ -14,7 +14,7 @@ import { RefreshToken, Jwt, JWTToken } from '../../domain/jwt';
 
 @injectable()
 class RegisterWithGoogleUseCase
-  implements IUseCase<RegisterWithGoogleDTO, string | ResponseDTO> {
+  implements IUseCase<RegisterWithGoogleDTO, ResponseDTO> {
   constructor(
     @inject('ExternalAuthRepository')
     private externalAuthRepository: IExternalAuthRepository,
@@ -23,21 +23,17 @@ class RegisterWithGoogleUseCase
     private userRepository: IUserRepository,
   ) {}
 
-  public async execute(data: RegisterWithGoogleDTO): Promise<string | ResponseDTO> {
+  public async execute(data: RegisterWithGoogleDTO): Promise<ResponseDTO> {
     const user: ResponseDTO = {} as ResponseDTO;
 
     // faz verificação do Auth token
     if (!(await googleService.checkValidAuthToken(data.accessTokenGoogle))) {
-      return 'Google token invalid';
+      throw new Error('Google token invalid');
     }
 
     const googleProfileInfo = await googleService.getProfileInfo();
 
     const userEmail = UserEmail.create(googleProfileInfo.userEmail);
-
-    if (typeof userEmail === 'string') {
-      return userEmail;
-    }
 
     const alreadyCreatedUser = await this.userRepository.exists(userEmail);
 
@@ -48,14 +44,6 @@ class RegisterWithGoogleUseCase
         value: '',
         provider_social: true,
       });
-
-      if (typeof name === 'string') {
-        return name;
-      }
-  
-      if (typeof password === 'string') {
-        return password;
-      }
 
       const userResponse = User.create({
         name,

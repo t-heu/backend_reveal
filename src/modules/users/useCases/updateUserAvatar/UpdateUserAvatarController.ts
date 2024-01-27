@@ -23,8 +23,7 @@ export class UpdateUserAvatarController extends BaseController {
 
       return this.created(res);
     } catch (err: any) {
-      console.log(err);
-      return this.fail(res, err);
+      return this.fail(res, err.message);
     }
   }
 }

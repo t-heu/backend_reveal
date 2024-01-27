@@ -1,5 +1,5 @@
 import { Post } from '../domain/post';
-
+import PostTypeorm from '../../../shared/infra/database/typeorm/entity/Post';
 export interface IResponseAndCount {
   result: Post[];
   total: number;
@@ -15,9 +15,12 @@ export interface FindDescriptionDTO {
   search: string;
   userID: string;
 }
+export interface IPost extends PostTypeorm {
+  viewer_has_liked: boolean;
+}
 
 export interface IPostRepository {
-  getPostById(id: string, userID?: string): Promise<Post | any>;
+  getPostById(id: string, userID?: string): Promise<Post>;
   exists(postID: string): Promise<boolean>;
   create(data: Post): Promise<void>;
   delete(id: string): Promise<void>;

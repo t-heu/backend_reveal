@@ -8,6 +8,6 @@ import './shared/infra/app';
 
 // Subscribers
 import './modules/notification/subscribers';
-import './modules/users/subscribers';
+//import './modules/users/subscribers';
 
 console.log('[App]: 🚀 Start server');

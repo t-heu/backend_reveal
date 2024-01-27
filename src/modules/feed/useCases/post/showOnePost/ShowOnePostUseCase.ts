@@ -4,7 +4,6 @@ import { IPostRepository } from '../../../repos/IPostRepo';
 import { Post } from '../../../domain/post';
 import { ShowOnePostDTO } from './ShowOnePostDTO';
 import { IUseCase } from '../../../../../shared/domain/UseCase';
-
 @injectable()
 class ShowOnePostUseCase implements IUseCase<ShowOnePostDTO, Post> {
   constructor(

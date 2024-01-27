@@ -8,7 +8,7 @@ import { UserPassword } from '../../domain/userPassword';
 import { ResetPasswordDTO } from './ResetPasswordDTO';
 
 @injectable()
-class ResetPasswordUseCase implements IUseCase<ResetPasswordDTO, string | void> {
+class ResetPasswordUseCase implements IUseCase<ResetPasswordDTO, void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -17,34 +17,22 @@ class ResetPasswordUseCase implements IUseCase<ResetPasswordDTO, string | void> 
     private tokensRepository: ITokensRepository,
   ) {}
 
-  public async execute(data: ResetPasswordDTO): Promise<string | void> {
+  public async execute(data: ResetPasswordDTO): Promise<void> {
     const password = UserPassword.create({ value: data.password });
 
     const userToken = await this.tokensRepository.findByToken(data.token);
-    
-    if (typeof userToken === 'string') {
-      return userToken;
-    }
 
     const user = await this.userRepository.findById(userToken.user_id);
 
-    if (typeof user === 'string') {
-      return user;
-    }
-
-    if (typeof password === 'string') {
-      return password;
-    }
-
     if (userToken.is_revoked) {
-      return 'Token already used.';
+      throw new Error('Token already used.');
     }
 
     const tokenCreatedAt = userToken.createdAt;
     const compareDate = addHours(tokenCreatedAt, 1);
 
     if (isAfter(Date.now(), compareDate)) {
-      return 'Token expired.';
+      throw new Error('Token expired.');
     }
 
     await this.userRepository.save({

@@ -17,17 +17,17 @@ export class UserName extends ValueObject<UserNameProps> {
     super(props);
   }
 
-  public static create(props: UserNameProps): string | UserName {
+  public static create(props: UserNameProps): UserName {
     if (!props.name) {
-      return 'Must provide a name for the user';
+      throw new Error('Must provide a name for the user')
     }
 
     if (props.name.length >= this.maxLength) {
-      return 'User must be greater than 2 chars and less than 100.';
+      throw new Error('User must be greater than 2 chars and less than 100.')
     }
 
     if (props.name.length <= this.minLength) {
-      return 'User must be greater than 2 chars and less than 100.';
+      throw new Error('User must be greater than 2 chars and less than 100.')
     }
 
     return new UserName(props);

@@ -7,7 +7,7 @@ import { ITokensRepository } from '../../repos/ITokensRepo';
 import { VerifyEmailDTO } from './VerifyEmailDTO';
 
 @injectable()
-class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, string | void> {
+class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -15,32 +15,24 @@ class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, string | void> {
     private tokensRepository: ITokensRepository,
   ) {}
 
-  public async execute(data: VerifyEmailDTO): Promise<string | void> {
+  public async execute(data: VerifyEmailDTO): Promise<void> {
     const userToken = await this.tokensRepository.findByToken(data.token);
-    
-    if (typeof userToken === 'string') {
-      return userToken;
-    }
 
     const user = await this.userRepository.findById(userToken.user_id);
 
-    if (typeof user === 'string') {
-      return user;
-    }
-
     if (user.isEmailVerified) {
-      return 'Email already Verified.';
+      throw new Error('Email already Verified.');
     }
 
     if (userToken.is_revoked) {
-      return 'Token already used.';
+      throw new Error('Token already used.');
     }
 
     const tokenCreatedAt = userToken.createdAt;
     const compareDate = addHours(tokenCreatedAt, 1);
 
     if (isAfter(Date.now(), compareDate)) {
-      return 'Token expired.';
+      throw new Error('Token expired.');
     }
 
     await this.userRepository.save({

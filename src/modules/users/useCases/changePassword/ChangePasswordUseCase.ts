@@ -6,21 +6,17 @@ import { ChangePasswordDTO } from './ChangePasswordDTO';
 import { UserPassword } from '../../domain/userPassword';
 
 @injectable()
-class ChangePasswordUseCase implements IUseCase<ChangePasswordDTO, string | void> {
+class ChangePasswordUseCase implements IUseCase<ChangePasswordDTO, void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
   ) {}
 
-  public async execute(data: ChangePasswordDTO): Promise<string | void> {
+  public async execute(data: ChangePasswordDTO): Promise<void> {
     const existUser = await this.userRepository.findById(data.id);
 
-    if (typeof existUser === 'string') {
-      return existUser;
-    }
-
     if (data.newPassword && !data.oldPassword) {
-      return 'You need to inform the old password to set a new password.';
+      throw new Error('You need to inform the old password to set a new password.');
     }
 
     if (data.newPassword && data.oldPassword) {
@@ -33,20 +29,12 @@ class ChangePasswordUseCase implements IUseCase<ChangePasswordDTO, string | void
         hashed: true,
       });
 
-      if (typeof oldPassword === 'string') {
-        return oldPassword;
-      }
-  
-      if (typeof currentPassword === 'string') {
-        return currentPassword;
-      }
-
       if (!(await oldPassword.comparePassword(existUser.password.value))) {
-        return 'Old password does not match.';
+        throw new Error('Old password does not match.');
       }
 
       if (await currentPassword.comparePassword(existUser.password.value)) {
-        return 'Equal passwords.';
+        throw new Error('Equal passwords.');
       }
 
       await this.userRepository.save({

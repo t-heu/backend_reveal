@@ -3,7 +3,6 @@ import { container } from 'tsyringe';
 
 import ResetPasswordUseCase from './ResetPasswordUseCase';
 import { BaseController } from '../../../../shared/infra/BaseController';
-import User from '@/shared/infra/database/typeorm/entity/User';
 
 export class ResetPasswordController extends BaseController {
   constructor() {
@@ -11,12 +10,16 @@ export class ResetPasswordController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { password } = req.body;
-    const { token } = req.query;
+    try {
+      const { password } = req.body;
+      const { token } = req.query;
 
-    const user = container.resolve(ResetPasswordUseCase);
-    await user.execute({ password, token: String(token) });
+      const user = container.resolve(ResetPasswordUseCase);
+      await user.execute({ password, token: String(token) });
 
-    return this.created(res);
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message)
+    }
   }
 }

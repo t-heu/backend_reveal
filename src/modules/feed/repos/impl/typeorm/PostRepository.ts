@@ -6,13 +6,10 @@ import {
   IResponseAndCount,
   FindDescriptionDTO,
   FindAndCountDTO,
+  IPost,
 } from '../../IPostRepo';
 import PostMap from '../../../mappers/postMap';
 import { Post } from '../../../domain/post';
-
-interface IPost extends PostTypeorm {
-  viewer_has_liked: boolean;
-}
 
 class PostRepository implements IPostRepository {
   private ormRepository: Repository<PostTypeorm>;
@@ -42,7 +39,7 @@ class PostRepository implements IPostRepository {
     });
   }
 
-  public async getPostById(id: string, userID?: string): Promise<string | Post | IPost> {
+  public async getPostById(id: string, userID?: string): Promise<Post> {
     if (id && userID) {
       const result = <IPost>await this.ormRepository
         .createQueryBuilder('post')
@@ -55,7 +52,7 @@ class PostRepository implements IPostRepository {
         .where({ id })
         .getOne();
 
-      if (!result) return 'Post not found';
+      if (!result) throw new Error('Post not found');
 
       const liked = await this.ormRepository
         .createQueryBuilder('post')
@@ -70,6 +67,7 @@ class PostRepository implements IPostRepository {
 
       return PostMap.toDomain(result);
     }
+
     const result = <IPost>(
       await this.ormRepository
         .createQueryBuilder('post')
@@ -84,9 +82,10 @@ class PostRepository implements IPostRepository {
         .getOne()
     );
 
-    if (!result) return 'Post not found';
+    if (!result) throw new Error('Post not found');
 
-    return result;
+    //return result;
+    return PostMap.toDomain(result);
   }
 
   public async findAllUserPosts({

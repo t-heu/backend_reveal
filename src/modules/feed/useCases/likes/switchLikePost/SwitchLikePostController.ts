@@ -10,12 +10,16 @@ export class SwitchLikePostController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const idPost = req.params.id;
-    const userID = req.user.id;
+    try {
+      const idPost = req.params.id;
+      const userID = req.user.id;
 
-    const like = container.resolve(SwitchLikePostUseCase);
-    await like.execute({ idPost, userID });
+      const like = container.resolve(SwitchLikePostUseCase);
+      await like.execute({ idPost, userID });
 
-    return this.created(res);
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

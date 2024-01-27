@@ -6,7 +6,7 @@ import { UserId } from './userId';
 import { JWTToken, RefreshToken } from './jwt';
 import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { UserCreated } from './events/userCreated';
+//import { UserCreated } from './events/userCreated';
 
 interface UserProps {
   email: UserEmail;
@@ -85,7 +85,7 @@ export class User extends AggregateRoot<UserProps> {
 
   public static create(props: UserProps, id?: UniqueEntityID): User {
     const user = new User({ ...props }, id);
-    if (!id) user.addDomainEvent(new UserCreated(user));
+    //if (!id) user.addDomainEvent(new UserCreated(user));
     return user;
   }
 }

@@ -10,7 +10,7 @@ import { RefreshToken, Jwt, JWTToken } from '../../domain/jwt';
 
 @injectable()
 class AuthenticateUserUseCase
-  implements IUseCase<AuthenticateUserDTO, string | ResponseDTO> {
+  implements IUseCase<AuthenticateUserDTO, ResponseDTO> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -19,33 +19,21 @@ class AuthenticateUserUseCase
     private tokensRepository: ITokensRepository,
   ) {}
 
-  public async execute(data: AuthenticateUserDTO): Promise<string | ResponseDTO> {
+  public async execute(data: AuthenticateUserDTO): Promise<ResponseDTO> {
     const email = UserEmail.create(data.email);
     const password = UserPassword.create({
       value: data.password,
       hashed: true,
     });
 
-    if (typeof email === 'string') {
-      return email;
-    }
-
-    if (typeof password === 'string') {
-      return password;
-    }
-
     const user = await this.userRepository.findUserByEmail(email);
-
-    if (typeof user === 'string') {
-      return user;
-    }
-
+  
     if (!user.isEmailVerified) {
-      return 'Confirm your email to be able to login';
+      throw new Error('Confirm your email to be able to login');
     }
 
     if (!(await password.comparePassword(user.password.value))) {
-      return 'invalid password';
+      throw new Error('invalid password');
     }
 
     const refresh_token: RefreshToken = Jwt.generateRefreshToken();

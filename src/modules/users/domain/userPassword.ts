@@ -61,7 +61,7 @@ export class UserPassword extends ValueObject<IUserPasswordProps> {
     return this.hashPassword(this.props.value);
   }
 
-  public static create(props: IUserPasswordProps): string | UserPassword {
+  public static create(props: IUserPasswordProps): UserPassword {
     if (props.provider_social) {
       return new UserPassword({
         value: props.value,
@@ -70,12 +70,12 @@ export class UserPassword extends ValueObject<IUserPasswordProps> {
     }
 
     if (!props.value) {
-      return 'Must provide a password for the user';
+      throw new Error('Must provide a password for the user')
     }
 
     if (!props.hashed) {
       if (!this.isAppropriateLength(props.value)) {
-        return 'Password doesnt meet criteria [6 chars min].';
+        throw new Error('Password doesnt meet criteria [6 chars min].')
       }
     }
 

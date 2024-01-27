@@ -11,19 +11,23 @@ export class ShowAllUserPostsController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { page = 0 } = req.query;
-    const userID = req.user.id;
+    try {
+      const { page = 0 } = req.query;
+      const userID = req.user.id;
 
-    const post = container.resolve(ShowAllUserPostsUseCase);
-    const result = await post.execute({
-      id: userID,
-      page: Number(page),
-    });
+      const post = container.resolve(ShowAllUserPostsUseCase);
+      const result = await post.execute({
+        id: userID,
+        page: Number(page),
+      });
 
-    res.header('X-Total-Count', String(result.count));
-    return this.ok(
-      res,
-      result.posts.map(p => PostMap.toDTO(p)),
-    );
+      res.header('X-Total-Count', String(result.count));
+      return this.ok(
+        res,
+        result.posts.map(p => PostMap.toDTO(p)),
+      );
+    } catch (err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

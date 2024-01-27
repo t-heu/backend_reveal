@@ -11,15 +11,19 @@ export class GetCurrentUserUserController extends BaseController {
   }
 
   public async executeImpl(req: Request, res: Response): Promise<any> {
-    const userID = req.user.id;
+    try {
+      const userID = req.user.id;
 
-    const user = container.resolve(GetCurrentUserUserUseCase);
-    const result = await user.execute({ id: userID });
+      const user = container.resolve(GetCurrentUserUserUseCase);
+      const result = await user.execute({ id: userID });
 
-    if (typeof result === 'string') return this.conflict(res, result);
+      if (typeof result === 'string') return this.conflict(res, result);
 
-    return this.ok(res, {
-      user: UserMap.toDTO(result),
-    });
+      return this.ok(res, {
+        user: UserMap.toDTO(result),
+      });
+     } catch (err: any) {
+      return this.conflict(res, err.message)
+    }
   }
 }

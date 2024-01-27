@@ -10,13 +10,15 @@ export class DeletePostController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { id } = req.params;
+    try {
+      const { id } = req.params;
 
-    const post = container.resolve(DeletePostUseCase);
-    const status_erro = await post.execute({ idPost: id });
+      const post = container.resolve(DeletePostUseCase);
+      await post.execute({ idPost: id });
 
-    if (status_erro) return this.conflict(res, status_erro);
-
-    return this.created(res);
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

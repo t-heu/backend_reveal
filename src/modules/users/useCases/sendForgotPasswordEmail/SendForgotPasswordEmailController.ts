@@ -10,11 +10,15 @@ export class SendForgotPasswordEmailController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { email } = req.body;
+    try {
+      const { email } = req.body;
 
-    const user = container.resolve(SendForgotPasswordEmailUseCase);
-    await user.execute({ email });
-
-    return this.created(res);
+      const user = container.resolve(SendForgotPasswordEmailUseCase);
+      await user.execute({ email });
+  
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message)
+    }
   }
 }

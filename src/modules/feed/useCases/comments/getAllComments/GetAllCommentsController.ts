@@ -11,19 +11,23 @@ export class GetAllCommentsController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { page = 1 } = req.query;
-    const idPost = req.params.id;
-
-    const comment = container.resolve(GetAllCommentsUseCase);
-    const result = await comment.execute({
-      page: Number(page),
-      idPost,
-    });
-
-    res.header('X-Total-Count', String(result.count));
-    return this.ok(
-      res,
-      result.comments.map(p => CommentMap.toDTO(p)),
-    );
+    try {
+      const { page = 1 } = req.query;
+      const idPost = req.params.id;
+  
+      const comment = container.resolve(GetAllCommentsUseCase);
+      const result = await comment.execute({
+        page: Number(page),
+        idPost,
+      });
+  
+      res.header('X-Total-Count', String(result.count));
+      return this.ok(
+        res,
+        result.comments.map(p => CommentMap.toDTO(p)),
+      );
+    } catch(err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

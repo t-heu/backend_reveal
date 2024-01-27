@@ -10,12 +10,16 @@ export class SwitchHidePostController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const idPost = req.params.id;
-    const userID = req.user.id;
+    try {
+      const idPost = req.params.id;
+      const userID = req.user.id;
 
-    const hide = container.resolve(SwitchHidePostUseCase);
-    await hide.execute({ idPost, userID });
+      const hide = container.resolve(SwitchHidePostUseCase);
+      await hide.execute({ idPost, userID });
 
-    return this.created(res);
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

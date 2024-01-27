@@ -14,24 +14,24 @@ class UserRepository implements IUserRepository {
     this.ormRepository = getRepository(UserTypeorm);
   }
 
-  public async findById(id: string): Promise<string | User> {
+  public async findById(id: string): Promise<User> {
     const response = await this.ormRepository.findOne({
       where: { id },
       relations: ['external_auths', 'tokens'],
     });
 
-    if (!response) return 'User not found';
+    if (!response) throw new Error('User not found');
 
     return UserMap.toDomain(response);
   }
 
-  public async findUserByEmail(userEmail: UserEmail): Promise<string | User> {
+  public async findUserByEmail(userEmail: UserEmail): Promise<User> {
     const response = await this.ormRepository.findOne({
       where: { email: userEmail.value },
       relations: ['external_auths', 'tokens'],
     });
 
-    if (!response) return 'User not found';
+    if (!response) throw new Error('User not found');
 
     return UserMap.toDomain(response);
   }

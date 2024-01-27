@@ -12,7 +12,7 @@ import { firebaseGenerateLink } from '../../services/generateLink';
 
 @injectable()
 class SendForgotPasswordEmailUseCase
-  implements IUseCase<SendForgotPasswordEmailDTO, string | void> {
+  implements IUseCase<SendForgotPasswordEmailDTO, void> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
@@ -24,18 +24,10 @@ class SendForgotPasswordEmailUseCase
     private mailProvider: IMailProvider,
   ) {}
 
-  public async execute(data: SendForgotPasswordEmailDTO): Promise<string | void> {
+  public async execute(data: SendForgotPasswordEmailDTO): Promise<void> {
     const email = UserEmail.create(data.email);
 
-    if (typeof email === 'string') {
-      return email;
-    }
-
     const user = await this.userRepository.findUserByEmail(email);
-
-    if (typeof user === 'string') {
-      return user;
-    }
 
     const forgotPasswordTemplate = path.resolve(
       __dirname,

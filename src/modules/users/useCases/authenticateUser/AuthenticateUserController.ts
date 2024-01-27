@@ -10,23 +10,25 @@ export class AuthenticateUserController extends BaseController {
     super();
   }
 
-  public async executeImpl(req: Request, res: Response): Promise<any> {
-    const { email, password } = req.body;
+  async executeImpl(req: Request, res: Response): Promise<any> {
+    try {
+      const { email, password } = req.body;
 
-    const user = container.resolve(AuthenticateUserUseCase);
-    const result = await user.execute({
-      email,
-      password,
-    });
-
-    if (typeof result === 'string') return this.conflict(res, result)
-
-    return this.ok(res, {
-      user: UserMap.toDTO(result.user),
-      access_token: result.access_token,
-      refresh_token: result.refresh_token,
-      token_type: result.token_type,
-      expires: result.expires,
-    });
+      const user = container.resolve(AuthenticateUserUseCase);
+      const result = await user.execute({
+        email,
+        password,
+      });
+  
+      return this.ok(res, {
+        user: UserMap.toDTO(result.user),
+        access_token: result.access_token,
+        refresh_token: result.refresh_token,
+        token_type: result.token_type,
+        expires: result.expires,
+      });
+    } catch (err: any) {
+      return this.conflict(res, err.message)
+    }
   }
 }

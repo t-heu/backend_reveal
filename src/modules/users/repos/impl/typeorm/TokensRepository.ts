@@ -22,13 +22,13 @@ class TokensRepository implements ITokensRepository {
     await this.ormRepository.save(response);
   }
 
-  public async findByToken(token: string): Promise<string | Token> {
+  public async findByToken(token: string): Promise<Token> {
     const userToken = await this.ormRepository.findOne({
       where: { token },
     });
 
     if (!userToken) {
-      return 'token does not exists';
+      throw new Error('token does not exists');
     }
 
     return userToken;

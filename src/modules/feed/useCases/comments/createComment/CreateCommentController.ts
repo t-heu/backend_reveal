@@ -10,15 +10,17 @@ export class CreateCommentController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { answer } = req.body;
-    const idPost = req.params.id;
-    const userID = req.user.id;
-
-    const response = container.resolve(CreateCommentUseCase);
-    const status_erro = await response.execute({ answer, userID, idPost });
-
-    if (status_erro) return this.conflict(res, status_erro);
-
-    return this.created(res);
+    try {
+      const { answer } = req.body;
+      const idPost = req.params.id;
+      const userID = req.user.id;
+      
+      const response = container.resolve(CreateCommentUseCase);
+      await response.execute({ answer, userID, idPost });
+  
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

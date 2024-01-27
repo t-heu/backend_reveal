@@ -10,13 +10,15 @@ export class CreateUserController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { email, password, name } = req.body;
+    try {
+      const { email, password, name } = req.body;
 
-    const response = container.resolve(CreateUserUseCase);
-    const status_erro = await response.execute({ email, password, name });
-    
-    if (status_erro) return this.conflict(res, status_erro)
+      const response = container.resolve(CreateUserUseCase);
+      await response.execute({ email, password, name });
 
-    return this.created(res);
+      return this.created(res);
+    } catch (err: any) {
+      return this.conflict(res, err.message)
+    }
   }
 }

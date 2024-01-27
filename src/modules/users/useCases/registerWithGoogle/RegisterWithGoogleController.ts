@@ -11,18 +11,20 @@ export class RegisterWithGoogleController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { accessTokenGoogle } = req.body;
+    try {
+      const { accessTokenGoogle } = req.body;
 
-    const user = container.resolve(RegisterWithGoogleUseCase);
-    const result = await user.execute({
-      accessTokenGoogle,
-    });
+      const user = container.resolve(RegisterWithGoogleUseCase);
+      const result = await user.execute({
+        accessTokenGoogle,
+      });
 
-    if (typeof result === 'string') return this.conflict(res, result);
-
-    return this.ok(res, {
-      user: UserMap.toDTO(result.user),
-      accessToken: result.accessToken,
-    });
+      return this.ok(res, {
+        user: UserMap.toDTO(result.user),
+        accessToken: result.accessToken,
+      });
+    } catch (err: any) {
+      return this.conflict(res, err.message)
+    }
   }
 }

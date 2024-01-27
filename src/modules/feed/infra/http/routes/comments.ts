@@ -10,7 +10,7 @@ import cache from '../../../../../shared/infra/http/middlewares/cacheable';
 const commentRouter = express.Router();
 
 commentRouter.get(
-  '/post/:id',
+  '/posts/:id',
   cache(10),
   celebrate({
     [Segments.HEADERS]: Joi.object({
@@ -28,7 +28,7 @@ commentRouter.get(
 );
 
 commentRouter.post(
-  '/post/:id',
+  '/posts/:id',
   celebrate({
     [Segments.HEADERS]: Joi.object({
       authorization: Joi.string().required(),

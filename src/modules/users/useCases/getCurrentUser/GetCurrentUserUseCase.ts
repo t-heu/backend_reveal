@@ -6,15 +6,15 @@ import { GetCurrentUserDTO } from './GetCurrentUserDTO';
 import { User } from '../../domain/user';
 
 @injectable()
-class GetCurrentUserUseCase implements IUseCase<GetCurrentUserDTO, string | User> {
+class GetCurrentUserUseCase implements IUseCase<GetCurrentUserDTO, User> {
   constructor(
     @inject('UserRepository')
     private userRepository: IUserRepository,
   ) {}
 
-  public async execute(data: GetCurrentUserDTO): Promise<string | User> {
+  public async execute(data: GetCurrentUserDTO): Promise<User> {
     if (!data.id) {
-      return 'Token not found';
+      throw new Error('Token not found');
     }
 
     const user = await this.userRepository.findById(data.id);

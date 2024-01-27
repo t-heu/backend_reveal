@@ -11,12 +11,16 @@ export class ShowOnePostController extends BaseController {
   }
 
   async executeImpl(req: Request, res: Response): Promise<any> {
-    const { id } = req.params;
-    const userID = req.user.id;
+    try {
+      const { id } = req.params;
+      const userID = req.user.id;
 
-    const post = container.resolve(ShowOnePostUseCase);
-    const response = await post.execute({ id, userID });
+      const post = container.resolve(ShowOnePostUseCase);
+      const response = await post.execute({ id, userID });
 
-    return this.ok(res, PostMap.toDTO(response));
+      return this.ok(res, PostMap.toDTO(response));
+    } catch (err: any) {
+      return this.conflict(res, err.message);
+    }
   }
 }

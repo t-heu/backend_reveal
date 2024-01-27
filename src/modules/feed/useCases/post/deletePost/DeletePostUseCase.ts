@@ -5,15 +5,15 @@ import { DeletePostDTO } from './DeletePostDTO';
 import { IUseCase } from '../../../../../shared/domain/UseCase';
 
 @injectable()
-class DeletePostUseCase implements IUseCase<DeletePostDTO, string | void> {
+class DeletePostUseCase implements IUseCase<DeletePostDTO, void> {
   constructor(
     @inject('PostRepository')
     private postRepository: IPostRepository,
   ) {}
 
-  public async execute({ idPost }: DeletePostDTO): Promise<string | void> {
+  public async execute({ idPost }: DeletePostDTO): Promise<void> {
     if (!(await this.postRepository.exists(idPost))) {
-      return 'post not exists';
+      throw new Error('post not exists');
     }
     
     await this.postRepository.delete(idPost);

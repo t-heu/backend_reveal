@@ -21,7 +21,7 @@ export interface ICreateDTO {
 }
 
 export interface ITokensRepository {
-  findByToken(token: string): Promise<string | IUserTokenDTO>;
+  findByToken(token: string): Promise<IUserTokenDTO>;
   create(data: ICreateDTO): Promise<void>;
   save(data: ISave): Promise<void>;
   is_revogedAll(id: string): Promise<void>;

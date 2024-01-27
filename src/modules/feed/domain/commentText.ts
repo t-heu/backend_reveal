@@ -17,17 +17,17 @@ export class CommentText extends ValueObject<CommentTextProps> {
     super(props);
   }
 
-  public static create(props: CommentTextProps): string | CommentText {
+  public static create(props: CommentTextProps): CommentText {
     if (!props.value) {
-      return 'Must provide a Comment for the user';
+      throw new Error('Must provide a Comment for the user');
     }
 
     if (props.value.length >= this.maxLength) {
-      return `Comment must be greater than ${this.maxLength} chars and less than 100.`;
+      throw new Error(`Comment must be greater than ${this.maxLength} chars and less than 100.`);
     }
 
     if (props.value.length <= this.minLength) {
-      return `Comment must be greater than ${this.minLength} chars and less than 100.`;
+      throw new Error(`Comment must be greater than ${this.minLength} chars and less than 100.`);
     }
 
     return new CommentText(props);

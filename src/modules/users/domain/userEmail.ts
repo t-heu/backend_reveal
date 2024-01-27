@@ -22,13 +22,13 @@ export class UserEmail extends ValueObject<UserEmailProps> {
     return email.trim().toLowerCase();
   }
 
-  public static create(email: string): string | UserEmail {
+  public static create(email: string): UserEmail {
     if (!email) {
-      return 'Email address not empty';
+      throw new Error('Email address not empty')
     }
 
     if (!this.isValidEmail(email)) {
-      return 'Email address not valid';
+      throw new Error('Email address not valid')
     }
 
     return new UserEmail({ value: this.format(email) });
