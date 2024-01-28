@@ -16,7 +16,6 @@ interface CommentProps {
   avatarUrl?: string;
   owner_post: UserId;
 }
-
 export class Comment extends AggregateRoot<CommentProps> {
   get commentId(): CommentId {
     return CommentId.create(this._id);
@@ -52,6 +51,7 @@ export class Comment extends AggregateRoot<CommentProps> {
 
   public static create(props: CommentProps, id?: UniqueEntityID): Comment {
     const post = new Comment({ ...props }, id);
+
     if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
       post.addDomainEvent(new PostCommented(post));
     }
