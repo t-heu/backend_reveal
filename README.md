@@ -7,7 +7,7 @@ Reveal is a type of social network where users are anonymous, they can share ide
 
 ### Schema database (ERD)
 <p align="center">
-  <img alt="schema_database" src="./.docs/ERD do APP Conf - 2v.png" width="650" />
+  <img alt="schema_database" src="/docs/erd.png" width="650" />
 </p>
 
 ## ⚡ Tech Stack
