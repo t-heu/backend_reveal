@@ -1,0 +1,20 @@
+{
+  "name": "ms2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "clear && ts-node-transpile-only ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/amqplib": "^0.10.5",
+    "@types/node": "^20.11.19"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.4",
+    "expo-server-sdk": "^3.10.0"
+  }
+}

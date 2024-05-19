@@ -6,6 +6,7 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
+
   db_two:
     image: postgres
     restart: always
@@ -16,3 +17,12 @@ services:
       - POSTGRES_DB=postgres
     ports:
       - "5432:5432"
+    
+  db_tree:
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq1
+    hostname: my-rabbit
+    ports:
+      - "8080:15672"
+      - "5672:5672"
+      - "25676:25676"
