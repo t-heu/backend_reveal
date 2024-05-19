@@ -18,7 +18,7 @@ export class CreateUserController extends BaseController {
 
       return this.created(res);
     } catch (err: any) {
-      return this.conflict(res, err.message)
+      return this.conflict(res, err.message);
     }
   }
 }

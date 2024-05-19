@@ -21,9 +21,6 @@ import { ITokensRepository } from '../../modules/users/repos/ITokensRepo';
 import ExternalAuthRepository from '../../modules/users/repos/impl/typeorm/ExternalAuthRepository';
 import { IExternalAuthRepository } from '../../modules/users/repos/IExternalAuthRepo';
 
-import IMailTemplateProvider from './providers/MailTemplateProvider/impl/HandlebarsMailTemplateProvider';
-import providersTemplates from './providers/MailTemplateProvider';
-
 // Repositors
 container.registerSingleton<ILikeRepository>('LikeRepository', LikeRepository);
 
@@ -51,7 +48,3 @@ container.registerSingleton<IHidePostRepository>(
 );
 
 // Providers
-container.registerSingleton<IMailTemplateProvider>(
-  'MailTemplateProvider',
-  providersTemplates.handlebars,
-);

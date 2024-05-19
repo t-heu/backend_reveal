@@ -3,6 +3,8 @@ import { UserEmail } from './userEmail';
 import { UserPassword } from './userPassword';
 import { UserPhoto } from './userPhoto';
 import { UserId } from './userId';
+import { SendEmailVerifyEvent } from './events/SendEmailVerify';
+import { SendEmailForgotPasswordEvent } from './events/SendEmailForgotPassword.ts';
 import { JWTToken, RefreshToken } from './jwt';
 import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
@@ -18,6 +20,7 @@ interface UserProps {
   lastLogin?: Date;
   avatarUrl?: string;
   has_google?: boolean;
+  generateToken?: string;
 }
 
 export class User extends AggregateRoot<UserProps> {
@@ -39,6 +42,10 @@ export class User extends AggregateRoot<UserProps> {
 
   get password(): UserPassword {
     return this.props.password;
+  }
+
+  get photo(): UserPhoto {
+    return this.props.photo;
   }
 
   get has_google(): boolean {
@@ -69,6 +76,10 @@ export class User extends AggregateRoot<UserProps> {
     return this.props.photo.getUrl;
   }
 
+  get generateToken(): string {
+    return this.props.generateToken || '';
+  }
+
   private constructor(props: UserProps, id?: UniqueEntityID) {
     super(props, id);
   }
@@ -82,8 +93,17 @@ export class User extends AggregateRoot<UserProps> {
     this.props.lastLogin = new Date();
   }
 
+  public static forgotPass(props: UserProps, id?: UniqueEntityID): void {
+    const user = new User({ ...props }, id);
+
+    user.addDomainEvent(new SendEmailForgotPasswordEvent(user));
+  }
+
   public static create(props: UserProps, id?: UniqueEntityID): User {
     const user = new User({ ...props }, id);
+
+    if (!id) user.addDomainEvent(new SendEmailVerifyEvent(user));
+
     return user;
   }
 }

@@ -27,13 +27,16 @@ export class AfterCommentedPost implements IHandle {
   private async onPostCommentedEvent(event: PostCommented): Promise<void> {
     console.log('[AfterCommentedPostEvent]: Executed');
 
-    await serviceNoti({
-      title: 'Someone commented your post', // 'Comment on your post',
-      body: this.craftMessage(event.comment.text),
-      data: {},
-      type: 'notification_commented_post',
-      link: event.comment.postId.id.toString(),
-      user_id: event.comment.userId.id.toString(),
-    });
+    await serviceNoti(
+      {
+        title: 'Someone commented your post', // 'Comment on your post',
+        body: this.craftMessage(event.comment.text),
+        data: {},
+        type: 'notification_commented_post',
+        link: event.comment.postId.id.toString(),
+        user_id: event.comment.userId.id.toString(),
+      },
+      'notificationRegistrations',
+    );
   }
 }

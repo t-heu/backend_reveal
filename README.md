@@ -17,6 +17,7 @@ Reveal is a type of social network where users are anonymous, they can share ide
 - [Socket.io](https://socket.io/)
 - [Nodemailer](https://nodemailer.com/)
 - [TypeORM](https://typeorm.io/)
+- [RabbitMQ](https://www.rabbitmq.com/)
 
 ## Functionalities
 <ul>
@@ -30,6 +31,8 @@ Reveal is a type of social network where users are anonymous, they can share ide
   <li>send email</li>
   <li>system liked</li>
   <li>dynamic link</li>
+  <li>system broker</li>
+  <li>microservices</li>
 </ul>
 
 ## Versioning

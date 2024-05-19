@@ -19,15 +19,15 @@ export class UserName extends ValueObject<UserNameProps> {
 
   public static create(props: UserNameProps): UserName {
     if (!props.name) {
-      throw new Error('Must provide a name for the user')
+      throw new Error('Must provide a name for the user');
     }
 
     if (props.name.length >= this.maxLength) {
-      throw new Error('User must be greater than 2 chars and less than 100.')
+      throw new Error('User must be greater than 2 chars and less than 100.');
     }
 
     if (props.name.length <= this.minLength) {
-      throw new Error('User must be greater than 2 chars and less than 100.')
+      throw new Error('User must be greater than 2 chars and less than 100.');
     }
 
     return new UserName(props);

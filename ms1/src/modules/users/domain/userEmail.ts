@@ -14,7 +14,8 @@ export class UserEmail extends ValueObject<UserEmailProps> {
   }
 
   private static isValidEmail(email: string) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
   }
 
@@ -24,13 +25,14 @@ export class UserEmail extends ValueObject<UserEmailProps> {
 
   public static create(email: string): UserEmail {
     if (!email) {
-      throw new Error('Email address not empty')
+      throw new Error('Email address not empty');
     }
 
     if (!this.isValidEmail(email)) {
-      throw new Error('Email address not valid')
+      throw new Error('Email address not valid');
     }
 
-    return new UserEmail({ value: this.format(email) });
+    const result = new UserEmail({ value: this.format(email) });
+    return result;
   }
 }

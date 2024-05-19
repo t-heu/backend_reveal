@@ -15,10 +15,10 @@ export class SendForgotPasswordEmailController extends BaseController {
 
       const user = container.resolve(SendForgotPasswordEmailUseCase);
       await user.execute({ email });
-  
+
       return this.created(res);
     } catch (err: any) {
-      return this.conflict(res, err.message)
+      return this.conflict(res, err.message);
     }
   }
 }

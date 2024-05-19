@@ -26,13 +26,16 @@ export class AfterLikedPost implements IHandle {
   private async onPostLikedEvent(event: PostLiked): Promise<void> {
     console.log('[AfterLikedPost]: Executed');
 
-    await serviceNoti({
-      title: 'Liked on your post',
-      body: this.craftMessage(),
-      data: {},
-      type: 'notification_liked_post',
-      link: event.like.postId.id.toString(),
-      user_id: event.like.userId.id.toString(),
-    });
+    await serviceNoti(
+      {
+        title: 'Liked on your post',
+        body: this.craftMessage(),
+        data: {},
+        type: 'notification_liked_post',
+        link: event.like.postId.id.toString(),
+        user_id: event.like.userId.id.toString(),
+      },
+      'notificationRegistrations',
+    );
   }
 }
