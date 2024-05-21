@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import SendForgotPasswordEmailUseCase from './SendForgotPasswordEmailUseCase';
+import ForgotPasswordEmailUseCase from './ForgotPasswordEmailUseCase';
 import { BaseController } from '../../../../shared/infra/BaseController';
 
-export class SendForgotPasswordEmailController extends BaseController {
+export class ForgotPasswordEmailController extends BaseController {
   constructor() {
     super();
   }
@@ -13,7 +13,7 @@ export class SendForgotPasswordEmailController extends BaseController {
     try {
       const { email } = req.body;
 
-      const user = container.resolve(SendForgotPasswordEmailUseCase);
+      const user = container.resolve(ForgotPasswordEmailUseCase);
       await user.execute({ email });
 
       return this.created(res);

@@ -9,7 +9,7 @@ import { AuthenticateUserController } from '../../../useCases/authenticateUser';
 import { RegisterWithGoogleController } from '../../../useCases/registerWithGoogle';
 import { UpdateUserAvatarController } from '../../../useCases/updateUserAvatar';
 import { ResetPasswordController } from '../../../useCases/resetPassword';
-import { SendForgotPasswordEmailController } from '../../../useCases/sendForgotPasswordEmail';
+import { ForgotPasswordEmailController } from '../../../useCases/forgotPasswordEmail';
 import { GetCurrentUserUserController } from '../../../useCases/getCurrentUser';
 import { RefreshAccessTokenController } from '../../../useCases/refreshAccessToken';
 import { VerifyEmailController } from '../../../useCases/verifyEmail';
@@ -110,7 +110,7 @@ userRouter.post(
       email: Joi.string().email().required(),
     }),
   }),
-  (req, res) => SendForgotPasswordEmailController.executeImpl(req, res),
+  (req, res) => ForgotPasswordEmailController.executeImpl(req, res),
 );
 
 userRouter.post(

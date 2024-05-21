@@ -4,7 +4,7 @@ import { UserPassword } from './userPassword';
 import { UserPhoto } from './userPhoto';
 import { UserId } from './userId';
 import { SendEmailVerifyEvent } from './events/SendEmailVerify';
-import { SendEmailForgotPasswordEvent } from './events/SendEmailForgotPassword.ts';
+import { SendEmailForgotPasswordEvent } from './events/SendEmailForgotPassword';
 import { JWTToken, RefreshToken } from './jwt';
 import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
 import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
@@ -93,9 +93,7 @@ export class User extends AggregateRoot<UserProps> {
     this.props.lastLogin = new Date();
   }
 
-  public static forgotPass(props: UserProps, id?: UniqueEntityID): void {
-    const user = new User({ ...props }, id);
-
+  public static forgotPass(user: User): void {
     user.addDomainEvent(new SendEmailForgotPasswordEvent(user));
   }
 

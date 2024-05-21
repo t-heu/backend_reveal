@@ -2,15 +2,16 @@ import { inject, injectable } from 'tsyringe';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IUseCase } from '../../../../shared/domain/UseCase';
+import { DomainEvents } from '../../../../shared/domain/events/DomainEvents';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
-import { SendForgotPasswordEmailDTO } from './SendForgotPasswordEmailDTO';
+import { ForgotPasswordEmailDTO } from './ForgotPasswordEmailDTO';
 import { UserEmail } from '../../domain/userEmail';
-import { serviceNoti } from '../../infra/rabbitmq';
+import { User } from '../../domain/user';
 
 @injectable()
-class SendForgotPasswordEmailUseCase
-  implements IUseCase<SendForgotPasswordEmailDTO, void>
+class ForgotPasswordEmailUseCase
+  implements IUseCase<ForgotPasswordEmailDTO, void>
 {
   constructor(
     @inject('UserRepository')
@@ -20,7 +21,7 @@ class SendForgotPasswordEmailUseCase
     private tokensRepository: ITokensRepository,
   ) {}
 
-  public async execute(data: SendForgotPasswordEmailDTO): Promise<void> {
+  public async execute(data: ForgotPasswordEmailDTO): Promise<void> {
     const generateToken = uuidv4();
     const email = UserEmail.create(data.email);
 
@@ -32,19 +33,10 @@ class SendForgotPasswordEmailUseCase
       type: 'forgot_password',
     });
 
-    await serviceNoti(
-      {
-        subject: 'Reveal Forgot Password',
-        to: {
-          email: user.email.value,
-          name: user.name.value,
-        },
-        type: 'forgot_password',
-        token: generateToken,
-      },
-      'sendEmailRegistrations',
-    );
+    user.props.generateToken = generateToken;
+    User.forgotPass(user);
+    DomainEvents.dispatchEventsForAggregate(user.id);
   }
 }
 
-export default SendForgotPasswordEmailUseCase;
+export default ForgotPasswordEmailUseCase;

@@ -1,8 +1,10 @@
+import { container } from 'tsyringe';
+
 import { DomainEvents } from '../../../shared/domain/events/DomainEvents';
 import { IHandle } from '../../../shared/domain/events/IHandle';
-import { SendEmailForgotPasswordEvent } from '../domain/events/SendEmailForgotPassword.ts';
+import { SendEmailForgotPasswordEvent } from '../domain/events/SendEmailForgotPassword';
 
-import { serviceNoti } from '../infra/rabbitmq';
+import { RabbitMQHandler } from '../../../shared/infra/rabbitmq/RabbitMQHandler';
 
 export class SendEmailForgotPassword implements IHandle {
   constructor() {
@@ -26,19 +28,17 @@ export class SendEmailForgotPassword implements IHandle {
   private async onSendEmailEvent(
     event: SendEmailForgotPasswordEvent,
   ): Promise<void> {
+    const rabbitMQHandler = container.resolve(RabbitMQHandler);
     console.log('[forgot_password]: Executed');
 
-    await serviceNoti(
-      {
-        subject: this.craftMessage(),
-        to: {
-          email: event.user.email.value,
-          name: event.user.name.value,
-        },
-        type: 'forgot_password',
-        token: event.user.generateToken,
+    await rabbitMQHandler.publishToQueue('sendEmailRegistrations', {
+      subject: this.craftMessage(),
+      to: {
+        email: event.user.email.value,
+        name: event.user.name.value,
       },
-      'sendEmailRegistrations',
-    );
+      type: 'forgot_password',
+      token: event.user.generateToken,
+    });
   }
 }

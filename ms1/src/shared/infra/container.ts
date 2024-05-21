@@ -21,6 +21,15 @@ import { ITokensRepository } from '../../modules/users/repos/ITokensRepo';
 import ExternalAuthRepository from '../../modules/users/repos/impl/typeorm/ExternalAuthRepository';
 import { IExternalAuthRepository } from '../../modules/users/repos/IExternalAuthRepo';
 
+import NotificationRepository from '../../modules/notification/repos/impl/typeorm/NotificationRepo';
+import { INotificationRepository } from '../../modules/notification/repos/INotification';
+
+import NotificationKeyRepository from '../../modules/notification/repos/impl/typeorm/NotificationKeysRepo';
+import { INotificationKeyRepository } from '../../modules/notification/repos/INotificationKeys';
+
+import { RabbitMQHandler } from './rabbitmq/RabbitMQHandler';
+import { WebSocketHandler } from './ws/WebSocketHandler';
+
 // Repositors
 container.registerSingleton<ILikeRepository>('LikeRepository', LikeRepository);
 
@@ -47,4 +56,23 @@ container.registerSingleton<IHidePostRepository>(
   HidePostRepository,
 );
 
+container.registerSingleton<INotificationRepository>(
+  'NotificationRepository',
+  NotificationRepository,
+);
+
+container.registerSingleton<INotificationKeyRepository>(
+  'NotificationKeyRepository',
+  NotificationKeyRepository,
+);
+
 // Providers
+container.registerSingleton<RabbitMQHandler>(
+  'RabbitMQHandler',
+  RabbitMQHandler,
+);
+
+container.registerSingleton<WebSocketHandler>(
+  'WebSocketHandler',
+  WebSocketHandler,
+);

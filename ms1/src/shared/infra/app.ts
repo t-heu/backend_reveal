@@ -7,8 +7,9 @@ import 'express-async-errors';
 import { isCelebrate } from 'celebrate';
 import multer from 'multer';
 import { Server } from 'http';
+import { container } from 'tsyringe';
 
-// import Socket from './ws';
+import { WebSocketHandler } from './ws/WebSocketHandler';
 import v1Router from './http/api/v1';
 import rateLimiter from './http/middlewares/rateLimiter';
 import { log } from './logger';
@@ -17,7 +18,8 @@ dotenv.config();
 
 const app = express();
 const server = new Server(app);
-// Socket(server);
+const webSocketHandler = container.resolve(WebSocketHandler);
+webSocketHandler.initialize(server);
 
 // CORS
 app.use((req, res, next) => {
