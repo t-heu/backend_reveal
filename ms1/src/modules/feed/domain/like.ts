@@ -41,7 +41,7 @@ export class Like extends AggregateRoot<LikeProps> {
     const like = new Like({ ...props }, id);
     // if (!id) like.addDomainEvent(new PostLiked(like));
     if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
-      like.addDomainEvent(new PostLiked(like));
+      // like.addDomainEvent(new PostLiked(like));
     }
     return like;
   }

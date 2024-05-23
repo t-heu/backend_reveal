@@ -1,6 +1,6 @@
 import { IDomainEvent } from '../../../../shared/domain/events/IDomainEvent';
 import { UniqueEntityID } from '../../../../shared/domain/UniqueEntityID';
-import { Like } from '../like';
+import { Like } from '../../../feed/domain/like';
 
 export class PostLiked implements IDomainEvent {
   public dateTimeOccurred: Date;

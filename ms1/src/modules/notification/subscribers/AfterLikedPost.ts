@@ -1,8 +1,9 @@
+import { container } from 'tsyringe';
 import { DomainEvents } from '../../../shared/domain/events/DomainEvents';
 import { IHandle } from '../../../shared/domain/events/IHandle';
 import { PostLiked } from '../domain/events/postLiked';
 
-import { serviceNoti } from '../infra/rabbitmq';
+import { RabbitMQHandler } from '../../../shared/infra/rabbitmq/RabbitMQHandler';
 
 export class AfterLikedPost implements IHandle {
   constructor() {
@@ -24,18 +25,16 @@ export class AfterLikedPost implements IHandle {
 
   // This is called when the domain event is dispatched.
   private async onPostLikedEvent(event: PostLiked): Promise<void> {
+    const rabbitMQHandler = container.resolve(RabbitMQHandler);
     console.log('[AfterLikedPost]: Executed');
 
-    await serviceNoti(
-      {
-        title: 'Liked on your post',
-        body: this.craftMessage(),
-        data: {},
-        type: 'notification_liked_post',
-        link: event.like.postId.id.toString(),
-        user_id: event.like.userId.id.toString(),
-      },
-      'notificationRegistrations',
-    );
+    await rabbitMQHandler.publishToQueue('notificationRegistrations', {
+      title: 'Liked on your post',
+      body: this.craftMessage(),
+      data: {},
+      type: 'notification_liked_post',
+      link: event.like.postId.id.toString(),
+      user_id: event.like.userId.id.toString(),
+    });
   }
 }

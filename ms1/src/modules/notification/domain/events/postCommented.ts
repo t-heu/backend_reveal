@@ -1,6 +1,6 @@
 import { IDomainEvent } from '../../../../shared/domain/events/IDomainEvent';
 import { UniqueEntityID } from '../../../../shared/domain/UniqueEntityID';
-import { Comment } from '../comment';
+import { Comment } from '../../../feed/domain/comment';
 // import { Post } from '../post';
 
 export class PostCommented implements IDomainEvent {

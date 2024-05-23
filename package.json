@@ -1,11 +1,11 @@
 {
-  "name": "rabbitmq",
+  "name": "reveal",
   "version": "1.0.0",
   "description": "",
   "main": "",
   "scripts": {
-    "dev:microservico1": "cd ms1 && pnpm dev",
-    "dev:microservico2": "cd ms2 && pnpm dev",
+    "dev:microservico1": "cd ms1 && pnpm run dev",
+    "dev:microservico2": "cd ms2 && pnpm run dev",
     "dev": "clear & npm run dev:microservico1 & npm run dev:microservico2"
   },
   "keywords": [],

@@ -1,4 +1,4 @@
-import { inject, injectable } from 'tsyringe';
+import { inject, injectable, delay } from 'tsyringe';
 
 import { ICommentRepository } from '../../../repos/ICommentRepo';
 import { IPostRepository } from '../../../repos/IPostRepo';
@@ -9,6 +9,8 @@ import { Comment } from '../../../domain/comment';
 import { PostId } from '../../../domain/postId';
 import { UserId } from '../../../../users/domain/userId';
 import { UniqueEntityID } from '../../../../../shared/domain/UniqueEntityID';
+import { INotificationRepository } from '../../../../notification/repos/INotification';
+import { Notification } from '../../../../notification/domain/notification';
 
 @injectable()
 class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
@@ -17,6 +19,9 @@ class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
     private commentRepository: ICommentRepository,
     @inject('PostRepository')
     private postRepository: IPostRepository,
+    // @ts-ignore
+    @inject(delay(() => 'NotificationRepository'))
+    private notificationRepository: INotificationRepository,
   ) {}
 
   public async execute({
@@ -36,6 +41,17 @@ class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
     });
 
     await this.commentRepository.create(comment);
+
+    const notification = Notification.create({
+      type: 'comment',
+      title: `Your post was commented on`,
+      description: `User ${userID} commented on your post.`,
+      link: `/posts/${idPost}`,
+      userId: post.userId,
+      eventData: comment,
+    });
+
+    await this.notificationRepository.createNotification(notification);
   }
 }
 

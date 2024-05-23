@@ -53,7 +53,7 @@ export class Comment extends AggregateRoot<CommentProps> {
     const post = new Comment({ ...props }, id);
 
     if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
-      post.addDomainEvent(new PostCommented(post));
+      // post.addDomainEvent(new PostCommented(post));
     }
     return post;
   }

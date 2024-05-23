@@ -50,13 +50,14 @@ class SwitchLikePostUseCase {
     }
 
     const notification = Notification.create({
-      type: notificationType,
+      type: 'like',
       title: `Your post was ${notificationType}`,
       description: `User ${userID} ${
         notificationType === 'like_added' ? 'liked' : 'unliked'
       } your post.`,
       link: `/posts/${idPost}`,
       userId: owner_post,
+      eventData: like,
     });
 
     await this.notificationRepository.createNotification(notification);

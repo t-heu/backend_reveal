@@ -1,9 +1,9 @@
+import { container } from 'tsyringe';
 import { DomainEvents } from '../../../shared/domain/events/DomainEvents';
 import { IHandle } from '../../../shared/domain/events/IHandle';
 import { PostCommented } from '../domain/events/postCommented';
-import { CommentText } from '../domain/commentText';
-
-import { serviceNoti } from '../infra/rabbitmq';
+import { CommentText } from '../../feed/domain/commentText';
+import { RabbitMQHandler } from '../../../shared/infra/rabbitmq/RabbitMQHandler';
 
 export class AfterCommentedPost implements IHandle {
   constructor() {
@@ -25,18 +25,16 @@ export class AfterCommentedPost implements IHandle {
 
   // This is called when the domain event is dispatched.
   private async onPostCommentedEvent(event: PostCommented): Promise<void> {
+    const rabbitMQHandler = container.resolve(RabbitMQHandler);
     console.log('[AfterCommentedPostEvent]: Executed');
 
-    await serviceNoti(
-      {
-        title: 'Someone commented your post', // 'Comment on your post',
-        body: this.craftMessage(event.comment.text),
-        data: {},
-        type: 'notification_commented_post',
-        link: event.comment.postId.id.toString(),
-        user_id: event.comment.userId.id.toString(),
-      },
-      'notificationRegistrations',
-    );
+    await rabbitMQHandler.publishToQueue('notificationRegistrations', {
+      title: 'Someone commented your post',
+      body: this.craftMessage(event.comment.text),
+      data: {},
+      type: 'notification_commented_post',
+      link: event.comment.postId.id.toString(),
+      user_id: event.comment.userId.id.toString(),
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { inject, injectable } from 'tsyringe';
+import { inject, injectable, delay } from 'tsyringe';
 
 import { WebSocketHandler } from '../../../../shared/infra/ws/WebSocketHandler';
 import { INotificationRepository } from '../../repos/INotification';
