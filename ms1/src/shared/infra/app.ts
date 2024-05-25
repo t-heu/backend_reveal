@@ -9,7 +9,7 @@ import multer from 'multer';
 import { Server } from 'http';
 import { container } from 'tsyringe';
 
-import { WebSocketHandler } from './ws/WebSocketHandler';
+import { WebSocketHandler } from './ws/webSocketHandler';
 import v1Router from './http/api/v1';
 import rateLimiter from './http/middlewares/rateLimiter';
 import { log } from './logger';

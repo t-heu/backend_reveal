@@ -1,5 +1,5 @@
-import ResetPasswordUseCase from './ResetPasswordUseCase';
-import * as Controller from './ResetPasswordController';
+import ResetPasswordUseCase from './resetPasswordUseCase';
+import * as Controller from './resetPasswordController';
 
 const ResetPasswordController = new Controller.ResetPasswordController();
 

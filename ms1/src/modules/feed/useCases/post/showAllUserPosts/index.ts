@@ -1,5 +1,5 @@
-import ShowAllUserPostsUseCase from './ShowAllUserPostsUseCase';
-import * as Controller from './ShowAllUserPostsController';
+import ShowAllUserPostsUseCase from './showAllUserPostsUseCase';
+import * as Controller from './showAllUserPostsController';
 
 const ShowAllUserPostsController = new Controller.ShowAllUserPostsController();
 

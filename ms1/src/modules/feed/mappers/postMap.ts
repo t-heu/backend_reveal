@@ -1,8 +1,8 @@
-import { Mapper } from '../../../shared/infra/Mapper';
+import { Mapper } from '../../../shared/infra/mapper';
 import { Post } from '../domain/post';
 import { UserId } from '../../users/domain/userId';
 import { IPostDTO } from '../dtos/IPostDTO';
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
 import { PostText } from '../domain/postText';
 
 class PostMap implements Mapper<Post> {

@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 
-import { ValueObject } from '../../../shared/domain/ValueObject';
+import { ValueObject } from '../../../shared/domain/valueObject';
 
 export interface IUserPasswordProps {
   value: string;

@@ -1,10 +1,10 @@
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
-import { DomainEvents } from '../../../shared/domain/events/DomainEvents';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
+import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
+import { DomainEvents } from '../../../shared/domain/events/domainEvents';
 import { UserId } from '../../users/domain/userId';
 import { NotiId } from './notiId';
-import { PostLiked } from './events/postLiked';
-import { PostCommented } from './events/postCommented';
+import { PostLikedEvent } from './events/postLikedEvent';
+import { PostCommentedEvent } from './events/postCommentedEvent';
 
 import { Like } from '../../feed/domain/like';
 import { Comment } from '../../feed/domain/comment';
@@ -17,7 +17,7 @@ interface NotificationProps {
   link: string;
   dateTimePosted?: string | Date;
   read?: boolean;
-  eventData: Like | Comment;
+  eventData?: Like | Comment;
 }
 
 export class Notification extends AggregateRoot<NotificationProps> {
@@ -53,8 +53,8 @@ export class Notification extends AggregateRoot<NotificationProps> {
     return this.props.type;
   }
 
-  get eventData(): Like | Comment {
-    return this.props.eventData;
+  get eventData(): Like | Comment | undefined {
+    return this.props.eventData || undefined;
   }
 
   get userId(): UserId {
@@ -70,15 +70,18 @@ export class Notification extends AggregateRoot<NotificationProps> {
     id?: UniqueEntityID,
   ): Notification {
     const notification = new Notification({ ...props }, id);
-    notification.dispatchDomainEvents();
+
+    if (!id) notification.dispatchDomainEvents();
     return notification;
   }
 
   private dispatchDomainEvents(): void {
     if (this.props.type === 'comment') {
-      this.addDomainEvent(new PostCommented(this.props.eventData as Comment));
+      this.addDomainEvent(
+        new PostCommentedEvent(this.props.eventData as Comment)
+      );
     } else if (this.props.type === 'like') {
-      this.addDomainEvent(new PostLiked(this.props.eventData as Like));
+      this.addDomainEvent(new PostLikedEvent(this.props.eventData as Like));
     }
     DomainEvents.dispatchEventsForAggregate(this.id);
   }

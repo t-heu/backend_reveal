@@ -1,5 +1,5 @@
-import ChangePasswordUseCase from './ChangePasswordUseCase';
-import * as Controller from './ChangePasswordController';
+import ChangePasswordUseCase from './changePasswordUseCase';
+import * as Controller from './changePasswordController';
 
 const ChangePasswordController = new Controller.ChangePasswordController();
 

@@ -1,5 +1,5 @@
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
+import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
 import { PostText } from './postText';
 import { PostId } from './postId';
 import { UserId } from '../../users/domain/userId';

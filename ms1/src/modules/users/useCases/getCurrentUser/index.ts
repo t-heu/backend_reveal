@@ -1,5 +1,5 @@
-import GetCurrentUserUseCase from './GetCurrentUserUseCase';
-import * as Controller from './GetCurrentUserController';
+import GetCurrentUserUseCase from './getCurrentUserUseCase';
+import * as Controller from './getCurrentUserController';
 
 const GetCurrentUserUserController = new Controller.GetCurrentUserUserController();
 

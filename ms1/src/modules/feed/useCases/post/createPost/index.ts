@@ -1,5 +1,5 @@
-import CreatePostUseCase from './CreatePostUseCase';
-import * as Controller from './CreatePostController';
+import CreatePostUseCase from './createPostUseCase';
+import * as Controller from './createPostController';
 
 const CreatePostController = new Controller.CreatePostController();
 

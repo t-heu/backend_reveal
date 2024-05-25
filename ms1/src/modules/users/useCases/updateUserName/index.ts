@@ -1,5 +1,5 @@
-import UpdateUserNameUseCase from './UpdateUserNameUseCase';
-import * as Controller from './UpdateUserNameController';
+import UpdateUserNameUseCase from './updateUserNameUseCase';
+import * as Controller from './updateUserNameController';
 
 const UpdateUserNameController = new Controller.UserUpdateNameController();
 

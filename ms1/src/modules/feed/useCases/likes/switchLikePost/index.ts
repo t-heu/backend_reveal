@@ -1,5 +1,5 @@
-import SwitchLikePostUseCase from './SwitchLikePostUseCase';
-import * as Controller from './SwitchLikePostController';
+import SwitchLikePostUseCase from './switchLikePostUseCase';
+import * as Controller from './switchLikePostController';
 
 const SwitchLikePostController = new Controller.SwitchLikePostController();
 

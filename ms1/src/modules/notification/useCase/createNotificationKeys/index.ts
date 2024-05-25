@@ -1,5 +1,5 @@
-import CreateNotificationKeysUseCase from './CreateNotificationKeysUseCase';
-import * as Controller from './CreateNotificationKeysController';
+import CreateNotificationKeysUseCase from './createNotificationKeysUseCase';
+import * as Controller from './createNotificationKeysController';
 
 const CreateNotificationKeysController = new Controller.CreateNotificationKeysController();
 

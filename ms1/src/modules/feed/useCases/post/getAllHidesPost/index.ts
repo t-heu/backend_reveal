@@ -1,5 +1,5 @@
-import GetAllHidesPostUseCase from './GetAllHidesPostUseCase';
-import * as Controller from './GetAllHidesPostController';
+import GetAllHidesPostUseCase from './getAllHidesPostUseCase';
+import * as Controller from './getAllHidesPostController';
 
 const GetAllHidesPostController = new Controller.GetAllHidesPostController();
 

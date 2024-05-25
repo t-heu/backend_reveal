@@ -1,5 +1,5 @@
-import GetAllNotificationsUseCase from './GetAllNotificationsUseCase';
-import * as Controller from './GetAllNotificationsController';
+import GetAllNotificationsUseCase from './getAllNotificationsUseCase';
+import * as Controller from './getAllNotificationsController';
 
 const GetAllNotificationsController = new Controller.GetAllNotificationsController();
 

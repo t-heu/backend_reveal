@@ -1,7 +1,7 @@
-import { Mapper } from '../../../shared/infra/Mapper';
+import { Mapper } from '../../../shared/infra/mapper';
 import { User } from '../domain/user';
 import { IUserDTO } from '../dtos/IUserDTO';
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
 import { UserName } from '../domain/userName';
 import { UserPassword } from '../domain/userPassword';
 import { UserEmail } from '../domain/userEmail';

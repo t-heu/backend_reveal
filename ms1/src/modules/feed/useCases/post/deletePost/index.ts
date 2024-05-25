@@ -1,5 +1,5 @@
-import * as Controller from './DeletePostController';
-import DeletePostUseCase from './DeletePostUseCase';
+import * as Controller from './deletePostController';
+import DeletePostUseCase from './deletePostUseCase';
 
 const DeletePostController = new Controller.DeletePostController();
 

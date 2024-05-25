@@ -22,6 +22,7 @@
   "author": "t-heu",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/storage": "^5.4.0",
     "amqplib": "^0.10.4",
     "aws-sdk": "^2.769.0",
     "axios": "^0.20.0",
@@ -56,7 +57,6 @@
     "@babel/plugin-proposal-decorators": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-typescript": "^7.23.3",
-    "@google-cloud/storage": "^5.4.0",
     "@types/amqplib": "^0.10.5",
     "@types/bcryptjs": "^2.4.2",
     "@types/dotenv": "^8.2.0",

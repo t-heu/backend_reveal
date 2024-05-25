@@ -1,5 +1,5 @@
-import VerifyEmailUseCase from './VerifyEmailUseCase';
-import * as Controller from './VerifyEmailController';
+import VerifyEmailUseCase from './verifyEmailUseCase';
+import * as Controller from './verifyEmailController';
 
 const VerifyEmailController = new Controller.VerifyEmailController();
 

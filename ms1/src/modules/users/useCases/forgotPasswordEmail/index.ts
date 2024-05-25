@@ -1,5 +1,5 @@
-import ForgotPasswordEmailUseCase from './ForgotPasswordEmailUseCase';
-import * as Controller from './ForgotPasswordEmailController';
+import ForgotPasswordEmailUseCase from './forgotPasswordEmailUseCase';
+import * as Controller from './forgotPasswordEmailController';
 
 const ForgotPasswordEmailController =
   new Controller.ForgotPasswordEmailController();

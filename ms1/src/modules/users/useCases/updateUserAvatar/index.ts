@@ -1,5 +1,5 @@
-import UpdateUserAvatarUseCase from './UpdateUserAvatarUseCase';
-import * as Controller from './UpdateUserAvatarController';
+import UpdateUserAvatarUseCase from './updateUserAvatarUseCase';
+import * as Controller from './updateUserAvatarController';
 
 const UpdateUserAvatarController = new Controller.UpdateUserAvatarController();
 

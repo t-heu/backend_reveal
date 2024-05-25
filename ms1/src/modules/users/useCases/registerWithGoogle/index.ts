@@ -1,5 +1,5 @@
-import RegisterWithGoogleUseCase from './RegisterWithGoogleUseCase';
-import * as Controller from './RegisterWithGoogleController';
+import RegisterWithGoogleUseCase from './registerWithGoogleUseCase';
+import * as Controller from './registerWithGoogleController';
 
 const RegisterWithGoogleController = new Controller.RegisterWithGoogleController();
 

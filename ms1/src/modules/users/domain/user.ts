@@ -3,11 +3,12 @@ import { UserEmail } from './userEmail';
 import { UserPassword } from './userPassword';
 import { UserPhoto } from './userPhoto';
 import { UserId } from './userId';
-import { SendEmailVerifyEvent } from './events/SendEmailVerify';
-import { SendEmailForgotPasswordEvent } from './events/SendEmailForgotPassword';
+import { SendEmailVerifyEvent } from './events/sendEmailVerifyEvent';
+import { SendEmailForgotPasswordEvent } from './events/sendEmailForgotPasswordEvent';
 import { JWTToken, RefreshToken } from './jwt';
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
+import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
+import { DomainEvents } from '../../../shared/domain/events/domainEvents';
 
 interface UserProps {
   email: UserEmail;
@@ -95,6 +96,7 @@ export class User extends AggregateRoot<UserProps> {
 
   public static forgotPass(user: User): void {
     user.addDomainEvent(new SendEmailForgotPasswordEvent(user));
+    DomainEvents.dispatchEventsForAggregate(user.id);
   }
 
   public static create(props: UserProps, id?: UniqueEntityID): User {

@@ -1,5 +1,5 @@
-import { SendEmailVerify } from './SendEmailVerify';
-import { SendEmailForgotPassword } from './SendEmailForgotPassword';
+import { SendEmailVerify } from './sendEmailVerify';
+import { SendEmailForgotPassword } from './sendEmailForgotPassword';
 
 new SendEmailVerify();
 new SendEmailForgotPassword();

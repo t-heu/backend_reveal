@@ -1,5 +1,5 @@
-import ShowAllLikesPostsUseCase from './ShowAllLikesPostsUseCase';
-import * as Controller from './ShowAllLikesPostsController';
+import ShowAllLikesPostsUseCase from './showAllLikesPostsUseCase';
+import * as Controller from './showAllLikesPostsController';
 
 const ShowAllLikesPostsController = new Controller.ShowAllLikesPostsController();
 

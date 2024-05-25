@@ -1,5 +1,5 @@
-import AuthenticateUserUseCase from './AuthenticateUserUseCase';
-import * as Controller from './AuthenticateUserController';
+import AuthenticateUserUseCase from './authenticateUserUseCase';
+import * as Controller from './authenticateUserController';
 
 const AuthenticateUserController = new Controller.AuthenticateUserController();
 

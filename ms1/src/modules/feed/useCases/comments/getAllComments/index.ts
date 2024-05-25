@@ -1,5 +1,5 @@
-import * as Controller from './GetAllCommentsController';
-import GetAllCommentsUseCase from './GetAllCommentsUseCase';
+import * as Controller from './getAllCommentsController';
+import GetAllCommentsUseCase from './getAllCommentsUseCase';
 
 const GetAllCommentsController = new Controller.GetAllCommentsController();
 

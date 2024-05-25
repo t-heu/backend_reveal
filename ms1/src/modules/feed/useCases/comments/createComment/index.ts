@@ -1,5 +1,5 @@
-import * as Controller from './CreateCommentController';
-import CreateCommentUseCase from './CreateCommentUseCase';
+import * as Controller from './createCommentController';
+import CreateCommentUseCase from './createCommentUseCase';
 
 const CreateCommentController = new Controller.CreateCommentController();
 

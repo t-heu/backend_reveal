@@ -1,4 +1,4 @@
-import { ValueObject } from '../../../shared/domain/ValueObject';
+import { ValueObject } from '../../../shared/domain/valueObject';
 
 export interface UserEmailProps {
   value: string;

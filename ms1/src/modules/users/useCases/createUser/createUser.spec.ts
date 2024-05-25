@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import CreateUserUseCase from "./CreateUserUseCase";
+import CreateUserUseCase from "./createUserUseCase";
 import { IUserRepository } from '../../repos/IUserRepo';
 import { SendEmailVerifyUseCase } from '../sendEmailVerify';
 

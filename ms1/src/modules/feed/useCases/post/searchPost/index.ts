@@ -1,5 +1,5 @@
-import * as Controller from './SearchPostController';
-import SearchPostUseCase from './SearchPostUseCase';
+import * as Controller from './searchPostController';
+import SearchPostUseCase from './searchPostUseCase';
 
 const SearchPostController = new Controller.SearchPostController();
 

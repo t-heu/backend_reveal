@@ -1,34 +1,34 @@
 import { container } from 'tsyringe';
 
-import LikeRepository from '../../modules/feed/repos/impl/typeorm/LikeRepository';
+import LikeRepository from '../../modules/feed/repos/impl/typeorm/likeRepository';
 import { ILikeRepository } from '../../modules/feed/repos/ILikeRepo';
 
-import CommentRepository from '../../modules/feed/repos/impl/typeorm/CommentRepository';
+import CommentRepository from '../../modules/feed/repos/impl/typeorm/commentRepository';
 import { ICommentRepository } from '../../modules/feed/repos/ICommentRepo';
 
-import PostRepository from '../../modules/feed/repos/impl/typeorm/PostRepository';
+import PostRepository from '../../modules/feed/repos/impl/typeorm/postRepository';
 import { IPostRepository } from '../../modules/feed/repos/IPostRepo';
 
-import HidePostRepository from '../../modules/feed/repos/impl/typeorm/HidePostRepository';
+import HidePostRepository from '../../modules/feed/repos/impl/typeorm/hidePostRepository';
 import { IHidePostRepository } from '../../modules/feed/repos/IHidePostRepo';
 
-import UserRepository from '../../modules/users/repos/impl/typeorm/UserRepository';
+import UserRepository from '../../modules/users/repos/impl/typeorm/userRepository';
 import { IUserRepository } from '../../modules/users/repos/IUserRepo';
 
-import TokensRepository from '../../modules/users/repos/impl/typeorm/TokensRepository';
+import TokensRepository from '../../modules/users/repos/impl/typeorm/tokensRepository';
 import { ITokensRepository } from '../../modules/users/repos/ITokensRepo';
 
-import ExternalAuthRepository from '../../modules/users/repos/impl/typeorm/ExternalAuthRepository';
+import ExternalAuthRepository from '../../modules/users/repos/impl/typeorm/externalAuthRepository';
 import { IExternalAuthRepository } from '../../modules/users/repos/IExternalAuthRepo';
 
-import NotificationRepository from '../../modules/notification/repos/impl/typeorm/NotificationRepo';
+import NotificationRepository from '../../modules/notification/repos/impl/typeorm/notificationRepo';
 import { INotificationRepository } from '../../modules/notification/repos/INotification';
 
-import NotificationKeyRepository from '../../modules/notification/repos/impl/typeorm/NotificationKeysRepo';
+import NotificationKeyRepository from '../../modules/notification/repos/impl/typeorm/notificationKeysRepo';
 import { INotificationKeyRepository } from '../../modules/notification/repos/INotificationKeys';
 
-import { RabbitMQHandler } from './rabbitmq/RabbitMQHandler';
-import { WebSocketHandler } from './ws/WebSocketHandler';
+import { RabbitMQHandler } from './rabbitmq/rabbitMQHandler';
+import { WebSocketHandler } from './ws/webSocketHandler';
 
 // Repositors
 container.registerSingleton<ILikeRepository>('LikeRepository', LikeRepository);

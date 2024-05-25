@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 
-import DeleteNotificationKeysUseCase from './DeleteNotificationKeysUseCase';
-import * as Controller from './DeleteNotificationKeysController';
+import DeleteNotificationKeysUseCase from './deleteNotificationKeysUseCase';
+import * as Controller from './deleteNotificationKeysController';
 
 const DeleteNotificationKeysController = new Controller.DeleteNotificationKeysController();
 const deleteNotificationKeysUseCase = container.resolve(

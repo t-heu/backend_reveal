@@ -9,8 +9,8 @@ import {
   AfterInsert,
 } from 'typeorm';
 
-import { DomainEvents } from '../../../../domain/events/DomainEvents';
-import { UniqueEntityID } from '../../../../domain/UniqueEntityID';
+import { DomainEvents } from '../../../../domain/events/domainEvents';
+import { UniqueEntityID } from '../../../../domain/uniqueEntityID';
 import Post from './Post';
 import User from './User';
 

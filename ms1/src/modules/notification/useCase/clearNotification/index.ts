@@ -1,5 +1,5 @@
-import ClearNotificationUseCase from './ClearNotificationUseCase';
-import * as Controller from './ClearNotificationController';
+import ClearNotificationUseCase from './clearNotificationUseCase';
+import * as Controller from './clearNotificationController';
 
 const ClearNotificationController = new Controller.ClearNotificationController();
 

@@ -1,7 +1,7 @@
-import { Mapper } from '../../../shared/infra/Mapper';
+import { Mapper } from '../../../shared/infra/mapper';
 import { Comment } from '../domain/comment';
 import { ICommentDTO } from '../dtos/ICommentDTO';
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
 import { CommentText } from '../domain/commentText';
 import { UserId } from '../../users/domain/userId';
 import { PostId } from '../domain/postId';

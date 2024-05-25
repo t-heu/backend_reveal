@@ -1,4 +1,4 @@
-import { Mapper } from '../../../shared/infra/Mapper';
+import { Mapper } from '../../../shared/infra/mapper';
 import { HidePost } from '../domain/hidePost';
 
 // @ts-ignore

@@ -7,7 +7,6 @@
   "extends": [
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
   "globals": {
@@ -31,7 +30,13 @@
     "no-underscore-dangle": "off",
     "import/prefer-default-export": "off",
     "import/no-default-export": "off",
-    "prettier/prettier": "error",
+    "prettier/prettier": ["error", {
+      "endOfLine": "auto",
+      "printWidth": 220, // Ajuste a largura de linha conforme necessário
+      "singleQuote": true, // Outras opções de formatação
+      "trailingComma": "none", // Ajuste conforme necessário
+      "useTabs": false
+    }],
     "no-console": "off",
     "camelcase": "off",
     "class-methods-use-this": "off",

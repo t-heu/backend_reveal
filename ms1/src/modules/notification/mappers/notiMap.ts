@@ -1,7 +1,7 @@
-import { Mapper } from '../../../shared/infra/Mapper';
+import { Mapper } from '../../../shared/infra/mapper';
 import { INotis } from '../dtos/INoti';
 import { Notification } from '../domain/notification';
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
 import { UserId } from '../../users/domain/userId';
 
 class NotificationMap implements Mapper<Notification> {

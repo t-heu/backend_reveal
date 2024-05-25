@@ -1,5 +1,5 @@
-import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
-import { Entity } from '../../../shared/domain/Entity';
+import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
+import { Entity } from '../../../shared/domain/entity';
 
 export class NotiId extends Entity<any> {
   get id(): UniqueEntityID {

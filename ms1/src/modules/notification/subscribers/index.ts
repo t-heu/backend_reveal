@@ -1,5 +1,5 @@
-import { AfterCommentedPost } from './AfterCommentedPost';
-import { AfterLikedPost } from './AfterLikedPost';
+import { AfterCommentedPost } from './afterCommentedPost';
+import { AfterLikedPost } from './afterLikedPost';
 
 new AfterCommentedPost();
 new AfterLikedPost();
