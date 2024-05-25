@@ -19,8 +19,7 @@ class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
     private commentRepository: ICommentRepository,
     @inject('PostRepository')
     private postRepository: IPostRepository,
-    // @ts-ignore
-    @inject(delay(() => 'NotificationRepository'))
+    @inject('NotificationRepository')
     private notificationRepository: INotificationRepository,
   ) {}
 
