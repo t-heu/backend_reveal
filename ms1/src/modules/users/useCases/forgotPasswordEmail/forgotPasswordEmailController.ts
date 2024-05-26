@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import ForgotPasswordEmailUseCase from './forgotPasswordEmailUseCase';
-import { BaseController } from '../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 
 export class ForgotPasswordEmailController extends BaseController {
   constructor() {

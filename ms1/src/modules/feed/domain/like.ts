@@ -1,14 +1,14 @@
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
-import { UserId } from '../../users/domain/userId';
-import { PostId } from './postId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
+import { userId } from '@/modules/users/domain/userId';
+import { postId } from './postId';
 import { LikeId } from './likeId';
 import { PostLikedEvent } from './events/postLikedEvent';
 
 interface LikeProps {
-  owner_post: UserId;
-  postId: PostId;
-  userId: UserId;
+  owner_post: userId;
+  postID: postId;
+  userID: userId;
   dateTimePosted?: string | Date;
 }
 
@@ -25,12 +25,12 @@ export class Like extends AggregateRoot<LikeProps> {
     return this.props.dateTimePosted || new Date();
   }
 
-  get postId(): PostId {
-    return this.props.postId;
+  get postID(): postId {
+    return this.props.postID;
   }
 
-  get userId(): UserId {
-    return this.props.userId;
+  get userID(): userId {
+    return this.props.userID;
   }
 
   private constructor(props: LikeProps, id?: UniqueEntityID) {
@@ -40,7 +40,7 @@ export class Like extends AggregateRoot<LikeProps> {
   public static create(props: LikeProps, id?: UniqueEntityID): Like {
     const like = new Like({ ...props }, id);
 
-    if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
+    if (!id && props.owner_post.id.toString() !== props.userID.id.toString()) {
       like.addDomainEvent(new PostLikedEvent(like));
     }
     return like;

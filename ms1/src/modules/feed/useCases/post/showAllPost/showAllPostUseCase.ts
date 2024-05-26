@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { IPostRepository } from '../../../repos/IPostRepo';
 import { ShowAllPostDTO, ResponseDTO } from './showAllPostDTO';
-import { IUseCase } from '../../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()
 class ShowAllPostUseCase implements IUseCase<ShowAllPostDTO, ResponseDTO> {

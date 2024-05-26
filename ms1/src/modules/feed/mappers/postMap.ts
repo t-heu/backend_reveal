@@ -1,8 +1,8 @@
-import { Mapper } from '../../../shared/infra/mapper';
+import { Mapper } from '@/shared/infra/mapper';
 import { Post } from '../domain/post';
-import { UserId } from '../../users/domain/userId';
+import { userId } from '../../users/domain/userId';
 import { IPostDTO } from '../dtos/IPostDTO';
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { PostText } from '../domain/postText';
 
 class PostMap implements Mapper<Post> {
@@ -14,7 +14,7 @@ class PostMap implements Mapper<Post> {
       viewer_count_comments: t.totalNumComments,
       viewer_count_likes: t.totalNumlikes,
       viewer_has_liked: t.postLiked,
-      userId: t.userId.id.toString(),
+      userID: t.userID.id.toString(),
       viewer_has_hidePost: t.has_hidePost,
       user: {
         avatar_url: t.avatarUrl,
@@ -32,7 +32,7 @@ class PostMap implements Mapper<Post> {
         viewer_count_comments: raw.viewer_count_comments,
         viewer_count_likes: raw.viewer_count_likes,
         viewer_has_liked: raw.viewer_has_liked,
-        userId: UserId.create(new UniqueEntityID(raw.user_id)),
+        userID: userId.create(new UniqueEntityID(raw.user_id)),
         has_hidePost: raw.has_hidePost,
         photo: raw.user.photo,
       },
@@ -47,7 +47,7 @@ class PostMap implements Mapper<Post> {
       id: t.id.toValue().toString(),
       description: t.text.value,
       createdAt: t.dateTimePosted,
-      user_id: t.userId.id.toString(),
+      user_id: t.userID.id.toString(),
     };
   }
 }

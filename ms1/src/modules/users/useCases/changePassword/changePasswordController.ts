@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import ChangePasswordUseCase from './changePasswordUseCase';
-import { BaseController } from '../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 
 export class ChangePasswordController extends BaseController {
   constructor() {

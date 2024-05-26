@@ -5,7 +5,7 @@ export interface RegisterWithGoogleDTO {
   /* email: string;
   photo: string;
   name: string;
-  providerUserId: string;
+  provideruserID: string;
   providerName: string; */
 }
 

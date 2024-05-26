@@ -1,6 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 
-import Token from '../../../../../shared/infra/database/typeorm/entity/Token';
+import Token from '@/shared/infra/database/typeorm/entity/Token';
 import { ITokensRepository, ICreateDTO, ISave } from '../../ITokensRepo';
 
 class TokensRepository implements ITokensRepository {

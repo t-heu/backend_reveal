@@ -1,22 +1,20 @@
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
-import { UserId } from '../../users/domain/userId';
-import { PostId } from './postId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
+import { userId } from '@/modules/users/domain/userId';
+import { postId } from './postId';
 import { CommentText } from './commentText';
 import { CommentId } from './commentId';
-import { UserPhoto } from '../../users/domain/userPhoto';
-
-import { DomainEvents } from '../../../shared/domain/events/domainEvents';
+import { UserPhoto } from '@/modules/users/domain/userPhoto';
 import { PostCommentedEvent } from './events/postCommentedEvent';
 
 interface CommentProps {
   text: CommentText;
-  postId: PostId;
-  userId: UserId;
+  postID: postId;
+  userID: userId;
   dateTimePosted?: Date;
   photo?: string;
   avatarUrl?: string;
-  owner_post: UserId;
+  owner_post: userId;
 }
 export class Comment extends AggregateRoot<CommentProps> {
   get commentId(): CommentId {
@@ -35,12 +33,12 @@ export class Comment extends AggregateRoot<CommentProps> {
     return UserPhoto.create(this.props.photo).getUrl;
   }
 
-  get postId(): PostId {
-    return this.props.postId;
+  get postID(): postId {
+    return this.props.postID;
   }
 
-  get userId(): UserId {
-    return this.props.userId;
+  get userID(): userId {
+    return this.props.userID;
   }
 
   get text(): CommentText {
@@ -53,7 +51,7 @@ export class Comment extends AggregateRoot<CommentProps> {
 
   public static create(props: CommentProps, id?: UniqueEntityID): Comment {
     const comment = new Comment({ ...props }, id);
-    if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
+    if (!id && props.owner_post.id.toString() !== props.userID.id.toString()) {
       comment.addDomainEvent(new PostCommentedEvent(comment));
     }
     return comment;

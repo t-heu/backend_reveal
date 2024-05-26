@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import SearchPostUseCase from './searchPostUseCase';
-import { BaseController } from '../../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import PostMap from '../../../mappers/postMap';
 
 export class SearchPostController extends BaseController {

@@ -8,5 +8,5 @@ export interface ResponseFindAllCount {
 // DAO
 export interface ICommentRepository {
   create(data: Comment): Promise<void>;
-  findAllCount(skip: number, idPost: string): Promise<ResponseFindAllCount>;
+  findAllCount(skip: number, postID: string): Promise<ResponseFindAllCount>;
 }

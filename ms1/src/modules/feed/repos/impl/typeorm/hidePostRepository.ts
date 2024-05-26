@@ -1,7 +1,7 @@
 import { Repository, getRepository } from 'typeorm';
 
 import { HidePost } from '../../../domain/hidePost';
-import HidePostTypeorm from '../../../../../shared/infra/database/typeorm/entity/HidePost';
+import HidePostTypeorm from '@/shared/infra/database/typeorm/entity/HidePost';
 import { IHidePostRepository } from '../../IHidePostRepo';
 import HidePostMap from '../../../mappers/hidePostMap';
 
@@ -14,8 +14,8 @@ class HidePostRepository implements IHidePostRepository {
 
   public async exists(data: HidePost): Promise<boolean> {
     const like = await this.ormRepository.findOne({
-      user_id: data.userId.id.toString(),
-      post_id: data.postId.id.toString(),
+      user_id: data.userID.id.toString(),
+      post_id: data.postID.id.toString(),
     });
 
     return !!like;
@@ -23,8 +23,8 @@ class HidePostRepository implements IHidePostRepository {
 
   public async removeBlock(data: HidePost): Promise<void> {
     await this.ormRepository.delete({
-      user_id: data.userId.id.toString(),
-      post_id: data.postId.id.toString(),
+      user_id: data.userID.id.toString(),
+      post_id: data.postID.id.toString(),
     });
   }
 

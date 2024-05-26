@@ -1,8 +1,8 @@
 import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import { SwitchLikePostController } from '../../../useCases/likes/switchLikePost';
-import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated';
+import { SwitchLikePostController } from '../../../useCases/post/switchLikePost';
+import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
 
 const likeRouter = express.Router();
 

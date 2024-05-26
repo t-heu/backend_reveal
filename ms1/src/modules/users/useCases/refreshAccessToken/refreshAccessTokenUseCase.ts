@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { isAfter, addDays } from 'date-fns';
 
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { RequestDTO, ResponseDTO } from './refreshAccessTokenDTO';
@@ -44,7 +44,7 @@ class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {
     const user = await this.userRepository.findById(userToken.user_id);
 
     const access_token: JWTToken = Jwt.generateAccessToken({
-      userId: user.id.toValue().toString(),
+      userID: user.id.toValue().toString(),
     });
 
     /* if (isAfter(dateAge, addDays(RefreshtokenCreatedAt, 6))) {

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { BaseController } from '../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import RefreshAccessTokenUseCase from './refreshAccessTokenUseCase';
 
 export class RefreshAccessTokenController extends BaseController {

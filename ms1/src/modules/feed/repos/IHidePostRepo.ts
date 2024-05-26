@@ -1,5 +1,4 @@
 import { HidePost } from '../domain/hidePost';
-// (userID: string, idPost: string)
 
 export interface IHidePostRepository {
   exists(data: HidePost): Promise<boolean>;

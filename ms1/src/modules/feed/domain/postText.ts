@@ -1,11 +1,10 @@
-import { ValueObject } from '../../../shared/domain/valueObject';
+import { ValueObject } from '@/shared/domain/valueObject';
 interface PostTextProps {
   value: string;
 }
 
 export class PostText extends ValueObject<PostTextProps> {
   public static maxLength = 10000;
-
   public static minLength = 2;
 
   get value(): string {

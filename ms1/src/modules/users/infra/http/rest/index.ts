@@ -14,8 +14,8 @@ import { GetCurrentUserUserController } from '../../../useCases/getCurrentUser';
 import { RefreshAccessTokenController } from '../../../useCases/refreshAccessToken';
 import { VerifyEmailController } from '../../../useCases/verifyEmail';
 
-import cache from '../../../../../shared/infra/http/middlewares/cacheable';
-import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated';
+import cache from '@/shared/infra/http/middlewares/cacheable';
+import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
 import multerConfig from '../../../../../config/upload';
 
 const userRouter = express.Router();

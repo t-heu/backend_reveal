@@ -19,7 +19,7 @@ export default class ExternalAuth {
   providerName: string;
 
   @Column()
-  providerUserId: string;
+  provideruserID: string;
 
   @CreateDateColumn()
   createdAt: Date;

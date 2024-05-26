@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { UpdateUserAvatarDTO } from './updateUserAvatarDTO';
 

@@ -1,8 +1,7 @@
-import { IDomainEvent } from '../../../../shared/domain/events/IDomainEvent';
-import { UniqueEntityID } from '../../../../shared/domain/uniqueEntityID';
-import { Comment } from '../../../feed/domain/comment';
+import { IDomainEvent } from '@/shared/domain/events/IDomainEvent';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { Comment } from '@/modules/feed/domain/comment';
 // import { Post } from '../../../feed/domain/post';
-// import { Notification } from '../notification';
 
 export class PostCommentedEvent implements IDomainEvent {
   public dateTimeOccurred: Date;

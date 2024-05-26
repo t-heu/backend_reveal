@@ -1,6 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 
-import PushNotificationTokenTypeorm from '../../../../../shared/infra/database/typeorm/entity/PushNotificationToken';
+import PushNotificationTokenTypeorm from '@/shared/infra/database/typeorm/entity/PushNotificationToken';
 import {
   IPushNotificationTokenRepository,
   ICreateDTO,

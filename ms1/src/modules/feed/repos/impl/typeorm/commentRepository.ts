@@ -1,6 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 
-import CommentTypeorm from '../../../../../shared/infra/database/typeorm/entity/Comment';
+import CommentTypeorm from '@/shared/infra/database/typeorm/entity/Comment';
 import { Comment } from '../../../domain/comment';
 import { ICommentRepository, ResponseFindAllCount } from '../../ICommentRepo';
 import CommentMap from '../../../mappers/commentMap';
@@ -21,10 +21,10 @@ class CommentRepository implements ICommentRepository {
 
   public async findAllCount(
     skip: number,
-    idPost: string,
+    postID: string,
   ): Promise<ResponseFindAllCount> {
     const [result, total] = await this.ormRepository.findAndCount({
-      where: { post_id: idPost },
+      where: { post_id: postID },
       order: { createdAt: 'DESC' },
       take: 10,
       skip,

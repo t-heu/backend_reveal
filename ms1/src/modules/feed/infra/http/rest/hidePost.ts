@@ -1,8 +1,8 @@
 import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import { SwitchHidePostController } from '../../../useCases/hidePosts/switchHidePost';
-import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated';
+import { SwitchHidePostController } from '../../../useCases/post/switchHidePost';
+import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
 
 const hidePostRouter = express.Router();
 

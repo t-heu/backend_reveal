@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
-import { DomainEvents } from '../../../shared/domain/events/domainEvents';
-import { IHandle } from '../../../shared/domain/events/IHandle';
+import { DomainEvents } from '@/shared/domain/events/domainEvents';
+import { IHandle } from '@/shared/domain/events/IHandle';
 import { PostLikedEvent } from '../domain/events/postLikedEvent';
 import { CreateNotificationUseCase } from '../../notification/useCase/createNotification';
-import { RabbitMQHandler } from '../../../shared/infra/rabbitmq/rabbitMQHandler';
+import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
 
 export class AfterLikedPost implements IHandle {
   private rabbitMQHandler: RabbitMQHandler;
@@ -37,7 +37,7 @@ export class AfterLikedPost implements IHandle {
       title: 'Someone commented your post',
       description: this.craftMessage(),
       type: 'like',
-      postID: like.postId.id.toString(),
+      postID: like.postID.id.toString(),
     })
 
     await this.rabbitMQHandler.publishToQueue('notificationRegistrations', {

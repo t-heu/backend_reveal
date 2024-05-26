@@ -1,6 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 
-import PostTypeorm from '../../../../../shared/infra/database/typeorm/entity/Post';
+import PostTypeorm from '@/shared/infra/database/typeorm/entity/Post';
 import {
   IPostRepository,
   IResponseAndCount,
@@ -84,7 +84,6 @@ class PostRepository implements IPostRepository {
 
     if (!result) throw new Error('Post not found');
 
-    //return result;
     return PostMap.toDomain(result);
   }
 

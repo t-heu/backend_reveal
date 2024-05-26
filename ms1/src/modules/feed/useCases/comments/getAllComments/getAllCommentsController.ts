@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import GetAllCommentsUseCase from './getAllCommentsUseCase';
-import { BaseController } from '../../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import CommentMap from '../../../mappers/commentMap';
 
 export class GetAllCommentsController extends BaseController {
@@ -13,12 +13,12 @@ export class GetAllCommentsController extends BaseController {
   async executeImpl(req: Request, res: Response): Promise<any> {
     try {
       const { page = 1 } = req.query;
-      const idPost = req.params.id;
+      const postID = req.params.id;
   
       const comment = container.resolve(GetAllCommentsUseCase);
       const result = await comment.execute({
         page: Number(page),
-        idPost,
+        postID,
       });
   
       res.header('X-Total-Count', String(result.count));

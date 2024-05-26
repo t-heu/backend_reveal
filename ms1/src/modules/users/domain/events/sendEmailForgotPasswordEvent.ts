@@ -1,5 +1,5 @@
-import { IDomainEvent } from '../../../../shared/domain/events/IDomainEvent';
-import { UniqueEntityID } from '../../../../shared/domain/uniqueEntityID';
+import { IDomainEvent } from '@/shared/domain/events/IDomainEvent';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 
 import { User } from '../user';
 

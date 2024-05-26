@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { IPostRepository } from '../../../repos/IPostRepo';
 import { DeletePostDTO } from './deletePostDTO';
-import { IUseCase } from '../../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()
 class DeletePostUseCase implements IUseCase<DeletePostDTO, void> {
@@ -11,12 +11,12 @@ class DeletePostUseCase implements IUseCase<DeletePostDTO, void> {
     private postRepository: IPostRepository,
   ) {}
 
-  public async execute({ idPost }: DeletePostDTO): Promise<void> {
-    if (!(await this.postRepository.exists(idPost))) {
+  public async execute({ postID }: DeletePostDTO): Promise<void> {
+    if (!(await this.postRepository.exists(postID))) {
       throw new Error('post not exists');
     }
     
-    await this.postRepository.delete(idPost);
+    await this.postRepository.delete(postID);
   }
 }
 

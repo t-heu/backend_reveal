@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { BaseController } from '../../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import DeletePostUseCase from './deletePostUseCase';
 
 export class DeletePostController extends BaseController {
@@ -14,7 +14,7 @@ export class DeletePostController extends BaseController {
       const { id } = req.params;
 
       const post = container.resolve(DeletePostUseCase);
-      await post.execute({ idPost: id });
+      await post.execute({ postID: id });
 
       return this.created(res);
     } catch (err: any) {

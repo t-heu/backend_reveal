@@ -1,18 +1,12 @@
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
 import { PostText } from './postText';
-import { PostId } from './postId';
-import { UserId } from '../../users/domain/userId';
-import { UserPhoto } from '../../users/domain/userPhoto';
-
-import { DomainEvents } from '../../../shared/domain/events/domainEvents';
-import { Like } from '../../feed/domain/like';
-import { Comment } from '../../feed/domain/comment';
-import { PostLikedEvent } from './events/postLikedEvent';
-import { PostCommentedEvent } from './events/postCommentedEvent';
+import { postId } from './postId';
+import { userId } from '@/modules/users/domain/userId';
+import { UserPhoto } from '@/modules/users/domain/userPhoto';
 
 interface PostProps {
-  userId: UserId;
+  userID: postId;
   text: PostText;
   viewer_count_comments?: number;
   viewer_count_likes?: number;
@@ -24,16 +18,16 @@ interface PostProps {
 }
 
 export class Post extends AggregateRoot<PostProps> {
-  get postId(): PostId {
-    return PostId.create(this._id);
+  get postID(): postId {
+    return postId.create(this._id);
   }
 
   get id(): UniqueEntityID {
     return this._id;
   }
 
-  get userId(): UserId {
-    return this.props.userId;
+  get userID(): userId {
+    return this.props.userID;
   }
 
   get postLiked(): boolean {
@@ -66,18 +60,6 @@ export class Post extends AggregateRoot<PostProps> {
 
   private constructor(props: PostProps, id?: UniqueEntityID) {
     super(props, id);
-  }
-
-  public addComment(comment: Comment): void {
-    console.log('ID____: ', this)
-    
-    // this.addDomainEvent(new PostCommentedEvent(this, comment));
-    // DomainEvents.dispatchEventsForAggregate(comment.id);
-  }
-
-  public addLike(like: Like): void {
-    // this.addDomainEvent(new PostLikedEvent(like));
-    // DomainEvents.dispatchEventsForAggregate(this.id);
   }
 
   public static create(props: PostProps, id?: UniqueEntityID): Post {

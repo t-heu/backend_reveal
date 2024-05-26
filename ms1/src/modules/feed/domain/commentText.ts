@@ -1,4 +1,4 @@
-import { ValueObject } from '../../../shared/domain/valueObject';
+import { ValueObject } from '@/shared/domain/valueObject';
 
 interface CommentTextProps {
   value: string;
@@ -6,7 +6,6 @@ interface CommentTextProps {
 
 export class CommentText extends ValueObject<CommentTextProps> {
   public static maxLength = 10000;
-
   public static minLength = 3;
 
   get value(): string {

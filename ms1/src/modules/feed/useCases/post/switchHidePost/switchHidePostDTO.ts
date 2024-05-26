@@ -1,4 +1,4 @@
 export interface SwitchHidePostDTO {
-  idPost: string;
+  postID: string;
   userID: string;
 }

@@ -2,13 +2,13 @@ import { UserName } from './userName';
 import { UserEmail } from './userEmail';
 import { UserPassword } from './userPassword';
 import { UserPhoto } from './userPhoto';
-import { UserId } from './userId';
+import { userId } from './userId';
 import { SendEmailVerifyEvent } from './events/sendEmailVerifyEvent';
 import { SendEmailForgotPasswordEvent } from './events/sendEmailForgotPasswordEvent';
 import { JWTToken, RefreshToken } from './jwt';
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
-import { DomainEvents } from '../../../shared/domain/events/domainEvents';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
+import { DomainEvents } from '@/shared/domain/events/domainEvents';
 
 interface UserProps {
   email: UserEmail;
@@ -25,8 +25,8 @@ interface UserProps {
 }
 
 export class User extends AggregateRoot<UserProps> {
-  get userId(): UserId {
-    return UserId.create(this._id);
+  get userId(): userId {
+    return userId.create(this._id);
   }
 
   get id(): UniqueEntityID {

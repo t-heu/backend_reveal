@@ -1,9 +1,9 @@
 import { inject, injectable } from 'tsyringe';
 
-import { WebSocketHandler } from '../../../../shared/infra/ws/webSocketHandler';
+import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
 import { INotificationRepository } from '../../repos/INotification';
 import { RequestDTO } from './clearNotificationDTO';
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()
 class GetCountNotificationNotReadUseCase implements IUseCase<RequestDTO, void> {

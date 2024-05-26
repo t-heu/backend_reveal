@@ -1,7 +1,7 @@
 export interface IPostDTO {
   id: string;
   text: string;
-  userId: string;
+  userID: string;
   dateTimePosted: Date;
   viewer_has_liked: boolean;
   viewer_count_comments: number;

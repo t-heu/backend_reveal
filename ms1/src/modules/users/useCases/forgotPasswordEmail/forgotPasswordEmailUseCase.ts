@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { v4 as uuidv4 } from 'uuid';
 
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { ForgotPasswordEmailDTO } from './forgotPasswordEmailDTO';

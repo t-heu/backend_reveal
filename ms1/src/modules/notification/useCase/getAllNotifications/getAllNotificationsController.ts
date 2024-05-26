@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import { BaseController } from '../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import GetAllNotificationsUseCase from './getAllNotificationsUseCase';
-// import PostMap from '../../../mappers/postMap';
 
 export class GetAllNotificationsController extends BaseController {
   constructor() {
@@ -23,7 +22,7 @@ export class GetAllNotificationsController extends BaseController {
     res.header('X-Total-Count', String(result.count));
     return this.ok(
       res,
-      result, // .posts.map(p => PostMap.toDTO(p)),
+      result,
     );
   }
 }

@@ -1,7 +1,7 @@
 export interface ICreateDTO {
-  providerUserId: string;
+  provideruserID: string;
   providerName: string;
-  userId: string;
+  userID: string;
 }
 
 export interface IExternalAuthRepository {

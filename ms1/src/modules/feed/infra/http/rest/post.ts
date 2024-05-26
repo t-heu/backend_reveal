@@ -10,8 +10,8 @@ import { ShowOnePostController } from '../../../useCases/post/showOnePost';
 import { ShowAllLikesPostsController } from '../../../useCases/post/showAllLikesPosts';
 import { GetAllHidesPostController } from '../../../useCases/post/getAllHidesPost';
 
-import cache from '../../../../../shared/infra/http/middlewares/cacheable';
-import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated';
+import cache from '@/shared/infra/http/middlewares/cacheable';
+import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
 
 const postRouter = express.Router();
 

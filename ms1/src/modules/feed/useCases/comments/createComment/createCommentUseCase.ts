@@ -3,12 +3,12 @@ import { inject, injectable } from 'tsyringe';
 import { ICommentRepository } from '../../../repos/ICommentRepo';
 import { IPostRepository } from '../../../repos/IPostRepo';
 import { AddCommentDTO } from './createCommentDTO';
-import { IUseCase } from '../../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { CommentText } from '../../../domain/commentText';
 import { Comment } from '../../../domain/comment';
-import { PostId } from '../../../domain/postId';
-import { UserId } from '../../../../users/domain/userId';
-import { UniqueEntityID } from '../../../../../shared/domain/uniqueEntityID';
+import { postId } from '../../../domain/postId';
+import { userId } from '../../../../users/domain/userId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 
 @injectable()
 class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
@@ -29,10 +29,10 @@ class CreateCommentUseCase implements IUseCase<AddCommentDTO, void> {
     const post = await this.postRepository.getPostById(postID);
 
     const comment = Comment.create({
-      owner_post: UserId.create(new UniqueEntityID(post.userId.id.toString())),
+      owner_post: userId.create(new UniqueEntityID(post.userID.id.toString())),
       text,
-      userId: UserId.create(new UniqueEntityID(userID)),
-      postId: PostId.create(new UniqueEntityID(postID)),
+      userID: userId.create(new UniqueEntityID(userID)),
+      postID: postId.create(new UniqueEntityID(postID)),
     });
 
     // post.addComment(comment);

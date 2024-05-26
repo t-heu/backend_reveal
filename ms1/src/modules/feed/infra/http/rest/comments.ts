@@ -4,8 +4,8 @@ import { celebrate, Joi, Segments } from 'celebrate';
 import { CreateCommentController } from '../../../useCases/comments/createComment';
 import { GetAllCommentsController } from '../../../useCases/comments/getAllComments';
 
-import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated';
-import cache from '../../../../../shared/infra/http/middlewares/cacheable';
+import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
+import cache from '@/shared/infra/http/middlewares/cacheable';
 
 const commentRouter = express.Router();
 

@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
-import { DomainEvents } from '../../../shared/domain/events/domainEvents';
-import { IHandle } from '../../../shared/domain/events/IHandle';
+import { DomainEvents } from '@/shared/domain/events/domainEvents';
+import { IHandle } from '@/shared/domain/events/IHandle';
 import { PostCommentedEvent } from '../domain/events/postCommentedEvent';
 import { CommentText } from '../../feed/domain/commentText';
-import { RabbitMQHandler } from '../../../shared/infra/rabbitmq/rabbitMQHandler';
+import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
 import { CreateNotificationUseCase } from '../../notification/useCase/createNotification';
 
 export class AfterCommentedPost implements IHandle {
@@ -39,7 +39,7 @@ export class AfterCommentedPost implements IHandle {
       title: 'Someone commented your post',
       description: this.craftMessage(comment.text),
       type: 'comment',
-      postID: comment.postId.id.toString(),
+      postID: comment.postID.id.toString(),
     })
 
     await this.rabbitMQHandler.publishToQueue('notificationRegistrations', {

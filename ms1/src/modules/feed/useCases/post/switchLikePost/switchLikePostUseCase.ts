@@ -1,9 +1,9 @@
 import { inject, injectable } from 'tsyringe';
 
 import { Like } from '../../../domain/like';
-import { PostId } from '../../../domain/postId';
-import { UserId } from '../../../../users/domain/userId';
-import { UniqueEntityID } from '../../../../../shared/domain/uniqueEntityID';
+import { postId } from '../../../domain/postId';
+import { userId } from '../../../../users/domain/userId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { ILikeRepository } from '../../../repos/ILikeRepo';
 import { IPostRepository } from '../../../repos/IPostRepo';
 import { SwitchLikePostDTO } from './switchLikePostDTO';
@@ -17,17 +17,17 @@ class SwitchLikePostUseCase {
     private postRepository: IPostRepository,
   ) {}
 
-  public async execute({ idPost, userID }: SwitchLikePostDTO): Promise<void> {
-    const post_id = PostId.create(new UniqueEntityID(idPost));
-    const user_id = UserId.create(new UniqueEntityID(userID));
+  public async execute({ postID, userID }: SwitchLikePostDTO): Promise<void> {
+    const post_id = postId.create(new UniqueEntityID(postID));
+    const user_id = userId.create(new UniqueEntityID(userID));
 
-    const post = await this.postRepository.getPostById(idPost);
+    const post = await this.postRepository.getPostById(postID);
 
-    const owner_post = UserId.create(new UniqueEntityID(String(post.userId)));
+    const owner_post = userId.create(new UniqueEntityID(String(post.userID)));
 
     const like = Like.create({
-      userId: user_id,
-      postId: post_id,
+      userID: user_id,
+      postID: post_id,
       owner_post,
     });
 

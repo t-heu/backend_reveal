@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { AuthenticateUserDTO, ResponseDTO } from './authenticateUserDTO';
@@ -38,7 +38,7 @@ class AuthenticateUserUseCase
 
     const refresh_token: RefreshToken = Jwt.generateRefreshToken();
     const access_token: JWTToken = Jwt.generateAccessToken({
-      userId: user.id.toValue().toString(),
+      userID: user.id.toValue().toString(),
     });
 
     await this.tokensRepository.is_revogedAll(user.id.toString());

@@ -1,12 +1,12 @@
 import { inject, injectable } from 'tsyringe';
 
 import { HidePost } from '../../../domain/hidePost';
-import { PostId } from '../../../domain/postId';
-import { UserId } from '../../../../users/domain/userId';
-import { UniqueEntityID } from '../../../../../shared/domain/uniqueEntityID';
+import { postId } from '../../../domain/postId';
+import { userId } from '../../../../users/domain/userId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { IHidePostRepository } from '../../../repos/IHidePostRepo';
 import { SwitchHidePostDTO } from './switchHidePostDTO';
-import { IUseCase } from '../../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()
 class SwitchHidePostUseCase implements IUseCase<SwitchHidePostDTO, void> {
@@ -15,10 +15,10 @@ class SwitchHidePostUseCase implements IUseCase<SwitchHidePostDTO, void> {
     private hidePostRepository: IHidePostRepository,
   ) {}
 
-  public async execute({ idPost, userID }: SwitchHidePostDTO): Promise<void> {
-    const post_id = PostId.create(new UniqueEntityID(idPost));
-    const user_id = UserId.create(new UniqueEntityID(userID));
-    const hidePost = HidePost.create({ userId: user_id, postId: post_id });
+  public async execute({ postID, userID }: SwitchHidePostDTO): Promise<void> {
+    const post_id = postId.create(new UniqueEntityID(postID));
+    const user_id = userId.create(new UniqueEntityID(userID));
+    const hidePost = HidePost.create({ userID: user_id, postID: post_id });
 
     if (await this.hidePostRepository.exists(hidePost)) {
       await this.hidePostRepository.removeBlock(hidePost);

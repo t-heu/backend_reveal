@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import ShowAllUserPostsUseCase from './showAllUserPostsUseCase';
-import { BaseController } from '../../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import PostMap from '../../../mappers/postMap';
 
 export class ShowAllUserPostsController extends BaseController {

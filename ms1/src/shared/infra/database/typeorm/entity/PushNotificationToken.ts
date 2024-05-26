@@ -18,6 +18,9 @@ export default class PushNotificationToken {
   @Column()
   key: string;
 
+  @Column({ default: '' })
+  device_type: string;
+
   @CreateDateColumn()
   createdAt: Date;
 

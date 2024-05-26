@@ -1,10 +1,10 @@
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
-import { UserId } from '../../users/domain/userId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
+import { userId } from '../../users/domain/userId';
 import { NotiId } from './notiId';
 
 interface NotificationProps {
-  userId: UserId;
+  userID: userId;
   type: 'comment' | 'like';
   title: string;
   description: string;
@@ -46,8 +46,8 @@ export class Notification extends AggregateRoot<NotificationProps> {
     return this.props.type;
   }
 
-  get userId(): UserId {
-    return this.props.userId;
+  get userID(): userId {
+    return this.props.userID;
   }
 
   private constructor(props: NotificationProps, id?: UniqueEntityID) {

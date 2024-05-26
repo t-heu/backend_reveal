@@ -1,5 +1,5 @@
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { Entity } from '../../../shared/domain/entity';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { Entity } from '@/shared/domain/entity';
 
 export class LikeId extends Entity<any> {
   get id(): UniqueEntityID {

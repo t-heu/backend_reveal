@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import UserMap from '../../mappers/userMap';
-import { BaseController } from '../../../../shared/infra/baseController';
+import { BaseController } from '@/shared/infra/baseController';
 import RegisterWithGoogleUseCase from './registerWithGoogleUseCase';
 
 export class RegisterWithGoogleController extends BaseController {

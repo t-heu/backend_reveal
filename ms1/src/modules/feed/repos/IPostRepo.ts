@@ -1,5 +1,5 @@
 import { Post } from '../domain/post';
-import PostTypeorm from '../../../shared/infra/database/typeorm/entity/Post';
+import PostTypeorm from '@/shared/infra/database/typeorm/entity/Post';
 export interface IResponseAndCount {
   result: Post[];
   total: number;

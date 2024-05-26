@@ -2,7 +2,7 @@ import { Repository, getRepository } from 'typeorm';
 
 import { Like } from '../../../domain/like';
 import LikeMap from '../../../mappers/likeMap';
-import LikeTypeorm from '../../../../../shared/infra/database/typeorm/entity/Like';
+import LikeTypeorm from '@/shared/infra/database/typeorm/entity/Like';
 import { ILikeRepository } from '../../ILikeRepo';
 
 class LikeRepository implements ILikeRepository {
@@ -14,8 +14,8 @@ class LikeRepository implements ILikeRepository {
 
   public async exists(data: Like): Promise<boolean> {
     const like = await this.ormRepository.findOne({
-      user_id: data.userId.id.toString(),
-      post_id: data.postId.id.toString(),
+      user_id: data.userID.id.toString(),
+      post_id: data.postID.id.toString(),
     });
 
     return !!like;
@@ -23,8 +23,8 @@ class LikeRepository implements ILikeRepository {
 
   public async removeLike(data: Like): Promise<void> {
     await this.ormRepository.delete({
-      user_id: data.userId.id.toString(),
-      post_id: data.postId.id.toString(),
+      user_id: data.userID.id.toString(),
+      post_id: data.postID.id.toString(),
     });
   }
 

@@ -29,8 +29,8 @@ class WebSocketHandler {
     });
   }
 
-  sendNotification(userId: string, message: any): void {
-    const socketId = this.connectUsers[userId];
+  sendNotification(userID: string, message: any): void {
+    const socketId = this.connectUsers[userID];
     if (socketId) {
       this.io.to(socketId).emit('count_notification_not_read', message);
     }

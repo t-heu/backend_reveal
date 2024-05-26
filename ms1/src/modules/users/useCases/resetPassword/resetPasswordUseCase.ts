@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import { isAfter, addHours } from 'date-fns';
 
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { ITokensRepository } from '../../repos/ITokensRepo';
 import { UserPassword } from '../../domain/userPassword';

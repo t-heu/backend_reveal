@@ -1,10 +1,10 @@
 import { inject, injectable, delay } from 'tsyringe';
 
-import { WebSocketHandler } from '../../../../shared/infra/ws/webSocketHandler';
+import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
 import { IPostRepository } from '../../../feed/repos/IPostRepo';
 import { INotificationRepository } from '../../repos/INotification';
 import { IPushNotificationTokenRepository } from '../../repos/IPushNotificationToken';
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { Notification } from '../../domain/notification';
 
 interface Request {
@@ -32,14 +32,14 @@ class CreateNotification implements IUseCase<Request, string> {
   ) {}
 
   public async execute(data: Request): Promise<string> {
-    const {userId} = await this.postRepository.getPostById(data.postID);
+    const {userID} = await this.postRepository.getPostById(data.postID);
     
-    const user_id = userId.id.toString();
+    const user_id = userID.id.toString();
 
     const res = Notification.create({
       type: data.type,
       link: data.postID,
-      userId,
+      userID,
       title: data.title,
       description: data.description,
     });

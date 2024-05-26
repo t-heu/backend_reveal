@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { IPushNotificationTokenRepository } from '../../repos/IPushNotificationToken';
 import { RequestDTO } from './createPushTokenDTO';
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()
 class CreatePushTokenUseCase implements IUseCase<RequestDTO, void> {

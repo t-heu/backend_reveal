@@ -1,9 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { ICommentRepository } from '../../../repos/ICommentRepo';
-// import Comment from '../../../../shared/infra/database/typeorm/entity/Comment';
 import { ShowAllCommentsDTO, ResponseDTO } from './getAllCommentsDTO';
-import { IUseCase } from '../../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()
 class ShowAllCommentsUseCase
@@ -13,13 +12,10 @@ class ShowAllCommentsUseCase
     private commentRepository: ICommentRepository,
   ) {}
 
-  public async execute({
-    page,
-    idPost,
-  }: ShowAllCommentsDTO): Promise<ResponseDTO> {
+  public async execute({page,postID,}: ShowAllCommentsDTO): Promise<ResponseDTO> {
     const { result, total } = await this.commentRepository.findAllCount(
       page,
-      idPost,
+      postID,
     );
 
     return {

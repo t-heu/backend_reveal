@@ -1,8 +1,8 @@
-import { Mapper } from '../../../shared/infra/mapper';
+import { Mapper } from '@/shared/infra/mapper';
 import { INotis } from '../dtos/INoti';
 import { Notification } from '../domain/notification';
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { UserId } from '../../users/domain/userId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { userId } from '../../users/domain/userId';
 
 class NotificationMap implements Mapper<Notification> {
   public toDTO(t: Notification): INotis {
@@ -23,7 +23,7 @@ class NotificationMap implements Mapper<Notification> {
         type: raw.type,
         title: raw.title,
         dateTimePosted: new Date(raw.createdAt),
-        userId: UserId.create(new UniqueEntityID(raw.user_id)),
+        userID: userId.create(new UniqueEntityID(raw.user_id)),
         link: raw.link,
         read: raw.read,
       },
@@ -38,7 +38,7 @@ class NotificationMap implements Mapper<Notification> {
       type: t.type.toString(),
       description: t.description.toString(),
       createdAt: t.dateTimePosted,
-      user_id: t.userId.id.toString(),
+      user_id: t.userID.id.toString(),
       link: t.link.toString(),
       title: t.title.toString(),
     };

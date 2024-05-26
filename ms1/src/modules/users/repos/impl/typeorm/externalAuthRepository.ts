@@ -1,8 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 
-// import { User } from '../../../domain/user';
-// import UserMap from '../../../mappers/userMap';
-import ExternalAuth from '../../../../../shared/infra/database/typeorm/entity/ExternalAuth';
+import ExternalAuth from '@/shared/infra/database/typeorm/entity/ExternalAuth';
 import { ICreateDTO, IExternalAuthRepository } from '../../IExternalAuthRepo';
 
 class ExternalAuthRepository implements IExternalAuthRepository {
@@ -14,18 +12,18 @@ class ExternalAuthRepository implements IExternalAuthRepository {
 
   public async findLoginSocialOrCreate({
     providerName,
-    providerUserId,
-    userId,
+    provideruserID,
+    userID,
   }: ICreateDTO): Promise<void> {
     const response = await this.ormRepository.findOne({
-      where: { providerName, providerUserId },
+      where: { providerName, provideruserID },
     });
 
     if (!response) {
       const userCreated = this.ormRepository.create({
         providerName,
-        providerUserId,
-        user_id: userId,
+        provideruserID,
+        user_id: userID,
       });
 
       await this.ormRepository.save(userCreated);

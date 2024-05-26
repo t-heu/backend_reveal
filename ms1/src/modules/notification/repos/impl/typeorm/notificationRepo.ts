@@ -1,6 +1,6 @@
 import { Repository, getRepository } from 'typeorm';
 
-import NotificationTypeorm from '../../../../../shared/infra/database/typeorm/entity/Notification';
+import NotificationTypeorm from '@/shared/infra/database/typeorm/entity/Notification';
 import {
   INotificationRepository,
   FindAndCountDTO,

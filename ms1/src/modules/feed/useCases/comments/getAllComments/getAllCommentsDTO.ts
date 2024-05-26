@@ -2,7 +2,7 @@ import { Comment } from '../../../domain/comment';
 
 export interface ShowAllCommentsDTO {
   page: number;
-  idPost: string;
+  postID: string;
 }
 
 export interface ResponseDTO {

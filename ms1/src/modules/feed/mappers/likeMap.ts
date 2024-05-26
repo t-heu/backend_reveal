@@ -1,4 +1,4 @@
-import { Mapper } from '../../../shared/infra/mapper';
+import { Mapper } from '@/shared/infra/mapper';
 import { Like } from '../domain/like';
 
 // @ts-ignore
@@ -7,8 +7,8 @@ class LikeMap implements Mapper<Like> {
     return {
       id: t.id.toString(),
       createdAt: t.dateTimePosted,
-      post_id: t.postId.id.toValue(),
-      user_id: t.userId.id.toValue(),
+      post_id: t.postID.id.toValue(),
+      user_id: t.userID.id.toValue(),
     };
   }
 }

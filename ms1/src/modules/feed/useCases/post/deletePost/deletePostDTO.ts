@@ -1,3 +1,3 @@
 export interface DeletePostDTO {
-  idPost: string;
+  postID: string;
 }

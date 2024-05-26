@@ -1,18 +1,18 @@
-import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
-import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
-import { UserId } from '../../users/domain/userId';
-import { PostId } from './postId';
-import { HidePostId } from './hidePostId';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
+import { userId } from '@/modules/users/domain/userId';
+import { postId } from './postId';
+import { HidepostId } from './hidePostId';
 
 interface HidePostProps {
-  postId: PostId;
-  userId: UserId;
+  postID: postId;
+  userID: userId;
   dateTimePosted?: string | Date;
 }
 
 export class HidePost extends AggregateRoot<HidePostProps> {
-  get likeId(): HidePostId {
-    return HidePostId.create(this._id);
+  get likeId(): HidepostId {
+    return HidepostId.create(this._id);
   }
 
   get id(): UniqueEntityID {
@@ -23,12 +23,12 @@ export class HidePost extends AggregateRoot<HidePostProps> {
     return this.props.dateTimePosted || new Date();
   }
 
-  get postId(): PostId {
-    return this.props.postId;
+  get postID(): postId {
+    return this.props.postID;
   }
 
-  get userId(): UserId {
-    return this.props.userId;
+  get userID(): userId {
+    return this.props.userID;
   }
 
   private constructor(props: HidePostProps, id?: UniqueEntityID) {

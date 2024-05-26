@@ -4,6 +4,6 @@ export interface AuthProviderProfileInfo {
   lastName?: string;
   verified_email?: boolean;
   profilePictureUrl: string;
-  userId: number;
+  userID: number;
   userEmail: string;
 }

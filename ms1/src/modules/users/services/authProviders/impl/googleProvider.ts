@@ -18,7 +18,7 @@ export class GoogleService implements IGoogleService {
         fullName: data.given_name,
         verified_email: data.verified_email,
         profilePictureUrl: data.picture,
-        userId: data.id,
+        userID: data.id,
         userEmail: data.email,
       };
     } finally {

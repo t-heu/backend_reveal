@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IUseCase } from '../../../../shared/domain/useCase';
+import { IUseCase } from '@/shared/domain/useCase';
 import { IUserRepository } from '../../repos/IUserRepo';
 import { IExternalAuthRepository } from '../../repos/IExternalAuthRepo';
 import { RegisterWithGoogleDTO, ResponseDTO } from './registerWithGoogleDTO';
@@ -57,14 +57,14 @@ class RegisterWithGoogleUseCase
       user.user = userResponse;
 
       await this.externalAuthRepository.findLoginSocialOrCreate({
-        providerUserId: String(googleProfileInfo.userId),
+        provideruserID: String(googleProfileInfo.userID),
         providerName: 'Google',
-        userId: userResponse.id.toValue() as string,
+        userID: userResponse.id.toValue() as string,
       });
 
       const refreshToken: RefreshToken = Jwt.generateRefreshToken();
       const accessToken: JWTToken = Jwt.generateAccessToken({
-        userId: userResponse.id.toValue().toString(),
+        userID: userResponse.id.toValue().toString(),
       });
       userResponse.setAcessToken(accessToken, refreshToken);
     } else {
@@ -76,14 +76,14 @@ class RegisterWithGoogleUseCase
       user.user = alreadyUser;
 
       await this.externalAuthRepository.findLoginSocialOrCreate({
-        providerUserId: String(googleProfileInfo.userId),
+        provideruserID: String(googleProfileInfo.userID),
         providerName: 'Google',
-        userId: String(alreadyUser.id.toValue()),
+        userID: String(alreadyUser.id.toValue()),
       });
 
       const refreshToken: RefreshToken = Jwt.generateRefreshToken();
       const accessToken: JWTToken = Jwt.generateAccessToken({
-        userId: alreadyUser.id.toValue().toString(),
+        userID: alreadyUser.id.toValue().toString(),
       });
       alreadyUser.setAcessToken(accessToken, refreshToken);
     }
