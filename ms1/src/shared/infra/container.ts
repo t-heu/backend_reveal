@@ -24,8 +24,8 @@ import { IExternalAuthRepository } from '../../modules/users/repos/IExternalAuth
 import NotificationRepository from '../../modules/notification/repos/impl/typeorm/notificationRepo';
 import { INotificationRepository } from '../../modules/notification/repos/INotification';
 
-import NotificationKeyRepository from '../../modules/notification/repos/impl/typeorm/notificationKeysRepo';
-import { INotificationKeyRepository } from '../../modules/notification/repos/INotificationKeys';
+import PushNotificationTokenRepository from '../../modules/notification/repos/impl/typeorm/pushNotificationTokenRepo';
+import { IPushNotificationTokenRepository } from '../../modules/notification/repos/IPushNotificationToken';
 
 import { RabbitMQHandler } from './rabbitmq/rabbitMQHandler';
 import { WebSocketHandler } from './ws/webSocketHandler';
@@ -61,9 +61,9 @@ container.registerSingleton<INotificationRepository>(
   NotificationRepository,
 );
 
-container.registerSingleton<INotificationKeyRepository>(
-  'NotificationKeyRepository',
-  NotificationKeyRepository,
+container.registerSingleton<IPushNotificationTokenRepository>(
+  'PushNotificationTokenRepository',
+  PushNotificationTokenRepository,
 );
 
 // Providers

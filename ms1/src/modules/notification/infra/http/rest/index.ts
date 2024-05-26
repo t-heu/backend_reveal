@@ -2,8 +2,8 @@ import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
 import { GetAllNotificationsController } from '../../../useCase/getAllNotifications';
-import { CreateNotificationKeysController } from '../../../useCase/createNotificationKeys';
-import { DeleteNotificationKeysController } from '../../../useCase/deleteNotificationKeys';
+import { CreatePushTokenController } from '../../../useCase/createPushToken';
+import { DeletePushTokenController } from '../../../useCase/deletePushToken';
 import ensureAuthenticated from '../../../../../shared/infra/http/middlewares/ensureAuthenticated';
 
 const notificationRouter = express.Router();
@@ -27,7 +27,7 @@ notificationRouter.get(
     }).unknown(),
   }),
   ensureAuthenticated,
-  (req, res) => CreateNotificationKeysController.executeImpl(req, res),
+  (req, res) => CreatePushTokenController.executeImpl(req, res),
 );
 
 notificationRouter.get(
@@ -38,7 +38,7 @@ notificationRouter.get(
     }).unknown(),
   }),
   ensureAuthenticated,
-  (req, res) => DeleteNotificationKeysController.executeImpl(req, res),
+  (req, res) => DeletePushTokenController.executeImpl(req, res),
 );
 
 export default notificationRouter;

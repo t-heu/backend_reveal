@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '../../../../shared/infra/baseController';
-import CreateNotificationKeysUseCase from './createNotificationKeysUseCase';
+import CreatePushNotificationTokensUseCase from './createPushTokenUseCase';
 
-export class CreateNotificationKeysController extends BaseController {
+export class CreatePushTokenController extends BaseController {
   constructor() {
     super();
   }
@@ -13,7 +13,7 @@ export class CreateNotificationKeysController extends BaseController {
     const { key } = req.body;
     const userID = req.user.id;
 
-    const addKey = container.resolve(CreateNotificationKeysUseCase);
+    const addKey = container.resolve(CreatePushNotificationTokensUseCase);
     await addKey.execute({
       user_id: userID,
       key,

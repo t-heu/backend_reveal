@@ -5,6 +5,12 @@ import { PostId } from './postId';
 import { UserId } from '../../users/domain/userId';
 import { UserPhoto } from '../../users/domain/userPhoto';
 
+import { DomainEvents } from '../../../shared/domain/events/domainEvents';
+import { Like } from '../../feed/domain/like';
+import { Comment } from '../../feed/domain/comment';
+import { PostLikedEvent } from './events/postLikedEvent';
+import { PostCommentedEvent } from './events/postCommentedEvent';
+
 interface PostProps {
   userId: UserId;
   text: PostText;
@@ -60,6 +66,18 @@ export class Post extends AggregateRoot<PostProps> {
 
   private constructor(props: PostProps, id?: UniqueEntityID) {
     super(props, id);
+  }
+
+  public addComment(comment: Comment): void {
+    console.log('ID____: ', this)
+    
+    // this.addDomainEvent(new PostCommentedEvent(this, comment));
+    // DomainEvents.dispatchEventsForAggregate(comment.id);
+  }
+
+  public addLike(like: Like): void {
+    // this.addDomainEvent(new PostLikedEvent(like));
+    // DomainEvents.dispatchEventsForAggregate(this.id);
   }
 
   public static create(props: PostProps, id?: UniqueEntityID): Post {

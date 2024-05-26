@@ -5,9 +5,7 @@ export interface Request {
   title: string;
   body: string;
   data: any;
-  link: string;
-  type: string;
-  user_id: string;
+  token: string;
 }
 
 const expo = new Expo();
@@ -16,22 +14,13 @@ async function sendPushNotification({
   title,
   body,
   data,
-  link,
-  type,
-  user_id,
+  token
 }: Request): Promise<void> {
   const messages: ExpoPushMessage[] = [];
   const somePushTokens: string[] = [];
   const tickets: any[] = [];
   const receiptIds: string[] = [];
-  const token = "aaa";
-
-  /*const token = await createNotification.execute({
-    description: body,
-    link,
-    title,
-    type,
-  });*/
+  // const token = "aaa";
 
   if (token) {
     somePushTokens.push(token);
@@ -40,7 +29,6 @@ async function sendPushNotification({
   for (const pushToken of somePushTokens) {
     if (!Expo.isExpoPushToken(pushToken)) {
       console.error(`Push token ${pushToken} is not a valid Expo push token`);
-      //deleteNotificationKeysUseCase.execute({ user_id, key: pushToken });
       continue;
     }
 
@@ -62,10 +50,6 @@ async function sendPushNotification({
 
       if (ticketChunk[1]?.status === 'error') {
         console.log(ticketChunk[1].message.split('"')[1]);
-        //deleteNotificationKeysUseCase.execute({
-        //  user_id,
-        //  key: ticketChunk[1].message.split('"')[1],
-        //});
       }
     } catch (error) {
       console.log(error);

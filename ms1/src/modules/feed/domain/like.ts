@@ -3,7 +3,7 @@ import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
 import { UserId } from '../../users/domain/userId';
 import { PostId } from './postId';
 import { LikeId } from './likeId';
-import { PostLiked } from './events/postLiked';
+import { PostLikedEvent } from './events/postLikedEvent';
 
 interface LikeProps {
   owner_post: UserId;
@@ -39,9 +39,9 @@ export class Like extends AggregateRoot<LikeProps> {
 
   public static create(props: LikeProps, id?: UniqueEntityID): Like {
     const like = new Like({ ...props }, id);
-    // if (!id) like.addDomainEvent(new PostLiked(like));
+
     if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
-      // like.addDomainEvent(new PostLiked(like));
+      like.addDomainEvent(new PostLikedEvent(like));
     }
     return like;
   }

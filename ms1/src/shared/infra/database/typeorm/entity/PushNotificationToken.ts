@@ -11,7 +11,7 @@ import {
 import User from './User';
 
 @Entity()
-export default class NotificationKey {
+export default class PushNotificationToken {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

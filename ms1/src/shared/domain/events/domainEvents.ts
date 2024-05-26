@@ -42,7 +42,7 @@ export class DomainEvents {
     id: UniqueEntityID,
   ): AggregateRoot<any> | null {
     for (const aggregate of this.markedAggregates) {
-      console.log('ids: ', aggregate.id, id);
+      // console.log('ids: ', aggregate.id, id);
       if (aggregate.id.equals(id)) {
         return aggregate;
       }

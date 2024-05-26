@@ -44,7 +44,7 @@ class PushNotificationFirebase {
       });
     } catch (err) {
       console.log("deleted")
-      //deleteNotificationKeysUseCase.execute({ user_id, key: token });
+      //deletePushNotificationTokensUseCase.execute({ user_id, key: token });
     }
   }
 }

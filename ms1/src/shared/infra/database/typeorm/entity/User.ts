@@ -18,7 +18,7 @@ import Like from './Like';
 import Token from './Token';
 import ExternalAuth from './ExternalAuth';
 import Notification from './Notification';
-import NotificationKey from './NotificationKey';
+import PushNotificationToken from './PushNotificationToken';
 
 @Entity()
 export default class User {
@@ -70,8 +70,8 @@ export default class User {
   @OneToMany(() => ExternalAuth, profile => profile.user)
   external_auths: ExternalAuth[];
 
-  @OneToMany(() => NotificationKey, key => key.user)
-  notification_keys: NotificationKey[];
+  @OneToMany(() => PushNotificationToken, key => key.user)
+  notification_keys: PushNotificationToken[];
 
   @AfterInsert()
   dispatchAggregateEvents(): void {

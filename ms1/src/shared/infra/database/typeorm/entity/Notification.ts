@@ -6,11 +6,7 @@ import {
   Column,
   ManyToOne,
   JoinColumn,
-  AfterInsert
 } from 'typeorm';
-
-import { DomainEvents } from '../../../../domain/events/domainEvents';
-import { UniqueEntityID } from '../../../../domain/uniqueEntityID';
 
 import User from './User';
 
@@ -46,10 +42,4 @@ export default class Notification {
   @ManyToOne(() => User, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'user_id' })
   user: User;
-
-  @AfterInsert()
-  dispatchAggregateEvents(): void {
-    const aggregateId = new UniqueEntityID(this.id);
-    DomainEvents.dispatchEventsForAggregate(aggregateId);
-  }
 }

@@ -1,13 +1,7 @@
 import { UniqueEntityID } from '../../../shared/domain/uniqueEntityID';
 import { AggregateRoot } from '../../../shared/domain/aggregateRoot';
-import { DomainEvents } from '../../../shared/domain/events/domainEvents';
 import { UserId } from '../../users/domain/userId';
 import { NotiId } from './notiId';
-import { PostLikedEvent } from './events/postLikedEvent';
-import { PostCommentedEvent } from './events/postCommentedEvent';
-
-import { Like } from '../../feed/domain/like';
-import { Comment } from '../../feed/domain/comment';
 
 interface NotificationProps {
   userId: UserId;
@@ -17,7 +11,6 @@ interface NotificationProps {
   link: string;
   dateTimePosted?: string | Date;
   read?: boolean;
-  eventData?: Like | Comment;
 }
 
 export class Notification extends AggregateRoot<NotificationProps> {
@@ -53,10 +46,6 @@ export class Notification extends AggregateRoot<NotificationProps> {
     return this.props.type;
   }
 
-  get eventData(): Like | Comment | undefined {
-    return this.props.eventData || undefined;
-  }
-
   get userId(): UserId {
     return this.props.userId;
   }
@@ -70,19 +59,6 @@ export class Notification extends AggregateRoot<NotificationProps> {
     id?: UniqueEntityID,
   ): Notification {
     const notification = new Notification({ ...props }, id);
-
-    if (!id) notification.dispatchDomainEvents();
     return notification;
-  }
-
-  private dispatchDomainEvents(): void {
-    if (this.props.type === 'comment') {
-      this.addDomainEvent(
-        new PostCommentedEvent(this.props.eventData as Comment)
-      );
-    } else if (this.props.type === 'like') {
-      this.addDomainEvent(new PostLikedEvent(this.props.eventData as Like));
-    }
-    DomainEvents.dispatchEventsForAggregate(this.id);
   }
 }

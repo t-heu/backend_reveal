@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '../../../../shared/infra/baseController';
-import DeleteNotificationKeysUseCase from './deleteNotificationKeysUseCase';
+import DeletePushNotificationTokensUseCase from './deletePushTokenUseCase';
 
-export class DeleteNotificationKeysController extends BaseController {
+export class DeletePushTokenController extends BaseController {
   constructor() {
     super();
   }
@@ -13,7 +13,7 @@ export class DeleteNotificationKeysController extends BaseController {
     const { key } = req.body;
     const userID = req.user.id;
 
-    const deleteKey = container.resolve(DeleteNotificationKeysUseCase);
+    const deleteKey = container.resolve(DeletePushNotificationTokensUseCase);
     await deleteKey.execute({
       user_id: userID,
       key,

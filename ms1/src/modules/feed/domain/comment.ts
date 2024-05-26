@@ -5,7 +5,9 @@ import { PostId } from './postId';
 import { CommentText } from './commentText';
 import { CommentId } from './commentId';
 import { UserPhoto } from '../../users/domain/userPhoto';
-import { PostCommented } from './events/postCommented';
+
+import { DomainEvents } from '../../../shared/domain/events/domainEvents';
+import { PostCommentedEvent } from './events/postCommentedEvent';
 
 interface CommentProps {
   text: CommentText;
@@ -50,11 +52,10 @@ export class Comment extends AggregateRoot<CommentProps> {
   }
 
   public static create(props: CommentProps, id?: UniqueEntityID): Comment {
-    const post = new Comment({ ...props }, id);
-
+    const comment = new Comment({ ...props }, id);
     if (!id && props.owner_post.id.toString() !== props.userId.id.toString()) {
-      // post.addDomainEvent(new PostCommented(post));
+      comment.addDomainEvent(new PostCommentedEvent(comment));
     }
-    return post;
+    return comment;
   }
 }
