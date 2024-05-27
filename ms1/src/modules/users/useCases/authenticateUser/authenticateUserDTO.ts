@@ -1,5 +1,5 @@
-import { User } from '../../domain/user';
-import { RefreshToken, JWTToken } from '../../domain/jwt';
+import { User } from '@/modules/users/domain/user';
+import { RefreshToken, JWTToken } from '@/modules/users/domain/jwt';
 
 export interface AuthenticateUserDTO {
   email: string;

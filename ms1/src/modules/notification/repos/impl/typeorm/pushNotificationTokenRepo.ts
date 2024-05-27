@@ -4,7 +4,7 @@ import PushNotificationTokenTypeorm from '@/shared/infra/database/typeorm/entity
 import {
   IPushNotificationTokenRepository,
   ICreateDTO,
-} from '../../IPushNotificationToken';
+} from '@/modules/notification/repos/IPushNotificationToken';
 
 class PushNotificationTokenRepository implements IPushNotificationTokenRepository {
   private ormRepository: Repository<PushNotificationTokenTypeorm>;

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import ResetPasswordUseCase from './resetPasswordUseCase';
+import ResetPasswordUseCase from '@/modules/users/useCases/resetPassword/resetPasswordUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class ResetPasswordController extends BaseController {

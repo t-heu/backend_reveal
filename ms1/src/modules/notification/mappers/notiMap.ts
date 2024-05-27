@@ -1,8 +1,8 @@
 import { Mapper } from '@/shared/infra/mapper';
-import { INotis } from '../dtos/INoti';
-import { Notification } from '../domain/notification';
+import { INotis } from '@/modules/notification/dtos/INoti';
+import { Notification } from '@/modules/notification/domain/notification';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { userId } from '../../users/domain/userId';
+import { userId } from '@/modules/users/domain/userId';
 
 class NotificationMap implements Mapper<Notification> {
   public toDTO(t: Notification): INotis {

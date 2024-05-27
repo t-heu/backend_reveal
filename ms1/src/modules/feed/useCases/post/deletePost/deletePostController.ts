@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '@/shared/infra/baseController';
-import DeletePostUseCase from './deletePostUseCase';
+import DeletePostUseCase from '@/modules/feed/useCases/post/deletePost/deletePostUseCase';
 
 export class DeletePostController extends BaseController {
   constructor() {

@@ -1,12 +1,12 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IPostRepository } from '../../../repos/IPostRepo';
-import { userId } from '../../../../users/domain/userId';
+import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { CreatePostDTO } from './createPostDTO';
+import { CreatePostDTO } from '@/modules/feed/useCases/post/createPost/createPostDTO';
 import { IUseCase } from '@/shared/domain/useCase';
-import { Post } from '../../../domain/post';
-import { PostText } from '../../../domain/postText';
+import { Post } from '@/modules/feed/domain/post';
+import { PostText } from '@/modules/feed/domain/postText';
 
 @injectable()
 class CreatePostUseCase implements IUseCase<CreatePostDTO, void> {

@@ -2,9 +2,9 @@ import { inject, injectable } from 'tsyringe';
 import { isAfter, addHours } from 'date-fns';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '../../repos/IUserRepo';
-import { ITokensRepository } from '../../repos/ITokensRepo';
-import { VerifyEmailDTO } from './verifyEmailDTO';
+import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { VerifyEmailDTO } from '@/modules/users/useCases/verifyEmail/verifyEmailDTO';
 
 @injectable()
 class VerifyEmailUseCase implements IUseCase<VerifyEmailDTO, void> {

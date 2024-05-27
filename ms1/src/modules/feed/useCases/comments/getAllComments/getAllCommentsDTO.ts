@@ -1,4 +1,4 @@
-import { Comment } from '../../../domain/comment';
+import { Comment } from '@/modules/feed/domain/comment';
 
 export interface ShowAllCommentsDTO {
   page: number;

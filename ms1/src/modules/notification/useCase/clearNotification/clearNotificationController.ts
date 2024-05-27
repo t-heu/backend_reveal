@@ -1,6 +1,6 @@
 import { container } from 'tsyringe';
 
-import ClearNotificationUseCase from './clearNotificationUseCase';
+import ClearNotificationUseCase from '@/modules/notification/useCase/clearNotification/clearNotificationUseCase';
 
 interface IRequestDTO {
   userID: string;

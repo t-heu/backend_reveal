@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import UserMap from '../../mappers/userMap';
+import UserMap from '@/modules/users/mappers/userMap';
 import { BaseController } from '@/shared/infra/baseController';
-import AuthenticateUserUseCase from './authenticateUserUseCase';
+import AuthenticateUserUseCase from '@/modules/users/useCases/authenticateUser/authenticateUserUseCase';
 
 export class AuthenticateUserController extends BaseController {
   constructor() {

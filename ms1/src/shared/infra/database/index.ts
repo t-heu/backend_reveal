@@ -1,4 +1,4 @@
-import createConnection from './typeorm';
+import createConnection from '@/shared/infra/database/typeorm';
 
 // typeorm
 createConnection();

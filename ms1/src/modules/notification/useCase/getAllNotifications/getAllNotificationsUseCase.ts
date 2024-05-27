@@ -1,10 +1,10 @@
 import { inject, injectable, delay } from 'tsyringe';
 
 import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
-import { INotificationRepository } from '../../repos/INotification';
-import { GetAllHidesPostDTO, ResponseDTO } from './getAllNotificationsDTO';
+import { INotificationRepository } from '@/modules/notification/repos/INotification';
+import { GetAllHidesPostDTO, ResponseDTO } from '@/modules/notification/useCase/getAllNotifications/getAllNotificationsDTO';
 import { IUseCase } from '@/shared/domain/useCase';
-import NotiMap from '../../mappers/notiMap';
+import NotiMap from '@/modules/notification/mappers/notiMap';
 
 @injectable()
 class GetAllNotificationsUseCase

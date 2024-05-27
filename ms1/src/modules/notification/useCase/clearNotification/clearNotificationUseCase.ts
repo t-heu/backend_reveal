@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
-import { INotificationRepository } from '../../repos/INotification';
-import { RequestDTO } from './clearNotificationDTO';
+import { INotificationRepository } from '@/modules/notification/repos/INotification';
+import { RequestDTO } from '@/modules/notification/useCase/clearNotification/clearNotificationDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()

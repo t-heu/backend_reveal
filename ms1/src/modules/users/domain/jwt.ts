@@ -2,7 +2,7 @@ import { sign } from 'jsonwebtoken';
 import randtoken from 'rand-token';
 
 import { Entity } from '@/shared/domain/entity';
-import * as authConfig from '../../../config/auth';
+import * as authConfig from '@/config/auth';
 
 export interface JWTClaims {
   userID?: string;

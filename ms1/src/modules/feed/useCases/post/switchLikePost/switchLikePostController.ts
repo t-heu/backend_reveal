@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import SwitchLikePostUseCase from './switchLikePostUseCase';
+import SwitchLikePostUseCase from '@/modules/feed/useCases/post/switchLikePost/switchLikePostUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class SwitchLikePostController extends BaseController {

@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import UserMap from '../../mappers/userMap';
+import UserMap from '@/modules/users/mappers/userMap';
 import { BaseController } from '@/shared/infra/baseController';
-import RegisterWithGoogleUseCase from './registerWithGoogleUseCase';
+import RegisterWithGoogleUseCase from '@/modules/users/useCases/registerWithGoogle/registerWithGoogleUseCase';
 
 export class RegisterWithGoogleController extends BaseController {
   constructor() {

@@ -1,4 +1,4 @@
-import dotenv from 'dotenv';
+
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 import morganBody from 'morgan-body';
@@ -9,12 +9,10 @@ import multer from 'multer';
 import { Server } from 'http';
 import { container } from 'tsyringe';
 
-import { WebSocketHandler } from './ws/webSocketHandler';
-import v1Router from './http/api/v1';
-import rateLimiter from './http/middlewares/rateLimiter';
-import { log } from './logger';
-
-dotenv.config();
+import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
+import v1Router from '@/shared/infra/http/api/v1';
+import rateLimiter from '@/shared/infra/http/middlewares/rateLimiter';
+import { log } from '@/shared/infra/logger';
 
 const app = express();
 const server = new Server(app);

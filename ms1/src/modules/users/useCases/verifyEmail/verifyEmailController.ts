@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import VerifyEmailUseCase from './verifyEmailUseCase';
+import VerifyEmailUseCase from '@/modules/users/useCases/verifyEmail/verifyEmailUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class VerifyEmailController extends BaseController {

@@ -1,5 +1,5 @@
 import { ValueObject } from '@/shared/domain/valueObject';
-import UploadConfig from '../../../config/upload';
+import UploadConfig from '@/config/upload';
 
 export interface UserPhotoProps {
   value: string;

@@ -1,12 +1,12 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '../../repos/IUserRepo';
-import { ITokensRepository } from '../../repos/ITokensRepo';
-import { AuthenticateUserDTO, ResponseDTO } from './authenticateUserDTO';
-import { UserEmail } from '../../domain/userEmail';
-import { UserPassword } from '../../domain/userPassword';
-import { RefreshToken, Jwt, JWTToken } from '../../domain/jwt';
+import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { AuthenticateUserDTO, ResponseDTO } from '@/modules/users/useCases/authenticateUser/authenticateUserDTO';
+import { UserEmail } from '@/modules/users/domain/userEmail';
+import { UserPassword } from '@/modules/users/domain/userPassword';
+import { RefreshToken, Jwt, JWTToken } from '@/modules/users/domain/jwt';
 
 @injectable()
 class AuthenticateUserUseCase

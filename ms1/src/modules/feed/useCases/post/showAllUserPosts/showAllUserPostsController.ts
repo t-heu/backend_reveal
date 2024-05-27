@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import ShowAllUserPostsUseCase from './showAllUserPostsUseCase';
+import ShowAllUserPostsUseCase from '@/modules/feed/useCases/post/showAllUserPosts/showAllUserPostsUseCase';
 import { BaseController } from '@/shared/infra/baseController';
-import PostMap from '../../../mappers/postMap';
+import PostMap from '@/modules/feed/mappers/postMap';
 
 export class ShowAllUserPostsController extends BaseController {
   constructor() {

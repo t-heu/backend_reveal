@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '@/shared/infra/baseController';
-import CreatePushNotificationTokensUseCase from './createPushTokenUseCase';
+import CreatePushNotificationTokensUseCase from '@/modules/notification/useCase/createPushToken/createPushTokenUseCase';
 
 export class CreatePushTokenController extends BaseController {
   constructor() {

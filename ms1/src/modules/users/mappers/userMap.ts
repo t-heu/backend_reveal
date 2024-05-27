@@ -1,11 +1,11 @@
 import { Mapper } from '@/shared/infra/mapper';
-import { User } from '../domain/user';
-import { IUserDTO } from '../dtos/IUserDTO';
+import { User } from '@/modules/users/domain/user';
+import { IUserDTO } from '@/modules/users/dtos/IUserDTO';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { UserName } from '../domain/userName';
-import { UserPassword } from '../domain/userPassword';
-import { UserEmail } from '../domain/userEmail';
-import { UserPhoto } from '../domain/userPhoto';
+import { UserName } from '@/modules/users/domain/userName';
+import { UserPassword } from '@/modules/users/domain/userPassword';
+import { UserEmail } from '@/modules/users/domain/userEmail';
+import { UserPhoto } from '@/modules/users/domain/userPhoto';
 
 class UserMap implements Mapper<User> {
   public toDTO(t: User): IUserDTO {

@@ -1,5 +1,5 @@
 import { container } from 'tsyringe';
-import CreateNotificationUseCase from './createNotification';
+import CreateNotificationUseCase from '@/modules/notification/useCase/createNotification/createNotification';
 
 const CreateNotification = container.resolve(CreateNotificationUseCase);
 

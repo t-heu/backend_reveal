@@ -1,9 +1,9 @@
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { AggregateRoot } from '@/shared/domain/aggregateRoot';
 import { userId } from '@/modules/users/domain/userId';
-import { postId } from './postId';
-import { LikeId } from './likeId';
-import { PostLikedEvent } from './events/postLikedEvent';
+import { postId } from '@/modules/feed/domain/postId';
+import { LikeId } from '@/modules/feed/domain/likeId';
+import { PostLikedEvent } from '@/modules/feed/domain/events/postLikedEvent';
 
 interface LikeProps {
   owner_post: userId;

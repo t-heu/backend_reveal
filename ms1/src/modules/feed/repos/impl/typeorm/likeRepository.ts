@@ -1,9 +1,9 @@
 import { Repository, getRepository } from 'typeorm';
 
-import { Like } from '../../../domain/like';
-import LikeMap from '../../../mappers/likeMap';
+import { Like } from '@/modules/feed/domain/like';
+import LikeMap from '@/modules/feed/mappers/likeMap';
 import LikeTypeorm from '@/shared/infra/database/typeorm/entity/Like';
-import { ILikeRepository } from '../../ILikeRepo';
+import { ILikeRepository } from '@/modules/feed/repos/ILikeRepo';
 
 class LikeRepository implements ILikeRepository {
   private ormRepository: Repository<LikeTypeorm>;

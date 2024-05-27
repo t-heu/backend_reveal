@@ -1,5 +1,5 @@
 import { WatchedList } from '@/shared/domain/watchedList';
-import { Comment } from './comment';
+import { Comment } from '@/modules/feed/domain/comment';
 
 export class Comments extends WatchedList<Comment> {
   private constructor(initial: Comment[]) {

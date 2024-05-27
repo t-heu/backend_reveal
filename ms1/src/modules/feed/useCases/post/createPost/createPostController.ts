@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '@/shared/infra/baseController';
-import CreatePostUseCase from './createPostUseCase';
+import CreatePostUseCase from '@/modules/feed/useCases/post/createPost/createPostUseCase';
 
 export class CreatePostController extends BaseController {
   constructor() {

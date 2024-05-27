@@ -1,7 +1,7 @@
 import { IDomainEvent } from '@/shared/domain/events/IDomainEvent';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 
-import { User } from '../user';
+import { User } from '@/modules/users/domain/user';
 
 export class SendEmailVerifyEvent implements IDomainEvent {
   public dateTimeOccurred: Date;

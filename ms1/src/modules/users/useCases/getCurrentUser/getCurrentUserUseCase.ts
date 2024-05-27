@@ -1,9 +1,9 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '../../repos/IUserRepo';
-import { GetCurrentUserDTO } from './getCurrentUserDTO';
-import { User } from '../../domain/user';
+import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { GetCurrentUserDTO } from '@/modules/users/useCases/getCurrentUser/getCurrentUserDTO';
+import { User } from '@/modules/users/domain/user';
 
 @injectable()
 class GetCurrentUserUseCase implements IUseCase<GetCurrentUserDTO, User> {

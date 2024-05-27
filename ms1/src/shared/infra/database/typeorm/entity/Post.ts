@@ -9,10 +9,10 @@ import {
   OneToMany,
 } from 'typeorm';
 
-import User from './User';
-import Comment from './Comment';
-import Like from './Like';
-import HidePost from './HidePost';
+import User from '@/shared/infra/database/typeorm/entity/User';
+import Comment from '@/shared/infra/database/typeorm/entity/Comment';
+import Like from '@/shared/infra/database/typeorm/entity/Like';
+import HidePost from '@/shared/infra/database/typeorm/entity/HidePost';
 
 @Entity()
 export default class Post {

@@ -8,8 +8,8 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import Post from './Post';
-import User from './User';
+import Post from '@/shared/infra/database/typeorm/entity/Post';
+import User from '@/shared/infra/database/typeorm/entity/User';
 
 @Entity()
 export default class HidePost {

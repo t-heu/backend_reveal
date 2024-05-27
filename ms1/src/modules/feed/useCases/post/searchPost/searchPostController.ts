@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import SearchPostUseCase from './searchPostUseCase';
+import SearchPostUseCase from '@/modules/feed/useCases/post/searchPost/searchPostUseCase';
 import { BaseController } from '@/shared/infra/baseController';
-import PostMap from '../../../mappers/postMap';
+import PostMap from '@/modules/feed/mappers/postMap';
 
 export class SearchPostController extends BaseController {
   constructor() {

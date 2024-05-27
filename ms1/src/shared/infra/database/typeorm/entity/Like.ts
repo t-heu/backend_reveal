@@ -9,10 +9,10 @@ import {
   AfterInsert,
 } from 'typeorm';
 
-import { DomainEvents } from '../../../../domain/events/domainEvents';
-import { UniqueEntityID } from '../../../../domain/uniqueEntityID';
-import Post from './Post';
-import User from './User';
+import { DomainEvents } from '@/shared/domain/events/domainEvents';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
+import Post from '@/shared/infra/database/typeorm/entity/Post';
+import User from '@/shared/infra/database/typeorm/entity/User';
 
 @Entity()
 export default class Likes {

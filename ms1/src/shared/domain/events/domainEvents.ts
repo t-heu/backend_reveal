@@ -1,7 +1,7 @@
 /* eslint no-restricted-syntax: "error" */
-import { IDomainEvent } from './IDomainEvent';
-import { AggregateRoot } from '../aggregateRoot';
-import { UniqueEntityID } from '../uniqueEntityID';
+import { IDomainEvent } from '@/shared/domain/events/IDomainEvent';
+import { AggregateRoot } from '@/shared/domain/aggregateRoot';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 
 export class DomainEvents {
   private static handlersMap = {} as any;

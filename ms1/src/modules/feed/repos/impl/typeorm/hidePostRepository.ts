@@ -1,9 +1,9 @@
 import { Repository, getRepository } from 'typeorm';
 
-import { HidePost } from '../../../domain/hidePost';
+import { HidePost } from '@/modules/feed/domain/hidePost';
 import HidePostTypeorm from '@/shared/infra/database/typeorm/entity/HidePost';
-import { IHidePostRepository } from '../../IHidePostRepo';
-import HidePostMap from '../../../mappers/hidePostMap';
+import { IHidePostRepository } from '@/modules/feed/repos/IHidePostRepo';
+import HidePostMap from '@/modules/feed/mappers/hidePostMap';
 
 class HidePostRepository implements IHidePostRepository {
   private ormRepository: Repository<HidePostTypeorm>;

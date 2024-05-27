@@ -1,5 +1,5 @@
-import RefreshAccessTokenUseCase from './refreshAccessTokenUseCase';
-import * as Controller from './refreshAccessTokenController';
+import RefreshAccessTokenUseCase from '@/modules/users/useCases/refreshAccessToken/refreshAccessTokenUseCase';
+import * as Controller from '@/modules/users/useCases/refreshAccessToken/refreshAccessTokenController';
 
 const RefreshAccessTokenController = new Controller.RefreshAccessTokenController();
 

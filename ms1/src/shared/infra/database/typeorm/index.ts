@@ -7,15 +7,15 @@ import {
   ConnectionOptions,
 } from 'typeorm';
 
-import HidePost from './entity/HidePost';
-import Comment from './entity/Comment';
-import Like from './entity/Like';
-import Post from './entity/Post';
-import User from './entity/User';
-import ExternalAuth from './entity/ExternalAuth';
-import Token from './entity/Token';
-import Notification from './entity/Notification';
-import PushNotificationToken from './entity/PushNotificationToken';
+import HidePost from '@/shared/infra/database/typeorm/entity/HidePost';
+import Comment from '@/shared/infra/database/typeorm/entity/Comment';
+import Like from '@/shared/infra/database/typeorm/entity/Like';
+import Post from '@/shared/infra/database/typeorm/entity/Post';
+import User from '@/shared/infra/database/typeorm/entity/User';
+import ExternalAuth from '@/shared/infra/database/typeorm/entity/ExternalAuth';
+import Token from '@/shared/infra/database/typeorm/entity/Token';
+import Notification from '@/shared/infra/database/typeorm/entity/Notification';
+import PushNotificationToken from '@/shared/infra/database/typeorm/entity/PushNotificationToken';
 
 config({
   path: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
@@ -45,7 +45,7 @@ const optionsPostgress: ConnectionOptions = {
 
 const options = optionsPostgress;
 
-export default async (): Promise<Connection> => {
+export default async (): Promise<Connection | any> => {
   try {
     const defaultOptions = await getConnectionOptions();
 

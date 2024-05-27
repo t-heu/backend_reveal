@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import UserMap from '../../mappers/userMap';
+import UserMap from '@/modules/users/mappers/userMap';
 import { BaseController } from '@/shared/infra/baseController';
-import GetCurrentUserUserUseCase from './getCurrentUserUseCase';
+import GetCurrentUserUserUseCase from '@/modules/users/useCases/getCurrentUser/getCurrentUserUseCase';
 
 export class GetCurrentUserUserController extends BaseController {
   constructor() {

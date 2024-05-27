@@ -1,11 +1,11 @@
 import { Repository, getRepository } from 'typeorm';
 
-import { User } from '../../../domain/user';
-import { UserEmail } from '../../../domain/userEmail';
-import UserMap from '../../../mappers/userMap';
+import { User } from '@/modules/users/domain/user';
+import { UserEmail } from '@/modules/users/domain/userEmail';
+import UserMap from '@/modules/users/mappers/userMap';
 import UserTypeorm from '@/shared/infra/database/typeorm/entity/User';
 
-import { IUserRepository, IEditDTO } from '../../IUserRepo';
+import { IUserRepository, IEditDTO } from '@/modules/users/repos/IUserRepo';
 
 class UserRepository implements IUserRepository {
   private ormRepository: Repository<UserTypeorm>;

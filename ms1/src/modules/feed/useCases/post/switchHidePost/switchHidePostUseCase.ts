@@ -1,11 +1,11 @@
 import { inject, injectable } from 'tsyringe';
 
-import { HidePost } from '../../../domain/hidePost';
-import { postId } from '../../../domain/postId';
-import { userId } from '../../../../users/domain/userId';
+import { HidePost } from '@/modules/feed/domain/hidePost';
+import { postId } from '@/modules/feed/domain/postId';
+import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { IHidePostRepository } from '../../../repos/IHidePostRepo';
-import { SwitchHidePostDTO } from './switchHidePostDTO';
+import { IHidePostRepository } from '@/modules/feed/repos/IHidePostRepo';
+import { SwitchHidePostDTO } from '@/modules/feed/useCases/post/switchHidePost/switchHidePostDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()

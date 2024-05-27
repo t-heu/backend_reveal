@@ -8,7 +8,7 @@ class WebSocketHandler {
 
   initialize(server: Server): void {
     this.io = socket(server);
-    console.log('ws: ', this.io.on);
+    // console.log('ws: ', this.io.on);
 
     this.io.on('connection', (socket: any) => {
       const { user } = socket.handshake.query;

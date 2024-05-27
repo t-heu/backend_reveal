@@ -1,4 +1,4 @@
-import { Like } from '../domain/like';
+import { Like } from '@/modules/feed/domain/like';
 
 export interface ILikeRepository {
   exists(data: Like): Promise<boolean>;

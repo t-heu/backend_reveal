@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateCommentUseCase from './createCommentUseCase';
+import CreateCommentUseCase from '@/modules/feed/useCases/comments/createComment/createCommentUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class CreateCommentController extends BaseController {

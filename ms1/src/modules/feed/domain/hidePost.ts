@@ -1,8 +1,8 @@
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { AggregateRoot } from '@/shared/domain/aggregateRoot';
 import { userId } from '@/modules/users/domain/userId';
-import { postId } from './postId';
-import { HidepostId } from './hidePostId';
+import { postId } from '@/modules/feed/domain/postId';
+import { HidepostId } from '@/modules/feed/domain/hidePostId';
 
 interface HidePostProps {
   postID: postId;

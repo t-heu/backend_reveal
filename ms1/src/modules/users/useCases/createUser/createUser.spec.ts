@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 import CreateUserUseCase from "./createUserUseCase";
 import { IUserRepository } from '../../repos/IUserRepo';
-import { SendEmailVerifyUseCase } from '../sendEmailVerify';
+import { VerifyEmailUseCase } from '../verifyEmail';
 
 // Mock do repositório de usuários para simular comportamento
 const mockUserRepository: IUserRepository = {
@@ -26,7 +26,7 @@ const mockUserRepository: IUserRepository = {
 };
 
 // Mock da instância de SendEmailVerifyUseCase
-const mockSendEmailVerifyUseCase: SendEmailVerifyUseCase = {
+const mockVerifyEmailUseCase: VerifyEmailUseCase = {
   execute: jest.fn(), // Mock a função execute para evitar realmente enviar e-mails durante os testes
 };
 
@@ -34,7 +34,7 @@ describe('CreateUserUseCase', () => {
   it('deve criar um novo usuário com sucesso', async () => {
     const createUserUseCase = new CreateUserUseCase(
       mockUserRepository,
-      mockSendEmailVerifyUseCase
+      mockVerifyEmailUseCase
     );
 
     const createUserDTO = {
@@ -52,7 +52,7 @@ describe('CreateUserUseCase', () => {
   it('deve lançar um erro se o e-mail já estiver em uso', async () => {
     const createUserUseCase = new CreateUserUseCase(
       mockUserRepository,
-      mockSendEmailVerifyUseCase
+      mockVerifyEmailUseCase
     );
 
     const createUserDTO = {

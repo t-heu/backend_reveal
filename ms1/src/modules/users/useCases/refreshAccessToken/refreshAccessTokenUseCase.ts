@@ -2,10 +2,10 @@ import { inject, injectable } from 'tsyringe';
 import { isAfter, addDays } from 'date-fns';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '../../repos/IUserRepo';
-import { ITokensRepository } from '../../repos/ITokensRepo';
-import { RequestDTO, ResponseDTO } from './refreshAccessTokenDTO';
-import { Jwt, JWTToken } from '../../domain/jwt';
+import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { RequestDTO, ResponseDTO } from '@/modules/users/useCases/refreshAccessToken/refreshAccessTokenDTO';
+import { Jwt, JWTToken } from '@/modules/users/domain/jwt';
 
 @injectable()
 class RefreshAccessTokenUseCase implements IUseCase<RequestDTO, ResponseDTO> {

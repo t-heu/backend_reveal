@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { AggregateRoot } from '@/shared/domain/aggregateRoot';
-import { PostText } from './postText';
-import { postId } from './postId';
+import { PostText } from '@/modules/feed/domain/postText';
+import { postId } from '@/modules/feed/domain/postId';
 import { userId } from '@/modules/users/domain/userId';
 import { UserPhoto } from '@/modules/users/domain/userPhoto';
 

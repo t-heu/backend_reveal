@@ -8,7 +8,7 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import User from './User';
+import User from '@/shared/infra/database/typeorm/entity/User';
 
 @Entity()
 export default class ExternalAuth {

@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { Request } from 'express';
 import path from 'path';
 import crypto from 'crypto';
-import aws from 'aws-sdk';
+// import aws from 'aws-sdk';
 import multerS3 from 'multer-s3';
 import { Storage } from '@google-cloud/storage';
 import Jimp from 'jimp';
@@ -54,7 +54,7 @@ export class UploadStorage {
 
   s3(): void {
     multerS3({
-      s3: new aws.S3(),
+      //s3: new aws.S3(),
       bucket: process.env.AWS_BUCKET_NAME as string,
       contentType: multerS3.AUTO_CONTENT_TYPE,
       acl: 'public-read',

@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import GetAllCommentsUseCase from './getAllCommentsUseCase';
+import GetAllCommentsUseCase from '@/modules/feed/useCases/comments/getAllComments/getAllCommentsUseCase';
 import { BaseController } from '@/shared/infra/baseController';
-import CommentMap from '../../../mappers/commentMap';
+import CommentMap from '@/modules/feed/mappers/commentMap';
 
 export class GetAllCommentsController extends BaseController {
   constructor() {

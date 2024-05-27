@@ -1,4 +1,4 @@
-import { Post } from '../domain/post';
+import { Post } from '@/modules/feed/domain/post';
 import PostTypeorm from '@/shared/infra/database/typeorm/entity/Post';
 export interface IResponseAndCount {
   result: Post[];

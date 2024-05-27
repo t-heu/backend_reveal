@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import UpdateUserAvatarUseCase from './updateUserAvatarUseCase';
+import UpdateUserAvatarUseCase from '@/modules/users/useCases/updateUserAvatar/updateUserAvatarUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class UpdateUserAvatarController extends BaseController {

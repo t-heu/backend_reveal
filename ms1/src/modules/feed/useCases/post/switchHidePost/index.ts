@@ -1,5 +1,5 @@
-import SwitchHidePostUseCase from './switchHidePostUseCase';
-import * as Controller from './switchHidePostController';
+import SwitchHidePostUseCase from '@/modules/feed/useCases/post/switchHidePost/switchHidePostUseCase';
+import * as Controller from '@/modules/feed/useCases/post/switchHidePost/switchHidePostController';
 
 const SwitchHidePostController = new Controller.SwitchHidePostController();
 

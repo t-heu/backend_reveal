@@ -2,7 +2,7 @@ import { container } from 'tsyringe';
 
 import { DomainEvents } from '@/shared/domain/events/domainEvents';
 import { IHandle } from '@/shared/domain/events/IHandle';
-import { SendEmailForgotPasswordEvent } from '../domain/events/sendEmailForgotPasswordEvent';
+import { SendEmailForgotPasswordEvent } from '@/modules/users/domain/events/sendEmailForgotPasswordEvent';
 
 import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
 

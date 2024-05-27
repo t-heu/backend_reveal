@@ -1,7 +1,7 @@
 import { Repository, getRepository } from 'typeorm';
 
 import ExternalAuth from '@/shared/infra/database/typeorm/entity/ExternalAuth';
-import { ICreateDTO, IExternalAuthRepository } from '../../IExternalAuthRepo';
+import { ICreateDTO, IExternalAuthRepository } from '@/modules/users/repos/IExternalAuthRepo';
 
 class ExternalAuthRepository implements IExternalAuthRepository {
   private ormRepository: Repository<ExternalAuth>;

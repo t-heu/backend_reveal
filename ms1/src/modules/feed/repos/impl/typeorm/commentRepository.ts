@@ -1,9 +1,9 @@
 import { Repository, getRepository } from 'typeorm';
 
 import CommentTypeorm from '@/shared/infra/database/typeorm/entity/Comment';
-import { Comment } from '../../../domain/comment';
-import { ICommentRepository, ResponseFindAllCount } from '../../ICommentRepo';
-import CommentMap from '../../../mappers/commentMap';
+import { Comment } from '@/modules/feed/domain/comment';
+import { ICommentRepository, ResponseFindAllCount } from '@/modules/feed/repos/ICommentRepo';
+import CommentMap from '@/modules/feed/mappers/commentMap';
 
 class CommentRepository implements ICommentRepository {
   private ormRepository: Repository<CommentTypeorm>;

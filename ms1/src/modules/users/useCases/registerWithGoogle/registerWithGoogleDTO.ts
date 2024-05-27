@@ -1,4 +1,4 @@
-import { User } from '../../domain/user';
+import { User } from '@/modules/users/domain/user';
 
 export interface RegisterWithGoogleDTO {
   accessTokenGoogle: string;

@@ -1,4 +1,4 @@
-import { RefreshToken, JWTToken } from '../../domain/jwt';
+import { RefreshToken, JWTToken } from '@/modules/users/domain/jwt';
 
 export interface RequestDTO {
   refresh_token: RefreshToken;

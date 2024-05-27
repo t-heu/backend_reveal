@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IPostRepository } from '../../../repos/IPostRepo';
-import { GetAllHidesPostDTO, ResponseDTO } from './getAllHidesPostDTO';
+import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { GetAllHidesPostDTO, ResponseDTO } from '@/modules/feed/useCases/post/getAllHidesPost/getAllHidesPostDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()

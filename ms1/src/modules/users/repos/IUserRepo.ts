@@ -1,5 +1,5 @@
-import { User } from '../domain/user';
-import { UserEmail } from '../domain/userEmail';
+import { User } from '@/modules/users/domain/user';
+import { UserEmail } from '@/modules/users/domain/userEmail';
 
 interface IData {
   password?: string;

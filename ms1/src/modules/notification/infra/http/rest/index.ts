@@ -1,9 +1,9 @@
 import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import { GetAllNotificationsController } from '../../../useCase/getAllNotifications';
-import { CreatePushTokenController } from '../../../useCase/createPushToken';
-import { DeletePushTokenController } from '../../../useCase/deletePushToken';
+import { GetAllNotificationsController } from '@/modules/notification/useCase/getAllNotifications';
+import { CreatePushTokenController } from '@/modules/notification/useCase/createPushToken';
+import { DeletePushTokenController } from '@/modules/notification/useCase/deletePushToken';
 import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
 
 const notificationRouter = express.Router();

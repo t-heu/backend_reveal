@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import SwitchHidePostUseCase from './switchHidePostUseCase';
+import SwitchHidePostUseCase from '@/modules/feed/useCases/post/switchHidePost/switchHidePostUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class SwitchHidePostController extends BaseController {

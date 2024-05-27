@@ -1,4 +1,4 @@
-import { INotis } from '../../dtos/INoti';
+import { INotis } from '@/modules/notification/dtos/INoti';
 
 export interface GetAllHidesPostDTO {
   skip: number;

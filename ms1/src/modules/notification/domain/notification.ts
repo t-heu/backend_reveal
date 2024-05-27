@@ -1,7 +1,7 @@
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { AggregateRoot } from '@/shared/domain/aggregateRoot';
-import { userId } from '../../users/domain/userId';
-import { NotiId } from './notiId';
+import { userId } from '@/modules/users/domain/userId';
+import { NotiId } from '@/modules/notification/domain/notiId';
 
 interface NotificationProps {
   userID: userId;

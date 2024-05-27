@@ -1,10 +1,10 @@
 import { container } from 'tsyringe';
 import { DomainEvents } from '@/shared/domain/events/domainEvents';
 import { IHandle } from '@/shared/domain/events/IHandle';
-import { PostCommentedEvent } from '../domain/events/postCommentedEvent';
-import { CommentText } from '../../feed/domain/commentText';
+import { PostCommentedEvent } from '@/modules/feed/domain/events/postCommentedEvent';
+import { CommentText } from '@/modules/feed/domain/commentText';
 import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
-import { CreateNotificationUseCase } from '../../notification/useCase/createNotification';
+import { CreateNotificationUseCase } from '@/modules/notification/useCase/createNotification';
 
 export class AfterCommentedPost implements IHandle {
   private rabbitMQHandler: RabbitMQHandler;
@@ -17,7 +17,6 @@ export class AfterCommentedPost implements IHandle {
   }
 
   setupSubscriptions(): void {
-    console.log('aq')
     // Register to the domain event
     DomainEvents.register(
       // @ts-ignore

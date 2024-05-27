@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '@/shared/infra/baseController';
-import DeletePushNotificationTokensUseCase from './deletePushTokenUseCase';
+import DeletePushNotificationTokensUseCase from '@/modules/notification/useCase/deletePushToken/deletePushTokenUseCase';
 
 export class DeletePushTokenController extends BaseController {
   constructor() {

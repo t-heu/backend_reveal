@@ -1,11 +1,11 @@
 import { inject, injectable, delay } from 'tsyringe';
 
 import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
-import { IPostRepository } from '../../../feed/repos/IPostRepo';
-import { INotificationRepository } from '../../repos/INotification';
-import { IPushNotificationTokenRepository } from '../../repos/IPushNotificationToken';
+import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { INotificationRepository } from '@/modules/notification/repos/INotification';
+import { IPushNotificationTokenRepository } from '@/modules/notification/repos/IPushNotificationToken';
 import { IUseCase } from '@/shared/domain/useCase';
-import { Notification } from '../../domain/notification';
+import { Notification } from '@/modules/notification/domain/notification';
 
 interface Request {
   type: 'comment' | 'like';

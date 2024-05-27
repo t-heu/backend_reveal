@@ -1,8 +1,8 @@
 import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import { CreateCommentController } from '../../../useCases/comments/createComment';
-import { GetAllCommentsController } from '../../../useCases/comments/getAllComments';
+import { CreateCommentController } from '@/modules/feed/useCases/comments/createComment';
+import { GetAllCommentsController } from '@/modules/feed/useCases/comments/getAllComments';
 
 import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
 import cache from '@/shared/infra/http/middlewares/cacheable';

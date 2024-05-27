@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { ICommentRepository } from '../../../repos/ICommentRepo';
-import { ShowAllCommentsDTO, ResponseDTO } from './getAllCommentsDTO';
+import { ICommentRepository } from '@/modules/feed/repos/ICommentRepo';
+import { ShowAllCommentsDTO, ResponseDTO } from '@/modules/feed/useCases/comments/getAllComments/getAllCommentsDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 
 @injectable()

@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { AuthProviderProfileInfo } from '../models/authProviderProfileInfo';
-import { AuthProvider } from '../models/authProvider';
+import { AuthProviderProfileInfo } from '@/modules/users/services/authProviders/models/authProviderProfileInfo';
+import { AuthProvider } from '@/modules/users/services/authProviders/models/authProvider';
 
 export interface IGoogleService extends AuthProvider {
   getProfileInfo: () => Promise<AuthProviderProfileInfo>;

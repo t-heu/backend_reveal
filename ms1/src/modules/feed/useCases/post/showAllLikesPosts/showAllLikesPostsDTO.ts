@@ -1,4 +1,4 @@
-import { Post } from '../../../domain/post';
+import { Post } from '@/modules/feed/domain/post';
 
 export interface ShowAllLikesPostsDTO {
   skip: number;

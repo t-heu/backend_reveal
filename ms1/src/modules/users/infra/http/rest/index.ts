@@ -2,21 +2,21 @@ import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import multer from 'multer';
 
-import { CreateUserController } from '../../../useCases/createUser';
-import { ChangePasswordController } from '../../../useCases/changePassword';
-import { UpdateUserNameController } from '../../../useCases/updateUserName';
-import { AuthenticateUserController } from '../../../useCases/authenticateUser';
-import { RegisterWithGoogleController } from '../../../useCases/registerWithGoogle';
-import { UpdateUserAvatarController } from '../../../useCases/updateUserAvatar';
-import { ResetPasswordController } from '../../../useCases/resetPassword';
-import { ForgotPasswordEmailController } from '../../../useCases/forgotPasswordEmail';
-import { GetCurrentUserUserController } from '../../../useCases/getCurrentUser';
-import { RefreshAccessTokenController } from '../../../useCases/refreshAccessToken';
-import { VerifyEmailController } from '../../../useCases/verifyEmail';
+import { CreateUserController } from '@/modules/users/useCases/createUser';
+import { ChangePasswordController } from '@/modules/users/useCases/changePassword';
+import { UpdateUserNameController } from '@/modules/users/useCases/updateUserName';
+import { AuthenticateUserController } from '@/modules/users/useCases/authenticateUser';
+import { RegisterWithGoogleController } from '@/modules/users/useCases/registerWithGoogle';
+import { UpdateUserAvatarController } from '@/modules/users/useCases/updateUserAvatar';
+import { ResetPasswordController } from '@/modules/users/useCases/resetPassword';
+import { ForgotPasswordEmailController } from '@/modules/users/useCases/forgotPasswordEmail';
+import { GetCurrentUserUserController } from '@/modules/users/useCases/getCurrentUser';
+import { RefreshAccessTokenController } from '@/modules/users/useCases/refreshAccessToken';
+import { VerifyEmailController } from '@/modules/users/useCases/verifyEmail';
 
 import cache from '@/shared/infra/http/middlewares/cacheable';
 import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';
-import multerConfig from '../../../../../config/upload';
+import multerConfig from '@/config/upload';
 
 const userRouter = express.Router();
 const upload = multer(multerConfig.multer).single('photo');

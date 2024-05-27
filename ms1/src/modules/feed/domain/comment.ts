@@ -1,11 +1,11 @@
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { AggregateRoot } from '@/shared/domain/aggregateRoot';
 import { userId } from '@/modules/users/domain/userId';
-import { postId } from './postId';
-import { CommentText } from './commentText';
-import { CommentId } from './commentId';
+import { postId } from '@/modules/feed/domain/postId';
+import { CommentText } from '@/modules/feed/domain//commentText';
+import { CommentId } from '@/modules/feed/domain//commentId';
 import { UserPhoto } from '@/modules/users/domain/userPhoto';
-import { PostCommentedEvent } from './events/postCommentedEvent';
+import { PostCommentedEvent } from '@/modules/feed/domain/events/postCommentedEvent';
 
 interface CommentProps {
   text: CommentText;

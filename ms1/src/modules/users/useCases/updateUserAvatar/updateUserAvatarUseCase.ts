@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '../../repos/IUserRepo';
-import { UpdateUserAvatarDTO } from './updateUserAvatarDTO';
+import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { UpdateUserAvatarDTO } from '@/modules/users/useCases/updateUserAvatar/updateUserAvatarDTO';
 
 @injectable()
 class UpdateUserAvatarUseCase implements IUseCase<UpdateUserAvatarDTO, void> {

@@ -8,17 +8,17 @@ import {
   AfterInsert,
 } from 'typeorm';
 
-import { DomainEvents } from '../../../../domain/events/domainEvents';
-import { UniqueEntityID } from '../../../../domain/uniqueEntityID';
+import { DomainEvents } from '@/shared/domain/events/domainEvents';
+import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 
-import Post from './Post';
-import Comment from './Comment';
-import HidePost from './HidePost';
-import Like from './Like';
-import Token from './Token';
-import ExternalAuth from './ExternalAuth';
-import Notification from './Notification';
-import PushNotificationToken from './PushNotificationToken';
+import Post from '@/shared/infra/database/typeorm/entity/Post';
+import Comment from '@/shared/infra/database/typeorm/entity/Comment';
+import HidePost from '@/shared/infra/database/typeorm/entity/HidePost';
+import Like from '@/shared/infra/database/typeorm/entity/Like';
+import Token from '@/shared/infra/database/typeorm/entity/Token';
+import ExternalAuth from '@/shared/infra/database/typeorm/entity/ExternalAuth';
+import Notification from '@/shared/infra/database/typeorm/entity/Notification';
+import PushNotificationToken from '@/shared/infra/database/typeorm/entity/PushNotificationToken';
 
 @Entity()
 export default class User {

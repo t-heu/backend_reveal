@@ -1,13 +1,13 @@
 import { inject, injectable } from 'tsyringe';
 
-import { ICommentRepository } from '../../../repos/ICommentRepo';
-import { IPostRepository } from '../../../repos/IPostRepo';
-import { AddCommentDTO } from './createCommentDTO';
+import { ICommentRepository } from '@/modules/feed/repos/ICommentRepo';
+import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { AddCommentDTO } from '@/modules/feed/useCases/comments/createComment/createCommentDTO';
 import { IUseCase } from '@/shared/domain/useCase';
-import { CommentText } from '../../../domain/commentText';
-import { Comment } from '../../../domain/comment';
-import { postId } from '../../../domain/postId';
-import { userId } from '../../../../users/domain/userId';
+import { CommentText } from '@/modules/feed/domain/commentText';
+import { Comment } from '@/modules/feed/domain/comment';
+import { postId } from '@/modules/feed/domain/postId';
+import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 
 @injectable()

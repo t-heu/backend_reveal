@@ -1,8 +1,8 @@
 import { container } from 'tsyringe';
 import { DomainEvents } from '@/shared/domain/events/domainEvents';
 import { IHandle } from '@/shared/domain/events/IHandle';
-import { PostLikedEvent } from '../domain/events/postLikedEvent';
-import { CreateNotificationUseCase } from '../../notification/useCase/createNotification';
+import { PostLikedEvent } from '@/modules/feed/domain/events/postLikedEvent';
+import { CreateNotificationUseCase } from '@/modules/notification/useCase/createNotification';
 import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
 
 export class AfterLikedPost implements IHandle {

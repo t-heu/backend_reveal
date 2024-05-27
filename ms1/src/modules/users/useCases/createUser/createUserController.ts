@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
-import CreateUserUseCase from './createUserUseCase';
+import CreateUserUseCase from '@/modules/users/useCases/createUser/createUserUseCase';
 import { BaseController } from '@/shared/infra/baseController';
 
 export class CreateUserController extends BaseController {

@@ -1,9 +1,9 @@
 import { Mapper } from '@/shared/infra/mapper';
-import { Post } from '../domain/post';
-import { userId } from '../../users/domain/userId';
-import { IPostDTO } from '../dtos/IPostDTO';
+import { Post } from '@/modules/feed/domain/post';
+import { userId } from '@/modules/users/domain/userId';
+import { IPostDTO } from '@/modules/feed/dtos/IPostDTO';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { PostText } from '../domain/postText';
+import { PostText } from '@/modules/feed/domain/postText';
 
 class PostMap implements Mapper<Post> {
   public toDTO(t: Post): IPostDTO {

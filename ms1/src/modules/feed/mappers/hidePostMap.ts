@@ -1,5 +1,5 @@
 import { Mapper } from '@/shared/infra/mapper';
-import { HidePost } from '../domain/hidePost';
+import { HidePost } from '@/modules/feed/domain/hidePost';
 
 // @ts-ignore
 class HidePostMap implements Mapper<HidePost> {

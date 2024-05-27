@@ -1,12 +1,12 @@
 import { inject, injectable } from 'tsyringe';
 
-import { Like } from '../../../domain/like';
-import { postId } from '../../../domain/postId';
-import { userId } from '../../../../users/domain/userId';
+import { Like } from '@/modules/feed/domain/like';
+import { postId } from '@/modules/feed/domain/postId';
+import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { ILikeRepository } from '../../../repos/ILikeRepo';
-import { IPostRepository } from '../../../repos/IPostRepo';
-import { SwitchLikePostDTO } from './switchLikePostDTO';
+import { ILikeRepository } from '@/modules/feed/repos/ILikeRepo';
+import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { SwitchLikePostDTO } from '@/modules/feed/useCases/post/switchLikePost/switchLikePostDTO';
 
 @injectable()
 class SwitchLikePostUseCase {

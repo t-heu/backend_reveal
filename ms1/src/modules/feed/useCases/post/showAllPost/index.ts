@@ -1,5 +1,5 @@
-import * as Controller from './showAllPostController';
-import ShowAllPostUseCase from './showAllPostUseCase';
+import * as Controller from '@/modules/feed/useCases/post/showAllPost/showAllPostController';
+import ShowAllPostUseCase from '@/modules/feed/useCases/post/showAllPost/showAllPostUseCase';
 
 const ShowAllPostController = new Controller.ShowAllPostController();
 

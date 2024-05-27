@@ -1,16 +1,16 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '../../repos/IUserRepo';
-import { IExternalAuthRepository } from '../../repos/IExternalAuthRepo';
-import { RegisterWithGoogleDTO, ResponseDTO } from './registerWithGoogleDTO';
-import { User } from '../../domain/user';
-import { UserEmail } from '../../domain/userEmail';
-import { UserName } from '../../domain/userName';
-import { UserPhoto } from '../../domain/userPhoto';
-import { UserPassword } from '../../domain/userPassword';
-import { googleService } from '../../services/authProviders';
-import { RefreshToken, Jwt, JWTToken } from '../../domain/jwt';
+import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { IExternalAuthRepository } from '@/modules/users/repos/IExternalAuthRepo';
+import { RegisterWithGoogleDTO, ResponseDTO } from '@/modules/users/useCases/registerWithGoogle/registerWithGoogleDTO';
+import { User } from '@/modules/users/domain/user';
+import { UserEmail } from '@/modules/users/domain/userEmail';
+import { UserName } from '@/modules/users/domain/userName';
+import { UserPhoto } from '@/modules/users/domain/userPhoto';
+import { UserPassword } from '@/modules/users/domain/userPassword';
+import { googleService } from '@/modules/users/services/authProviders';
+import { RefreshToken, Jwt, JWTToken } from '@/modules/users/domain/jwt';
 
 @injectable()
 class RegisterWithGoogleUseCase

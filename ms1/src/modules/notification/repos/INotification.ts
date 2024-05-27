@@ -1,4 +1,4 @@
-import { Notification } from '../domain/notification';
+import { Notification } from '@/modules/notification/domain/notification';
 
 export interface ICreateDTO {
   type: string;

@@ -1,4 +1,4 @@
-import { HidePost } from '../domain/hidePost';
+import { HidePost } from '@/modules/feed/domain/hidePost';
 
 export interface IHidePostRepository {
   exists(data: HidePost): Promise<boolean>;

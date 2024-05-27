@@ -7,9 +7,9 @@ import {
   FindDescriptionDTO,
   FindAndCountDTO,
   IPost,
-} from '../../IPostRepo';
-import PostMap from '../../../mappers/postMap';
-import { Post } from '../../../domain/post';
+} from '@/modules/feed/repos/IPostRepo';
+import PostMap from '@/modules/feed/mappers/postMap';
+import { Post } from '@/modules/feed/domain/post';
 
 class PostRepository implements IPostRepository {
   private ormRepository: Repository<PostTypeorm>;

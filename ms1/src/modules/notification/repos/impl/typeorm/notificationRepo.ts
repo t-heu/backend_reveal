@@ -5,9 +5,9 @@ import {
   INotificationRepository,
   FindAndCountDTO,
   IResponseAndCount,
-} from '../../INotification';
-import NotiMap from '../../../mappers/notiMap';
-import { Notification } from '../../../domain/notification';
+} from '@/modules/notification/repos/INotification';
+import NotiMap from '@/modules/notification/mappers/notiMap';
+import { Notification } from '@/modules/notification/domain/notification';
 
 class NotificationRepository implements INotificationRepository {
   private ormRepository: Repository<NotificationTypeorm>;

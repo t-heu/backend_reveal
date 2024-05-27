@@ -1,14 +1,14 @@
 import express from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 
-import { ShowAllPostController } from '../../../useCases/post/showAllPost';
-import { CreatePostController } from '../../../useCases/post/createPost';
-import { ShowAllUserPostsController } from '../../../useCases/post/showAllUserPosts';
-import { SearchPostController } from '../../../useCases/post/searchPost';
-import { DeletePostController } from '../../../useCases/post/deletePost';
-import { ShowOnePostController } from '../../../useCases/post/showOnePost';
-import { ShowAllLikesPostsController } from '../../../useCases/post/showAllLikesPosts';
-import { GetAllHidesPostController } from '../../../useCases/post/getAllHidesPost';
+import { ShowAllPostController } from '@/modules/feed/useCases/post/showAllPost';
+import { CreatePostController } from '@/modules/feed/useCases/post/createPost';
+import { ShowAllUserPostsController } from '@/modules/feed/useCases/post/showAllUserPosts';
+import { SearchPostController } from '@/modules/feed/useCases/post/searchPost';
+import { DeletePostController } from '@/modules/feed/useCases/post/deletePost';
+import { ShowOnePostController } from '@/modules/feed/useCases/post/showOnePost';
+import { ShowAllLikesPostsController } from '@/modules/feed/useCases/post/showAllLikesPosts';
+import { GetAllHidesPostController } from '@/modules/feed/useCases/post/getAllHidesPost';
 
 import cache from '@/shared/infra/http/middlewares/cacheable';
 import ensureAuthenticated from '@/shared/infra/http/middlewares/ensureAuthenticated';

@@ -1,10 +1,10 @@
 import { Mapper } from '@/shared/infra/mapper';
-import { Comment } from '../domain/comment';
-import { ICommentDTO } from '../dtos/ICommentDTO';
+import { Comment } from '@/modules/feed/domain/comment';
+import { ICommentDTO } from '@/modules/feed/dtos/ICommentDTO';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { CommentText } from '../domain/commentText';
-import { userId } from '../../users/domain/userId';
-import { postId } from '../domain/postId';
+import { CommentText } from '@/modules/feed/domain/commentText';
+import { userId } from '@/modules/users/domain/userId';
+import { postId } from '@/modules/feed/domain/postId';
 
 class CommentMap implements Mapper<Comment> {
   public toDTO(t: Comment): ICommentDTO {

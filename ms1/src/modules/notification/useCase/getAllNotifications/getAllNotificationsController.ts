@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import { BaseController } from '@/shared/infra/baseController';
-import GetAllNotificationsUseCase from './getAllNotificationsUseCase';
+import GetAllNotificationsUseCase from '@/modules/notification/useCase/getAllNotifications/getAllNotificationsUseCase';
 
 export class GetAllNotificationsController extends BaseController {
   constructor() {

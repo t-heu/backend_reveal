@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 import { DomainEvents } from '@/shared/domain/events/domainEvents';
 import { IHandle } from '@/shared/domain/events/IHandle';
-import { SendEmailVerifyEvent } from '../domain/events/sendEmailVerifyEvent';
+import { SendEmailVerifyEvent } from '@/modules/users/domain/events/sendEmailVerifyEvent';
 
 import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
 
