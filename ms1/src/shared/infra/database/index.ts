@@ -1,4 +1,12 @@
-import createConnection from '@/shared/infra/database/typeorm';
+import { appDataSource } from '@/shared/infra/database/typeorm';
 
 // typeorm
-createConnection();
+appDataSource.initialize()
+  .then(() => {
+    console.log("Data Source has been initialized!")
+  })
+  .catch((err) => {
+    console.error("Error during Data Source initialization", err)
+  })
+
+export { appDataSource }

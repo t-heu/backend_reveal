@@ -1,4 +1,4 @@
-import { INotis } from '@/modules/notification/dtos/INoti';
+import { Notis } from '@/modules/notification/dtos/Noti';
 
 export interface GetAllHidesPostDTO {
   skip: number;
@@ -6,6 +6,6 @@ export interface GetAllHidesPostDTO {
 }
 
 export interface ResponseDTO {
-  notifications: INotis[];
+  notifications: Notis[];
   count: number;
 }

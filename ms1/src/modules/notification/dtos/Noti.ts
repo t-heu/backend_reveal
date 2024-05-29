@@ -1,4 +1,4 @@
-export interface INotis {
+export interface Notis {
   id: string;
   dateTimePosted: Date;
   link: string;

@@ -1,16 +1,16 @@
 version: '3.1'
 
 services:
-  db_one:
+  redis:
     image: redis
-    container_name: redis
+    container_name: reveal_redis
     ports:
       - "6379:6379"
 
-  db_two:
+  postgres:
     image: postgres
     restart: always
-    container_name: postgres
+    container_name: reveal_postgres
     environment:
       - POSTGRES_PASSWORD=1234
       - POSTGRES_USER=postgres
@@ -18,9 +18,9 @@ services:
     ports:
       - "5432:5432"
     
-  db_tree:
+  rabbitmq:
     image: rabbitmq:management-alpine
-    container_name: rabbitmq1
+    container_name: reveal_rabbitmq
     hostname: my-rabbit
     ports:
       - "8080:15672"

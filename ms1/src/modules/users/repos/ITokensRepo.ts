@@ -1,4 +1,4 @@
-export interface IUserTokenDTO {
+export interface UserTokenDTO {
   id: string;
   token: string;
   type: string;
@@ -8,12 +8,12 @@ export interface IUserTokenDTO {
   is_revoked: number;
 }
 
-export interface ISave {
+export interface SaveDTO {
   is_revoked: number;
   id: string;
 }
 
-export interface ICreateDTO {
+export interface CreateDTO {
   token: string;
   type: string;
   createdAt?: Date;
@@ -21,8 +21,8 @@ export interface ICreateDTO {
 }
 
 export interface ITokensRepository {
-  findByToken(token: string): Promise<IUserTokenDTO>;
-  create(data: ICreateDTO): Promise<void>;
-  save(data: ISave): Promise<void>;
+  findByToken(token: string): Promise<UserTokenDTO>;
+  create(data: CreateDTO): Promise<void>;
+  save(data: SaveDTO): Promise<void>;
   is_revogedAll(id: string): Promise<void>;
 }

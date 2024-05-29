@@ -1,7 +1,6 @@
-import { AuthProviderProfileInfo } from '@/modules/users/services/authProviders/models/authProviderProfileInfo';
+import { ProfileInfoDTO } from '@/modules/users/services/authProviders/models/profileInfoDTO';
 
 export abstract class AuthProvider {
-  abstract getProfileInfo: (...args: any[]) => Promise<AuthProviderProfileInfo>;
-
+  abstract getProfileInfo: (...args: any[]) => Promise<ProfileInfoDTO>;
   abstract checkValidAuthToken: (...args: any[]) => Promise<boolean>;
 }

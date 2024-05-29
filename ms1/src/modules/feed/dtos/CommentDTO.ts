@@ -1,4 +1,4 @@
-export interface ICommentDTO {
+export interface CommentDTO {
   id: string;
   text: string;
   dateTimePosted: Date;

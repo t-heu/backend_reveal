@@ -1,6 +1,6 @@
 import { Mapper } from '@/shared/infra/mapper';
 import { User } from '@/modules/users/domain/user';
-import { IUserDTO } from '@/modules/users/dtos/IUserDTO';
+import { UserDTO } from '@/modules/users/dtos/UserDTO';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { UserName } from '@/modules/users/domain/userName';
 import { UserPassword } from '@/modules/users/domain/userPassword';
@@ -8,7 +8,7 @@ import { UserEmail } from '@/modules/users/domain/userEmail';
 import { UserPhoto } from '@/modules/users/domain/userPhoto';
 
 class UserMap implements Mapper<User> {
-  public toDTO(t: User): IUserDTO {
+  public toDTO(t: User): UserDTO {
     return {
       id: t.id.toString(),
       name: t.name.value,

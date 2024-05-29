@@ -1,4 +1,4 @@
-export interface IUserDTO {
+export interface UserDTO {
   id: string;
   isEmailVerified: boolean;
   email: string;

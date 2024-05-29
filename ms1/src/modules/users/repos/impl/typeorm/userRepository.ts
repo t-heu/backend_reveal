@@ -1,17 +1,17 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import { User } from '@/modules/users/domain/user';
 import { UserEmail } from '@/modules/users/domain/userEmail';
 import UserMap from '@/modules/users/mappers/userMap';
 import UserTypeorm from '@/shared/infra/database/typeorm/entity/User';
-
-import { IUserRepository, IEditDTO } from '@/modules/users/repos/IUserRepo';
+import { appDataSource } from '@/shared/infra/database';
+import { IUserRepository, EditDTO } from '@/modules/users/repos/IUserRepo';
 
 class UserRepository implements IUserRepository {
   private ormRepository: Repository<UserTypeorm>;
 
   constructor() {
-    this.ormRepository = getRepository(UserTypeorm);
+    this.ormRepository = appDataSource.getRepository(UserTypeorm);
   }
 
   public async findById(id: string): Promise<User> {
@@ -50,7 +50,7 @@ class UserRepository implements IUserRepository {
     await this.ormRepository.save(user);
   }
 
-  public async save(data: IEditDTO): Promise<void> {
+  public async save(data: EditDTO): Promise<void> {
     await this.ormRepository.update(data.id, data.data);
   }
 }

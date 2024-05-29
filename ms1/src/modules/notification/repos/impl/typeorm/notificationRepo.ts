@@ -1,4 +1,4 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import NotificationTypeorm from '@/shared/infra/database/typeorm/entity/Notification';
 import {
@@ -8,12 +8,13 @@ import {
 } from '@/modules/notification/repos/INotification';
 import NotiMap from '@/modules/notification/mappers/notiMap';
 import { Notification } from '@/modules/notification/domain/notification';
+import { appDataSource } from '@/shared/infra/database';
 
 class NotificationRepository implements INotificationRepository {
   private ormRepository: Repository<NotificationTypeorm>;
 
   constructor() {
-    this.ormRepository = getRepository(NotificationTypeorm);
+    this.ormRepository = appDataSource.getRepository(NotificationTypeorm);
   }
 
   public async createNotification(data: Notification): Promise<void> {

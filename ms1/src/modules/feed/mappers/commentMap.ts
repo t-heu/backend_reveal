@@ -1,13 +1,13 @@
 import { Mapper } from '@/shared/infra/mapper';
 import { Comment } from '@/modules/feed/domain/comment';
-import { ICommentDTO } from '@/modules/feed/dtos/ICommentDTO';
+import { CommentDTO } from '@/modules/feed/dtos/CommentDTO';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { CommentText } from '@/modules/feed/domain/commentText';
 import { userId } from '@/modules/users/domain/userId';
 import { postId } from '@/modules/feed/domain/postId';
 
 class CommentMap implements Mapper<Comment> {
-  public toDTO(t: Comment): ICommentDTO {
+  public toDTO(t: Comment): CommentDTO {
     return {
       id: t.id.toValue().toString(),
       text: t.text.value,

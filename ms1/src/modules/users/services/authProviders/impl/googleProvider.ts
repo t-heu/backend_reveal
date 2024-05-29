@@ -1,16 +1,11 @@
 import axios from 'axios';
-import { AuthProviderProfileInfo } from '@/modules/users/services/authProviders/models/authProviderProfileInfo';
-import { AuthProvider } from '@/modules/users/services/authProviders/models/authProvider';
-
-export interface IGoogleService extends AuthProvider {
-  getProfileInfo: () => Promise<AuthProviderProfileInfo>;
-  checkValidAuthToken: (token: string) => Promise<boolean>;
-}
+import { ProfileInfoDTO } from '@/modules/users/services/authProviders/models/profileInfoDTO';
+import { IGoogleService } from '@/modules/users/services/authProviders/impl/IGoogleService';
 
 export class GoogleService implements IGoogleService {
   private data: any;
 
-  public async getProfileInfo(): Promise<AuthProviderProfileInfo> {
+  public async getProfileInfo(): Promise<ProfileInfoDTO> {
     try {
       const { data } = this;
 

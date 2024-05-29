@@ -1,7 +1,7 @@
 import { User } from '@/modules/users/domain/user';
 import { UserEmail } from '@/modules/users/domain/userEmail';
 
-interface IData {
+interface DataDTO {
   password?: string;
   photo?: string;
   name?: string;
@@ -10,15 +10,15 @@ interface IData {
   notification_key?: string;
 }
 
-export interface IEditDTO {
+export interface EditDTO {
   id: string;
-  data: IData;
+  data: DataDTO;
 }
 
 export interface IUserRepository {
   create(data: User): Promise<void>;
   findById(id: string): Promise<User>;
-  save(data: IEditDTO): Promise<void>;
+  save(data: EditDTO): Promise<void>;
   findUserByEmail(data: UserEmail): Promise<User>;
   exists(data: UserEmail): Promise<boolean>;
 }

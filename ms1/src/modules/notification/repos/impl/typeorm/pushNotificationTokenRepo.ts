@@ -1,19 +1,20 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import PushNotificationTokenTypeorm from '@/shared/infra/database/typeorm/entity/PushNotificationToken';
+import { appDataSource } from '@/shared/infra/database';
 import {
   IPushNotificationTokenRepository,
-  ICreateDTO,
+  CreateDTO,
 } from '@/modules/notification/repos/IPushNotificationToken';
 
 class PushNotificationTokenRepository implements IPushNotificationTokenRepository {
   private ormRepository: Repository<PushNotificationTokenTypeorm>;
 
   constructor() {
-    this.ormRepository = getRepository(PushNotificationTokenTypeorm);
+    this.ormRepository = appDataSource.getRepository(PushNotificationTokenTypeorm);
   }
 
-  public async addPushNotificationTokens(data: ICreateDTO): Promise<void> {
+  public async addPushNotificationTokens(data: CreateDTO): Promise<void> {
     const response = await this.ormRepository.findOne({
       where: { key: data.key },
     });

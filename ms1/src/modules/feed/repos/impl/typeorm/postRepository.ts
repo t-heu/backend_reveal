@@ -1,6 +1,7 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import PostTypeorm from '@/shared/infra/database/typeorm/entity/Post';
+import { appDataSource } from '@/shared/infra/database';
 import {
   IPostRepository,
   IResponseAndCount,
@@ -15,7 +16,7 @@ class PostRepository implements IPostRepository {
   private ormRepository: Repository<PostTypeorm>;
 
   constructor() {
-    this.ormRepository = getRepository(PostTypeorm);
+    this.ormRepository = appDataSource.getRepository(PostTypeorm);
   }
 
   public async create(data: Post): Promise<void> {

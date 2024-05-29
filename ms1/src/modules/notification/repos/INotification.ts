@@ -1,13 +1,5 @@
 import { Notification } from '@/modules/notification/domain/notification';
 
-export interface ICreateDTO {
-  type: string;
-  title: string;
-  description: string;
-  link: string;
-  user_id: string;
-}
-
 export interface IResponseAndCount {
   result: Notification[];
   total: number;
@@ -20,10 +12,7 @@ export interface FindAndCountDTO {
 
 export interface INotificationRepository {
   createNotification(data: Notification): Promise<void>;
-  getAllNotification({
-    userID,
-    skip,
-  }: FindAndCountDTO): Promise<IResponseAndCount>;
+  getAllNotification(param: FindAndCountDTO): Promise<IResponseAndCount>;
   getCountNotificationNotRead(userID: string): Promise<number>;
   updateNotificationRead(userID: string): Promise<void>;
 }

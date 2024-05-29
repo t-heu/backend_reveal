@@ -1,20 +1,21 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
+import { appDataSource } from '@/shared/infra/database';
 
 import ExternalAuth from '@/shared/infra/database/typeorm/entity/ExternalAuth';
-import { ICreateDTO, IExternalAuthRepository } from '@/modules/users/repos/IExternalAuthRepo';
+import { CreateDTO, IExternalAuthRepository } from '@/modules/users/repos/IExternalAuthRepo';
 
 class ExternalAuthRepository implements IExternalAuthRepository {
   private ormRepository: Repository<ExternalAuth>;
 
   constructor() {
-    this.ormRepository = getRepository(ExternalAuth);
+    this.ormRepository = appDataSource.getRepository(ExternalAuth);
   }
 
   public async findLoginSocialOrCreate({
     providerName,
     provideruserID,
     userID,
-  }: ICreateDTO): Promise<void> {
+  }: CreateDTO): Promise<void> {
     const response = await this.ormRepository.findOne({
       where: { providerName, provideruserID },
     });

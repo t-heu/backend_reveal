@@ -1,11 +1,5 @@
 import { config } from 'dotenv';
-
-import {
-  createConnection,
-  getConnectionOptions,
-  Connection,
-  ConnectionOptions,
-} from 'typeorm';
+import { DataSource, DataSourceOptions  } from 'typeorm';
 
 import HidePost from '@/shared/infra/database/typeorm/entity/HidePost';
 import Comment from '@/shared/infra/database/typeorm/entity/Comment';
@@ -33,24 +27,16 @@ const entities = [
   PushNotificationToken,
 ];
 
-const optionsPostgress: ConnectionOptions = {
+const optionsPostgress: DataSourceOptions  = {
   type: 'postgres',
   entities,
   database: process.env.DB_DATABASE,
   host: process.env.DB_HOST,
-  port: process.env.DB_PORT as number | undefined,
+  port: Number(process.env.DB_PORT),
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
 };
 
 const options = optionsPostgress;
 
-export default async (): Promise<Connection | any> => {
-  try {
-    const defaultOptions = await getConnectionOptions();
-
-    return createConnection(Object.assign(defaultOptions, options));
-  } catch (error) {
-    return error;
-  }
-};
+export const appDataSource = new DataSource(options);

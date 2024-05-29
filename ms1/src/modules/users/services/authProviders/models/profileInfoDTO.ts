@@ -1,4 +1,4 @@
-export interface AuthProviderProfileInfo {
+export interface ProfileInfoDTO {
   fullName: string;
   firstName?: string;
   lastName?: string;

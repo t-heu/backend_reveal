@@ -1,16 +1,17 @@
-import { Repository, getRepository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 import Token from '@/shared/infra/database/typeorm/entity/Token';
-import { ITokensRepository, ICreateDTO, ISave } from '@/modules/users/repos/ITokensRepo';
+import { appDataSource } from '@/shared/infra/database';
+import { ITokensRepository, CreateDTO, SaveDTO } from '@/modules/users/repos/ITokensRepo';
 
 class TokensRepository implements ITokensRepository {
   private ormRepository: Repository<Token>;
 
   constructor() {
-    this.ormRepository = getRepository(Token);
+    this.ormRepository = appDataSource.getRepository(Token);
   }
 
-  public async create({ user_id, token, type }: ICreateDTO): Promise<void> {
+  public async create({ user_id, token, type }: CreateDTO): Promise<void> {
     const response = this.ormRepository.create({
       user_id,
       token,
@@ -34,7 +35,7 @@ class TokensRepository implements ITokensRepository {
     return userToken;
   }
 
-  public async save(data: ISave): Promise<void> {
+  public async save(data: SaveDTO): Promise<void> {
     await this.ormRepository.update(data.id, data);
   }
 

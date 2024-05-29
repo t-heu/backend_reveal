@@ -24,22 +24,9 @@ export interface IPostRepository {
   exists(postID: string): Promise<boolean>;
   create(data: Post): Promise<void>;
   delete(id: string): Promise<void>;
-  findAllUserPosts({
-    userID,
-    skip,
-  }: FindAndCountDTO): Promise<IResponseAndCount>;
-  getAllPost({ userID, skip }: FindAndCountDTO): Promise<IResponseAndCount>;
-  getAllPostSearch({
-    skip,
-    search,
-    userID,
-  }: FindDescriptionDTO): Promise<IResponseAndCount>;
-  getAllPostLiked({
-    userID,
-    skip,
-  }: FindAndCountDTO): Promise<IResponseAndCount>;
-  getAllPostsHide({
-    userID,
-    skip,
-  }: FindAndCountDTO): Promise<IResponseAndCount>;
+  findAllUserPosts(params: FindAndCountDTO): Promise<IResponseAndCount>;
+  getAllPost(params: FindAndCountDTO): Promise<IResponseAndCount>;
+  getAllPostSearch(params: FindDescriptionDTO): Promise<IResponseAndCount>;
+  getAllPostLiked(params: FindAndCountDTO): Promise<IResponseAndCount>;
+  getAllPostsHide(params: FindAndCountDTO): Promise<IResponseAndCount>;
 }
