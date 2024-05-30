@@ -6,7 +6,7 @@ dotenv.config();
 // Infra
 import '@/shared/infra/database';
 import '@/shared/infra/container';
-import '@/shared/infra/app';
+import '@/config/server';
 
 // Subscribers
 import '@/modules/feed/subscribers';

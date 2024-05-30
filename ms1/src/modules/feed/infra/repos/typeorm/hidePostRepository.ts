@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 
 import { HidePost } from '@/modules/feed/domain/hidePost';
 import HidePostTypeorm from '@/shared/infra/database/typeorm/entity/HidePost';
-import { IHidePostRepository } from '@/modules/feed/repos/IHidePostRepo';
+import { IHidePostRepository } from '@/modules/feed/domain/repos/IHidePostRepo';
 import HidePostMap from '@/modules/feed/mappers/hidePostMap';
 import { appDataSource } from '@/shared/infra/database';
 

@@ -5,7 +5,7 @@ import { UserEmail } from '@/modules/users/domain/userEmail';
 import UserMap from '@/modules/users/mappers/userMap';
 import UserTypeorm from '@/shared/infra/database/typeorm/entity/User';
 import { appDataSource } from '@/shared/infra/database';
-import { IUserRepository, EditDTO } from '@/modules/users/repos/IUserRepo';
+import { IUserRepository, EditDTO } from '@/modules/users/domain/repos/IUserRepo';
 
 class UserRepository implements IUserRepository {
   private ormRepository: Repository<UserTypeorm>;

@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 
 import Token from '@/shared/infra/database/typeorm/entity/Token';
 import { appDataSource } from '@/shared/infra/database';
-import { ITokensRepository, CreateDTO, SaveDTO } from '@/modules/users/repos/ITokensRepo';
+import { ITokensRepository, CreateDTO, SaveDTO } from '@/modules/users/domain/repos/ITokensRepo';
 
 class TokensRepository implements ITokensRepository {
   private ormRepository: Repository<Token>;

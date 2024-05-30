@@ -4,7 +4,7 @@ import { HidePost } from '@/modules/feed/domain/hidePost';
 import { postId } from '@/modules/feed/domain/postId';
 import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { IHidePostRepository } from '@/modules/feed/repos/IHidePostRepo';
+import { IHidePostRepository } from '@/modules/feed/domain/repos/IHidePostRepo';
 import { SwitchHidePostDTO } from '@/modules/feed/useCases/post/switchHidePost/switchHidePostDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 

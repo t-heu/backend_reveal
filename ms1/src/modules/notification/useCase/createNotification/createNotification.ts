@@ -1,9 +1,9 @@
 import { inject, injectable, delay } from 'tsyringe';
 
 import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
-import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
-import { INotificationRepository } from '@/modules/notification/repos/INotification';
-import { IPushNotificationTokenRepository } from '@/modules/notification/repos/IPushNotificationToken';
+import { IPostRepository } from '@/modules/feed/domain/repos/IPostRepo';
+import { INotificationRepository } from '@/modules/notification/domain/repos/INotification';
+import { IPushNotificationTokenRepository } from '@/modules/notification/domain/repos/IPushNotificationToken';
 import { IUseCase } from '@/shared/domain/useCase';
 import { Notification } from '@/modules/notification/domain/notification';
 

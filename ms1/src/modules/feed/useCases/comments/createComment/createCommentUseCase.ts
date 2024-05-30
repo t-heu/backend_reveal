@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
-import { ICommentRepository } from '@/modules/feed/repos/ICommentRepo';
-import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { ICommentRepository } from '@/modules/feed/domain/repos/ICommentRepo';
+import { IPostRepository } from '@/modules/feed/domain/repos/IPostRepo';
 import { AddCommentDTO } from '@/modules/feed/useCases/comments/createComment/createCommentDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 import { CommentText } from '@/modules/feed/domain/commentText';

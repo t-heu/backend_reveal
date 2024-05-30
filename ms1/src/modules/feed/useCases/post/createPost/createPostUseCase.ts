@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { IPostRepository } from '@/modules/feed/domain/repos/IPostRepo';
 import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
 import { CreatePostDTO } from '@/modules/feed/useCases/post/createPost/createPostDTO';

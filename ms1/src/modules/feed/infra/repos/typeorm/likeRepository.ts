@@ -3,7 +3,7 @@ import { Repository } from 'typeorm';
 import { Like } from '@/modules/feed/domain/like';
 import LikeMap from '@/modules/feed/mappers/likeMap';
 import LikeTypeorm from '@/shared/infra/database/typeorm/entity/Like';
-import { ILikeRepository } from '@/modules/feed/repos/ILikeRepo';
+import { ILikeRepository } from '@/modules/feed/domain/repos/ILikeRepo';
 import { appDataSource } from '@/shared/infra/database';
 
 class LikeRepository implements ILikeRepository {

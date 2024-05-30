@@ -5,7 +5,7 @@ import {
   INotificationRepository,
   FindAndCountDTO,
   IResponseAndCount,
-} from '@/modules/notification/repos/INotification';
+} from '@/modules/notification/domain/repos/INotification';
 import NotiMap from '@/modules/notification/mappers/notiMap';
 import { Notification } from '@/modules/notification/domain/notification';
 import { appDataSource } from '@/shared/infra/database';

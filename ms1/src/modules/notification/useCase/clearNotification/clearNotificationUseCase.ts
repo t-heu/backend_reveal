@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';
-import { INotificationRepository } from '@/modules/notification/repos/INotification';
+import { INotificationRepository } from '@/modules/notification/domain/repos/INotification';
 import { RequestDTO } from '@/modules/notification/useCase/clearNotification/clearNotificationDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 

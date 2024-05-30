@@ -1,10 +1,9 @@
-
 import express, { Request, Response, NextFunction } from 'express';
 import helmet from 'helmet';
 import morganBody from 'morgan-body';
 import path from 'path';
 import 'express-async-errors';
-import { isCelebrate } from 'celebrate';
+import { errors } from 'celebrate';
 import multer from 'multer';
 import { Server } from 'http';
 import { container } from 'tsyringe';
@@ -58,7 +57,7 @@ app.use(
     response: Response,
     _next: NextFunction,
   ): Response => {
-    if (isCelebrate(err)) {
+    if (errors(err)) {
       return response.status(404).json({
         status: 'error',
         message: err.joi.message,

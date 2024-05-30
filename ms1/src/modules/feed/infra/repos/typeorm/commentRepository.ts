@@ -2,7 +2,7 @@ import { Repository } from 'typeorm';
 
 import CommentTypeorm from '@/shared/infra/database/typeorm/entity/Comment';
 import { Comment } from '@/modules/feed/domain/comment';
-import { ICommentRepository, ResponseFindAllCount } from '@/modules/feed/repos/ICommentRepo';
+import { ICommentRepository, ResponseFindAllCount } from '@/modules/feed/domain/repos/ICommentRepo';
 import CommentMap from '@/modules/feed/mappers/commentMap';
 import { appDataSource } from '@/shared/infra/database';
 

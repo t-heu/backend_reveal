@@ -3,14 +3,14 @@ import { inject, injectable } from 'tsyringe';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
 import { CreateUserDTO } from '@/modules/users/useCases/createUser/createUserDTO';
 import { User } from '@/modules/users/domain/user';
 import { UserName } from '@/modules/users/domain/userName';
 import { UserEmail } from '@/modules/users/domain/userEmail';
 import { UserPhoto } from '@/modules/users/domain/userPhoto';
 import { UserPassword } from '@/modules/users/domain/userPassword';
-import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { ITokensRepository } from '@/modules/users/domain/repos/ITokensRepo';
 
 import { UploadStorage } from '@/config/upload';
 

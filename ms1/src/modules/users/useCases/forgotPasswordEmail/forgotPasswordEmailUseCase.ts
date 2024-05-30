@@ -2,8 +2,8 @@ import { inject, injectable } from 'tsyringe';
 import { v4 as uuidv4 } from 'uuid';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
-import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
+import { ITokensRepository } from '@/modules/users/domain/repos/ITokensRepo';
 import { ForgotPasswordEmailDTO } from '@/modules/users/useCases/forgotPasswordEmail/forgotPasswordEmailDTO';
 import { UserEmail } from '@/modules/users/domain/userEmail';
 import { User } from '@/modules/users/domain/user';

@@ -5,7 +5,7 @@ import { appDataSource } from '@/shared/infra/database';
 import {
   IPushNotificationTokenRepository,
   CreateDTO,
-} from '@/modules/notification/repos/IPushNotificationToken';
+} from '@/modules/notification/domain/repos/IPushNotificationToken';
 
 class PushNotificationTokenRepository implements IPushNotificationTokenRepository {
   private ormRepository: Repository<PushNotificationTokenTypeorm>;

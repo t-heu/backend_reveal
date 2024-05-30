@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
-import { IExternalAuthRepository } from '@/modules/users/repos/IExternalAuthRepo';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
+import { IExternalAuthRepository } from '@/modules/users/domain/repos/IExternalAuthRepo';
 import { RegisterWithGoogleDTO, ResponseDTO } from '@/modules/users/useCases/registerWithGoogle/registerWithGoogleDTO';
 import { User } from '@/modules/users/domain/user';
 import { UserEmail } from '@/modules/users/domain/userEmail';

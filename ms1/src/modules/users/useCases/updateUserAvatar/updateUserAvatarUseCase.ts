@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
 import { UpdateUserAvatarDTO } from '@/modules/users/useCases/updateUserAvatar/updateUserAvatarDTO';
 
 @injectable()

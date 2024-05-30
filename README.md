@@ -35,11 +35,19 @@ Reveal is a type of social network where users are anonymous, they can share ide
   <li>microservices</li>
 </ul>
 
+## How to run
+
+1. Download the images and run `docker-compose up`
+2. Install ms1 and ms2 dependencies
+3. Configure your `.env` file
+4. In the root run `npm run dev`
+5. If you need to have API documentation with `Insomnia_2024-01-25.json`
+
 ## Versioning
 This project does not have a versioning system.
 
 ## History
-Take a look at the tab [Releases](https://github.com/t-heu/reveal/releases) to track changes made to the project.
+Take a look at the tab [Releases](https://github.com/t-heu/backend_reveal/releases) to track changes made to the project.
 
 ## License
 [MIT License](./LICENSE) © [Math](https://github.com/t-heu/)

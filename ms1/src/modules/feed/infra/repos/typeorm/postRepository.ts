@@ -8,7 +8,7 @@ import {
   FindDescriptionDTO,
   FindAndCountDTO,
   IPost,
-} from '@/modules/feed/repos/IPostRepo';
+} from '@/modules/feed/domain/repos/IPostRepo';
 import PostMap from '@/modules/feed/mappers/postMap';
 import { Post } from '@/modules/feed/domain/post';
 

@@ -1,31 +1,31 @@
 import { container } from 'tsyringe';
 
-import LikeRepository from '@/modules/feed/repos/impl/typeorm/likeRepository';
-import { ILikeRepository } from '@/modules/feed/repos/ILikeRepo';
+import LikeRepository from '@/modules/feed/infra/repos/typeorm/likeRepository';
+import { ILikeRepository } from '@/modules/feed/domain/repos/ILikeRepo';
 
-import CommentRepository from '@/modules/feed/repos/impl/typeorm/commentRepository';
-import { ICommentRepository } from '@/modules/feed/repos/ICommentRepo';
+import CommentRepository from '@/modules/feed/infra/repos/typeorm/commentRepository';
+import { ICommentRepository } from '@/modules/feed/domain/repos/ICommentRepo';
 
-import PostRepository from '@/modules/feed/repos/impl/typeorm/postRepository';
-import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import PostRepository from '@/modules/feed/infra/repos/typeorm/postRepository';
+import { IPostRepository } from '@/modules/feed/domain/repos/IPostRepo';
 
-import HidePostRepository from '@/modules/feed/repos/impl/typeorm/hidePostRepository';
-import { IHidePostRepository } from '@/modules/feed/repos/IHidePostRepo';
+import HidePostRepository from '@/modules/feed/infra/repos/typeorm/hidePostRepository';
+import { IHidePostRepository } from '@/modules/feed/domain/repos/IHidePostRepo';
 
-import UserRepository from '@/modules/users/repos/impl/typeorm/userRepository';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
+import UserRepository from '@/modules/users/infra/repos/typeorm/userRepository';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
 
-import TokensRepository from '@/modules/users/repos/impl/typeorm/tokensRepository';
-import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import TokensRepository from '@/modules/users/infra/repos/typeorm/tokensRepository';
+import { ITokensRepository } from '@/modules/users/domain/repos/ITokensRepo';
 
-import ExternalAuthRepository from '@/modules/users/repos/impl/typeorm/externalAuthRepository';
-import { IExternalAuthRepository } from '@/modules/users/repos/IExternalAuthRepo';
+import ExternalAuthRepository from '@/modules/users/infra/repos/typeorm/externalAuthRepository';
+import { IExternalAuthRepository } from '@/modules/users/domain/repos/IExternalAuthRepo';
 
-import NotificationRepository from '@/modules/notification/repos/impl/typeorm/notificationRepo';
-import { INotificationRepository } from '@/modules/notification/repos/INotification';
+import NotificationRepository from '@/modules/notification/infra/repos/typeorm/notificationRepo';
+import { INotificationRepository } from '@/modules/notification/domain/repos/INotification';
 
-import PushNotificationTokenRepository from '@/modules/notification/repos/impl/typeorm/pushNotificationTokenRepo';
-import { IPushNotificationTokenRepository } from '@/modules/notification/repos/IPushNotificationToken';
+import PushNotificationTokenRepository from '@/modules/notification/infra/repos/typeorm/pushNotificationTokenRepo';
+import { IPushNotificationTokenRepository } from '@/modules/notification/domain/repos/IPushNotificationToken';
 
 import { RabbitMQHandler } from '@/shared/infra/rabbitmq/rabbitMQHandler';
 import { WebSocketHandler } from '@/shared/infra/ws/webSocketHandler';

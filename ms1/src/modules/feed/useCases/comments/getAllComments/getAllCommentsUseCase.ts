@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import { ICommentRepository } from '@/modules/feed/repos/ICommentRepo';
+import { ICommentRepository } from '@/modules/feed/domain/repos/ICommentRepo';
 import { ShowAllCommentsDTO, ResponseDTO } from '@/modules/feed/useCases/comments/getAllComments/getAllCommentsDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 

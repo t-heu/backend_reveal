@@ -1,10 +1,7 @@
 import dotenv from 'dotenv';
-// import multer, { StorageEngine } from 'multer';
 import { Request } from 'express';
 import path from 'path';
 import crypto from 'crypto';
-// import aws from 'aws-sdk';
-import multerS3 from 'multer-s3';
 import { Storage } from '@google-cloud/storage';
 import Jimp from 'jimp';
 import fs from 'fs';
@@ -52,24 +49,7 @@ export class UploadStorage {
     return fileName;
   }
 
-  s3(): void {
-    multerS3({
-      //s3: new aws.S3(),
-      bucket: process.env.AWS_BUCKET_NAME as string,
-      contentType: multerS3.AUTO_CONTENT_TYPE,
-      acl: 'public-read',
-      key: (req, file, cb) => {
-        crypto.randomBytes(16, (err, hash) => {
-          if (err) cb(err);
-
-          const filename = `${hash.toString('hex')}-${Date.now()}-${
-            file.originalname
-          }`;
-          return cb(null, filename);
-        });
-      },
-    });
-  }
+  s3(): void {}
 
   firebase_storage(): void {
     const gcobj = new Storage({

@@ -2,8 +2,8 @@ import { inject, injectable } from 'tsyringe';
 import { isAfter, addHours } from 'date-fns';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
-import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
+import { ITokensRepository } from '@/modules/users/domain/repos/ITokensRepo';
 import { UserPassword } from '@/modules/users/domain/userPassword';
 import { ResetPasswordDTO } from '@/modules/users/useCases/resetPassword/resetPasswordDTO';
 

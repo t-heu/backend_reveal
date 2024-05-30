@@ -1,6 +1,6 @@
 import { inject, injectable, delay } from 'tsyringe';
 
-import { IPushNotificationTokenRepository } from '@/modules/notification/repos/IPushNotificationToken';
+import { IPushNotificationTokenRepository } from '@/modules/notification/domain/repos/IPushNotificationToken';
 import { RequestDTO } from '@/modules/notification/useCase/deletePushToken/deletePushTokenDTO';
 import { IUseCase } from '@/shared/domain/useCase';
 

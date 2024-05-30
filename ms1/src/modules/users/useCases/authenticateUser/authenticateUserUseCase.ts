@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe';
 
 import { IUseCase } from '@/shared/domain/useCase';
-import { IUserRepository } from '@/modules/users/repos/IUserRepo';
-import { ITokensRepository } from '@/modules/users/repos/ITokensRepo';
+import { IUserRepository } from '@/modules/users/domain/repos/IUserRepo';
+import { ITokensRepository } from '@/modules/users/domain/repos/ITokensRepo';
 import { AuthenticateUserDTO, ResponseDTO } from '@/modules/users/useCases/authenticateUser/authenticateUserDTO';
 import { UserEmail } from '@/modules/users/domain/userEmail';
 import { UserPassword } from '@/modules/users/domain/userPassword';

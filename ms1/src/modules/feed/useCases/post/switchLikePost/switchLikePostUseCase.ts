@@ -4,8 +4,8 @@ import { Like } from '@/modules/feed/domain/like';
 import { postId } from '@/modules/feed/domain/postId';
 import { userId } from '@/modules/users/domain/userId';
 import { UniqueEntityID } from '@/shared/domain/uniqueEntityID';
-import { ILikeRepository } from '@/modules/feed/repos/ILikeRepo';
-import { IPostRepository } from '@/modules/feed/repos/IPostRepo';
+import { ILikeRepository } from '@/modules/feed/domain/repos/ILikeRepo';
+import { IPostRepository } from '@/modules/feed/domain/repos/IPostRepo';
 import { SwitchLikePostDTO } from '@/modules/feed/useCases/post/switchLikePost/switchLikePostDTO';
 
 @injectable()
