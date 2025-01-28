@@ -1,6 +1,4 @@
-[![Twitter Badge](https://img.shields.io/badge/-@t__h__e__u-1ca0f1?style=flat-square&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/t_h_e_u)](https://twitter.com/t_h_e_u) 
-[![Linkedin Badge](https://img.shields.io/badge/-matheusgbatista-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/matheusgbatista-3392bb153/)](https://www.linkedin.com/in/matheusgbatista/) 
-[![MyWeb Badge](https://img.shields.io/badge/-t--heu.github.io-333?style=flat-square&link=https://t-heu.github.io/)](https://t-heu.github.io) 
+[![x](https://img.shields.io/badge/x-000000?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/t_h_e_u) [![web](https://img.shields.io/badge/web-000000?style=for-the-badge&logo=web&logoColor=white)](https://t-heu.github.io/) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=LinkedIn&logoColor=white)](https://www.linkedin.com/in/matheusgbatista/)
 
 ## 📄 About
 Reveal is a type of social network where users are anonymous, they can share ideas, secrets and what they are thinking at that very moment. Using: Postgress, Redis
@@ -11,13 +9,29 @@ Reveal is a type of social network where users are anonymous, they can share ide
 </p>
 
 ## ⚡ Tech Stack
-- [ExpressJS](https://expressjs.com/)
+- [Nodemailer](https://nodemailer.com/)
 - [Handlebars](https://handlebarsjs.com/)
+- [ExpressJS](https://expressjs.com/)
 - [Firebase](https://firebase.google.com/)
 - [Socket.io](https://socket.io/)
-- [Nodemailer](https://nodemailer.com/)
 - [TypeORM](https://typeorm.io/)
 - [RabbitMQ](https://www.rabbitmq.com/)
+
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![ts](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=TypeScript&logoColor=white)
+![rabbitmq](https://img.shields.io/badge/RabbitMQ-FF6600?style=for-the-badge&logo=rabbitmq&logoColor=white)
+![typeorm](https://img.shields.io/badge/TypeORM-FE0803?style=for-the-badge&logo=typeorm&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=for-the-badge&logo=postgresql&logoColor=white)
+![socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socket.io&logoColor=white)
+![firebase](https://img.shields.io/badge/Firebase-DD2C00?style=for-the-badge&logo=firebase&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![pnpm](https://img.shields.io/badge/pnpm-F69220?style=for-the-badge&logo=pnpm&logoColor=white)
+![redis](https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white)
+![axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
+![jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+![date-fns](https://img.shields.io/badge/date%20fns-770C56?style=for-the-badge&logo=date-fns&logoColor=white)
+![env](https://img.shields.io/badge/.ENV-ECD53F?style=for-the-badge&logo=.env&logoColor=white)
 
 ## Functionalities
 <ul>
